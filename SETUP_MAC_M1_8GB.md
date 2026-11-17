@@ -57,7 +57,7 @@ Docker VM hiện có khoảng 4,11 GB RAM; hướng dẫn gợi ý khoảng 5 GB
 
 ## Trạng thái Colab và cách tiếp tục
 
-Đã mở [notebook Colab của bài](https://colab.research.google.com/github/trxuanbac/K5-L23-DAY08-2A202603132-TranXuanBac-AIPrelabel/blob/main/notebooks/day08_colab.ipynb). Trong Colab, chọn **Runtime → Change runtime type → T4 GPU → Save**, rồi chạy:
+Đã mở [notebook Colab của bài](https://colab.research.google.com/github/trxuanbac/K5-L2-DAY08-2A202603132-TranXuanBac-AIPrelabel/blob/main/notebooks/day08_colab.ipynb). Trong Colab, chọn **Runtime → Change runtime type → T4 GPU → Save**, rồi chạy:
 
 ```python
 !nvidia-smi -L

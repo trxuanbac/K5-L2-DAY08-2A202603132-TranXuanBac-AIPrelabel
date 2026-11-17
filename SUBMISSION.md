@@ -6,9 +6,9 @@ Mỗi học viên **một repo public**: fork repo đề, đổi tên theo mẫu
 
 | Mẫu tên repo | Ví dụ |
 |---|---|
-| `K5-L23-DAY08-[MSHV]-[HoTen]-AIPrelabel` | `K5-L23-DAY08-22001234-NguyenVanA-AIPrelabel` |
+| `K5-L2-DAY08-[MSHV]-[HoTen]-AIPrelabel` | `K5-L2-DAY08-22001234-NguyenVanA-AIPrelabel` |
 
-`HoTen` không dấu, viết liền. Theo hướng dẫn lớp nếu giảng viên đặt quy ước khác.
+`HoTen` không dấu, viết liền. Repo này dùng mẫu lớp L2 theo [hướng dẫn chi tiết của lớp](https://wuongg.github.io/K5-L2-Day08-HuongDan/HUONG_DAN_CHI_TIET.html). Theo hướng dẫn lớp nếu giảng viên đặt quy ước khác.
 
 ## Trước khi nộp
 

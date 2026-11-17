@@ -14,7 +14,7 @@ Cấu hình máy này: [Mac M1 8 GB — môi trường và kết quả kiểm tr
   <img alt="ảnh" src="https://img.shields.io/badge/dữ%20liệu-36%20ảnh-12b3a8">
   <img alt="python" src="https://img.shields.io/badge/python-3.10–3.13-3776ab">
   <img alt="gpu" src="https://img.shields.io/badge/GPU-không%20bắt%20buộc-2fbf71">
-  <a href="https://colab.research.google.com/github/trxuanbac/K5-L23-DAY08-2A202603132-TranXuanBac-AIPrelabel/blob/main/notebooks/day08_colab.ipynb"><img alt="Mở trong Colab" src="https://colab.research.google.com/assets/colab-badge.svg"></a>
+  <a href="https://colab.research.google.com/github/trxuanbac/K5-L2-DAY08-2A202603132-TranXuanBac-AIPrelabel/blob/main/notebooks/day08_colab.ipynb"><img alt="Mở trong Colab" src="https://colab.research.google.com/assets/colab-badge.svg"></a>
 </p>
 
 > **Máy gán sẵn, người sửa.** Nhanh hơn vẽ tay — nhưng **bạn** vẫn là chốt chặn chất lượng, và bạn phải **đo** được điều đó.

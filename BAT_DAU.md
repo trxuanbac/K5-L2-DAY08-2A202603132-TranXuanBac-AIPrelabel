@@ -34,7 +34,7 @@ Project: [day08-2A202603132](http://localhost:8080/projects/3). Task 21 hiện t
 
 ## 4. Môi trường và repo
 
-Repo public: https://github.com/trxuanbac/K5-L23-DAY08-2A202603132-TranXuanBac-AIPrelabel. Nhánh `main`, `origin` trỏ repo này; `upstream` là repo đề.
+Repo public: https://github.com/trxuanbac/K5-L2-DAY08-2A202603132-TranXuanBac-AIPrelabel. Nhánh `main`, `origin` trỏ repo này; `upstream` là repo đề.
 
 Máy Apple M1 arm64, RAM 8 GB, macOS 26.3, CVAT Docker 2.82.1. Đã đối chiếu hướng dẫn Mac 8 GB: model trên Colab, `.venv` Python 3.12.16 dùng thư viện nhẹ và chạy kiểm tra đạt. Colab báo phần phụ trợ không có sẵn, nên đang dùng kết quả chạy CPU local trong `work/model-env` (Python 3.13.17); `.venv` vẫn dành cho đo số/QC nhẹ. Trọng số và thư mục `work/` được loại khỏi Git. Xem [cấu hình và lệnh kiểm tra](SETUP_MAC_M1_8GB.md).
 

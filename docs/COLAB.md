@@ -1,6 +1,6 @@
 # Chạy model trên Google Colab (cho máy yếu)
 
-[![Mở trong Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/trxuanbac/K5-L23-DAY08-2A202603132-TranXuanBac-AIPrelabel/blob/main/notebooks/day08_colab.ipynb)
+[![Mở trong Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/trxuanbac/K5-L2-DAY08-2A202603132-TranXuanBac-AIPrelabel/blob/main/notebooks/day08_colab.ipynb)
 
 **Khi nào dùng:** laptop không có GPU hoặc chạy model quá chậm / thiếu RAM. Colab cho **GPU T4 miễn phí** để chạy `prelabel.py`.
 **Không thay thế được:** CVAT, review, các script đo, git. Những việc đó vẫn làm trên máy bạn.
