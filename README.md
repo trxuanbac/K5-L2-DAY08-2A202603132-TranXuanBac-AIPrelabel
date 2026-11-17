@@ -4,7 +4,7 @@
 
 # Day 08 Lab — 2A202603132 - Trần Xuân Bắc
 
-**Đã có nhãn nháp cho 28 ảnh trong CVAT (443 annotation).** Xem [trạng thái và bước tiếp theo](BAT_DAU.md). Chưa hoàn tất review và QC.
+**Đã xuất gold: 4 ảnh, 76 annotation; thời gian học viên báo 25 phút.** Xem [trạng thái và bước tiếp theo](BAT_DAU.md). Batch còn bản nháp; chưa hoàn tất QC.
 
 <p align="center">
   <img alt="cá nhân" src="https://img.shields.io/badge/lab-cá%20nhân-0b1f3a">

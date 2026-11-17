@@ -1,0 +1,31 @@
+{
+  "task_id": 21,
+  "job_id": 21,
+  "format": "COCO 1.0",
+  "save_images": false,
+  "images": 4,
+  "annotations": 76,
+  "objects_excluding_ignore": 75,
+  "per_image": {
+    "img_001.jpg": 23,
+    "img_012.jpg": 13,
+    "img_020.jpg": 12,
+    "img_036.jpg": 28
+  },
+  "per_class": {
+    "motorbike": 14,
+    "person": 40,
+    "car": 8,
+    "bicycle": 5,
+    "three_wheeler": 7,
+    "bus": 1,
+    "ignore_region": 1
+  },
+  "before_review": 83,
+  "removed_below_20px": 7,
+  "recorded_minutes": 25,
+  "minutes_per_image": 6.25,
+  "sha256": "9514f6a3c4ee0b957254d7991f1041860007d40118a18900920bc022e472e32f",
+  "matches_saved_cvat": true,
+  "prior_draft_existed": true
+}
