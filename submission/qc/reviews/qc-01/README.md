@@ -18,9 +18,9 @@ Phần bỏ sót có `object_id` trống và mô tả vị trí trong `note`, đ
 
 ## Trạng thái guideline và quyết định
 
-Ở thời điểm ghi bản sơ bộ, ba đề xuất CAL-01–03 chưa chốt; script chạy `--guideline-gap 1` và gợi ý HOLD. Sau khi tôi chốt cả ba ca, taxonomy chuyển v1.1 và script chạy `--guideline-gap 0`, gợi ý REWORK. Các báo cáo lịch sử giữ riêng, không sửa tay đầu ra script.
+Ở thời điểm ghi bản sơ bộ, ba đề xuất CAL-01–03 chưa chốt; script chạy `--guideline-gap 1` và gợi ý HOLD. Sau khi chốt cả ba ca, taxonomy chuyển v1.1 và script chạy `--guideline-gap 0`, gợi ý REWORK. Các báo cáo lịch sử giữ riêng, không sửa tay đầu ra script.
 
-Tôi chưa chốt bản nộp cuối cùng. Ở thời điểm lưu lượt QC này, nhãn CVAT và bản ứng viên chưa được sửa tiếp; thời gian bổ sung chưa có trong time_log. ZIP Colab chỉ chứa một mask; sau đó đã bổ sung hai mask local CPU, hiện đủ ba vật ở `submission/masks/`.
+Bản nộp cuối cùng chưa được chốt. Ở thời điểm lưu lượt QC này, nhãn CVAT và bản ứng viên chưa được sửa tiếp; thời gian bổ sung chưa có trong time_log. ZIP Colab chỉ chứa một mask; sau đó đã bổ sung hai mask local CPU, hiện đủ ba vật ở `submission/masks/`.
 
 ## Giới hạn
 

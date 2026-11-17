@@ -10,4 +10,4 @@ Nhận ngày 2026-11-17 từ `colab_stage1.zip`; kiểm tra ZIP không lỗi và
 - `threshold_sweep.csv/.md/.png` được tạo bởi script; bản dùng hiện tại ở thư mục QC cấp trên có cùng nội dung.
 - Quét nano local trước đây được giữ ở `../model_tour/local_threshold_sweep.*`.
 
-Gold đã có nhãn nháp trước khi tôi chỉnh sửa; chọn và chấm ngưỡng trên cùng gold nên số đo có giới hạn. Chưa có kết quả review batch hoặc QC cuối.
+Gold đã có nhãn nháp trước lượt chỉnh sửa; chọn và chấm ngưỡng trên cùng gold nên số đo có giới hạn. Chưa có kết quả review batch hoặc QC cuối.

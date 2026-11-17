@@ -1,6 +1,6 @@
 # Báo cáo Day 08 — 2A202603132 - Trần Xuân Bắc
 
-Trong bài này, tôi thử các model để tạo nhãn gợi ý, duyệt lại trên CVAT, chọn ngưỡng theo lớp và kiểm tra chất lượng sau sửa. Tôi lưu riêng kết quả từng vòng để đối chiếu các thay đổi.
+Bài lab gồm thử model để tạo nhãn gợi ý, duyệt lại trên CVAT, chọn ngưỡng theo lớp và kiểm tra chất lượng sau sửa. Kết quả từng vòng được lưu riêng để đối chiếu các thay đổi.
 
 ## 1. Model và recipe (Part 2–3)
 
@@ -14,7 +14,7 @@ Trong bài này, tôi thử các model để tạo nhãn gợi ý, duyệt lại
 - Part 5 có ba vật: img_013 dùng SAM 2.1 base theo ô lệnh Colab; img_004 và img_009 dùng SAM 2.1 tiny local CPU, cấu hình và checksum ở `qc/sam_clicks/completion_manifest.json`.
 - Lỗi không sửa được chỉ bằng đổi ngưỡng: trong tour local, tuk-tuk xanh ở img_002 bị YOLO26n gọi `truck` với conf 0,3712; nâng conf 0,5 làm box biến mất, không tạo ra nhãn `three_wheeler`. Dùng model/prompt phù hợp cho lớp địa phương và kiểm lại nhãn; ảnh tour ở `qc/model_tour/`.
 - Box điểm cao vẫn cần sửa: img_003, box xe ba bánh #11 của bản trước sửa QC có conf 0,90 nhưng cắt mất phần mui. Lỗi hình học này được sửa trong `qc/reviews/qc-02/`; điểm của model không thay thế việc kiểm biên box.
-- Tôi chọn ngưỡng và đo kết quả trên cùng 4 ảnh gold. Các ảnh này đã có nhãn nháp trước khi tôi chỉnh sửa, nên số đo có thể lạc quan hơn khi đánh giá trên một bộ ảnh độc lập. Với lớp ít mẫu hoặc không đạt recall mục tiêu, tôi giữ ngưỡng mặc định theo script.
+- Ngưỡng được chọn và đo trên cùng 4 ảnh gold. Các ảnh này đã có nhãn nháp trước lượt chỉnh sửa, nên số đo có thể lạc quan hơn khi đánh giá trên một bộ ảnh độc lập. Lớp ít mẫu hoặc không đạt recall mục tiêu được giữ ở ngưỡng mặc định theo script.
 
 ## 2. AI error profile (từ `qc/review_stats.md`)
 
@@ -28,18 +28,18 @@ Trong bài này, tôi thử các model để tạo nhãn gợi ý, duyệt lại
 Nguồn: `qc/review_stats.json`, lượt review đầu của job 23. File COCO xuất có 24 ảnh/500 annotation; script loại 23 đối tượng nằm quanh các bẫy (tổng cả trước và sau duyệt) khỏi bảng trạng thái. Số đếm trong bảng không phải toàn bộ số box trong file xuất.
 
 - Trên lượt review đầu đã loại vùng quanh bẫy, `three_wheeler` có 7 box edited + 20 deleted trên 43 box máy của lớp này, tức 27/43 = 62,8% cần sửa/xóa. Đây là mô tả lượt này, không phải so sánh model trên test độc lập. Ví dụ img_003 có xe tải bị gán three_wheeler và nhãn khác lớp trên cùng vùng xe; xem CAL-01 và `qc/evidence/`.
-- So với gold: precision của **máy** là 47/(47 + 25) = 65,3%; recall là 47/(47 + 28) = 62,7%, với 75 đối tượng và 1 ignore region. Tôi chỉ dùng 4 ảnh gold đã chọn ngưỡng để đo các giá trị này, nên chưa xem đây là đánh giá độc lập.
+- So với gold: precision của **máy** là 47/(47 + 25) = 65,3%; recall là 47/(47 + 28) = 62,7%, với 75 đối tượng và 1 ignore region. Các giá trị được đo trên 4 ảnh gold đã dùng để chọn ngưỡng, nên chưa phải đánh giá độc lập.
 
 ## 3. Thiên kiến tự động hóa và ảnh bẫy
 
-- Trong lượt review đầu, tôi bắt được 6/12 bẫy = 50%, thấp hơn ngưỡng 80% trong taxonomy. Theo loại: loose 1/3, missing 1/3, wrong_class 2/3, extra 2/3. Các bẫy còn lọt nằm ở img_013 (missing), img_021 và img_024 (loose), img_035 (extra), img_006 (wrong_class), img_034 (missing). Chỉ từ các số đo này, tôi chưa xác định được chính xác lỗi phát sinh ở bước nào của quá trình duyệt.
+- Lượt review đầu bắt được 6/12 bẫy = 50%, thấp hơn ngưỡng 80% trong taxonomy. Theo loại: loose 1/3, missing 1/3, wrong_class 2/3, extra 2/3. Các bẫy còn lọt nằm ở img_013 (missing), img_021 và img_024 (loose), img_035 (extra), img_006 (wrong_class), img_034 (missing). Các số đo này chưa đủ để xác định chính xác bước phát sinh lỗi trong quá trình duyệt.
 - Sau sửa bẫy: script ghi 12/12 trên bản 490 annotation, hồ sơ ở `qc/reviews/batch-02/`. Sau sửa tiếp 8 lỗi QC, bản hiện tại có 24 ảnh/492 annotation. Kết quả 12/12 là kiểm sau khi đã biết bẫy; không thay kết quả review đầu 6/12.
-- Tỉ lệ accepted 89,8% cho thấy phần lớn box được giữ nguyên, nhưng kết quả bắt bẫy chỉ đạt 50%. Vì vậy, tôi không thể dựa vào việc sửa ít box để kết luận rằng mình đã duyệt đủ kỹ. Các lỗi còn lọt vẫn cần được kiểm tra riêng.
+- Tỉ lệ accepted 89,8% cho thấy phần lớn box được giữ nguyên, nhưng kết quả bắt bẫy chỉ đạt 50%. Việc sửa ít box chưa đủ để kết luận lượt duyệt đã được thực hiện kỹ. Các lỗi còn lọt vẫn cần được kiểm tra riêng.
 
 ## 4. Máy có đáng dùng không?
 
-- Tôi dành **25 phút cho 4 ảnh gold**, tương đương **6,25 phút/ảnh**, và **30 phút duyệt 24 ảnh batch**, tương đương **1,25 phút/ảnh** (`time_log.csv`). Thời gian trung bình ở lượt đầu chênh 5 lần. Tuy nhiên, 30 phút chưa gồm sửa bẫy, sửa QC và hoàn thiện mask. Hai nhóm ảnh cũng khác nhau về nội dung và độ khó, nên tôi chưa coi đây là phép so sánh thời gian có kiểm soát.
-- Pre-label giúp rút ngắn thao tác ở lượt đầu, nhưng tôi chưa có tổng thời gian của tất cả các vòng sửa để kết luận tiết kiệm được bao nhiêu công sức. Kết quả bắt bẫy cho thấy vẫn cần kiểm tra chất lượng cùng với tốc độ.
+- Thời gian chỉnh sửa là **25 phút cho 4 ảnh gold**, tương đương **6,25 phút/ảnh**, và **30 phút duyệt 24 ảnh batch**, tương đương **1,25 phút/ảnh** (`time_log.csv`). Thời gian trung bình ở lượt đầu chênh 5 lần. Tuy nhiên, 30 phút chưa gồm sửa bẫy, sửa QC và hoàn thiện mask. Hai nhóm ảnh khác nhau về nội dung và độ khó, nên đây chưa phải phép so sánh thời gian có kiểm soát.
+- Pre-label giúp rút ngắn thao tác ở lượt đầu, nhưng chưa có tổng thời gian của tất cả các vòng sửa để kết luận mức tiết kiệm công sức. Kết quả bắt bẫy cho thấy vẫn cần kiểm tra chất lượng cùng với tốc độ.
 - **Ba quy tắc cần áp dụng ở những lần duyệt sau:**
   1. Mỗi ảnh ẩn toàn bộ nhãn 5–10 giây, quét người và phương tiện trước khi hiện nhãn máy.
   2. Kiểm lần lượt bỏ sót → box thừa → sai lớp → biên box; đối chiếu mọi box chồng khác lớp và không chấp nhận chỉ vì conf cao.
@@ -55,12 +55,12 @@ Nguồn: `qc/review_stats.json`, lượt review đầu của job 23. File COCO x
 
 Đã có **3/3 ảnh mask cho ba vật**. ZIP Colab chỉ chứa ảnh 013; hai ảnh còn lại được tạo local bằng SAM tiny. Hồ sơ nhập ZIP ở `qc/sam_clicks/import_manifest.json`, hồ sơ đủ ba vật ở `qc/sam_clicks/completion_manifest.json`. Thời gian toàn lệnh local có ghi riêng, không thay cho thời gian inference; lượt click Colab không có số đo thời gian/thiết bị riêng.
 
-- Khi đối chiếu với mục 4.2, tôi thấy mask ở img_013 còn lấn vào người, chưa đúng yêu cầu tách từng vật. Với img_009, tôi dùng CAL-02 để phân biệt phần xe, giỏ cố định và hàng rời. Các nhận xét này dựa trên ảnh overlay; chưa có mask ground truth để chấm IoU.
-- Tôi chưa thử Interactor SAM trực tiếp trong CVAT ở Part 5. Các ảnh kết quả được tạo offline bằng `sam2_points.py`.
+- Đối chiếu với mục 4.2 cho thấy mask ở img_013 còn lấn vào người, chưa đúng yêu cầu tách từng vật. CAL-02 được dùng để phân biệt phần xe, giỏ cố định và hàng rời ở img_009. Các nhận xét dựa trên ảnh overlay; chưa có mask ground truth để chấm IoU.
+- Interactor SAM trực tiếp trong CVAT chưa được thử ở Part 5. Các ảnh kết quả được tạo offline bằng `sam2_points.py`.
 
 ## 6. Calibration (Part 6)
 
-- Tôi đã chốt **3 ca CAL-01–03** trong `qc/calibration_decisions.csv`: CAL-01 và CAL-03 từ `loi_may`, CAL-02 từ `cau_hoi_mo`. Nội dung xác nhận được lưu tại `qc/calibration_confirmation.json`.
+- Đã chốt **3 ca CAL-01–03** trong `qc/calibration_decisions.csv`: CAL-01 và CAL-03 từ `loi_may`, CAL-02 từ `cau_hoi_mo`. Nội dung xác nhận được lưu tại `qc/calibration_confirmation.json`.
 - `guideline_v1.1_calibrated.md` có ba ca kèm ảnh: kiểm cấu trúc và box trùng ở img_003; phân biệt hàng rời/giỏ cố định ở img_031 và img_009; kiểm vùng người trong mask xe ở img_013. Taxonomy cập nhật version v1.1, toàn bộ mục rules giữ nguyên.
 - CAL-02 làm rõ câu hỏi mở số 3 của v1.0. CAL-01 và CAL-03 nhắc lại cách chọn lớp và tách vùng mask đã có trong guideline, đồng thời bổ sung bước kiểm sau khi chạy model. Những ca này giúp chỉ ra chỗ cần làm rõ quy tắc và chỗ cần kiểm lại nhãn.
 
@@ -73,15 +73,15 @@ Nguồn: `qc/review_stats.json`, lượt review đầu của job 23. File COCO x
 - **Giới hạn mẫu nhỏ:** sau sửa 0 ảnh lỗi/5 ảnh, cận trên Wilson 95% do script tính vẫn **43%**. Không dùng mẫu này để chứng minh toàn lô đạt ngưỡng 2%; cùng reviewer và cùng ảnh có thể cùng bỏ sót.
 - Script giúp kiểm định dạng, đếm lỗi trong phiếu và tính tỉ lệ cùng khoảng tin cậy. Việc box có ôm sát vật hay còn vật bị bỏ sót vẫn cần đối chiếu với ảnh gốc. Những lỗi cùng bị bỏ qua ở cả lượt duyệt và lượt QC sẽ không xuất hiện trong số đếm này.
 
-**Kết quả kiểm tra hiện tại: Rework**, ngày 2026-11-17. `qc_report.py --guideline-gap 0` vẫn gợi ý REWORK vì lượt review đầu chỉ bắt được 6/12 bẫy, dưới ngưỡng 80%. Tôi giữ riêng kết quả 12/12 sau sửa để không làm thay đổi số đo ban đầu. **Tôi chưa chốt bản nộp cuối cùng.**
+**Kết quả kiểm tra hiện tại: Rework**, ngày 2026-11-17. `qc_report.py --guideline-gap 0` vẫn gợi ý REWORK vì lượt review đầu chỉ bắt được 6/12 bẫy, dưới ngưỡng 80%. Kết quả 12/12 sau sửa được giữ riêng, không thay đổi số đo ban đầu. **Bản nộp cuối cùng chưa được chốt.**
 
 Phần cần làm tiếp là kiểm lại trên mẫu độc lập hoặc mở rộng kiểm toàn lô theo v1.1, xem kỹ biên mask và ghi thời gian các vòng bổ sung. Kết quả đó sẽ là căn cứ để chốt chất lượng của bộ nhãn.
 
 ## 8. Ghi chú cá nhân
 
-- **Công cụ sử dụng:** Tôi dùng Codex hỗ trợ chuẩn bị môi trường, kiểm/sửa nhãn, tạo mask và tổng hợp báo cáo. Kết quả được đối chiếu bằng script và ảnh gốc.
-- **Giới hạn gold:** 4 ảnh đã có nhãn gợi ý trước khi tôi chỉnh sửa trong 25 phút. Bản tôi lưu có 83 annotation; sau khi bỏ 7 box dưới 20 px, bản xuất còn 76 annotation. Vì vậy, bộ gold này chưa độc lập với nhãn gợi ý.
-- **Môi trường:** Tôi làm bài trên Apple M1, RAM 8 GB, macOS 26.3, CVAT Docker 2.82.1. Python QC là 3.12.16; môi trường model local là 3.13.17. Nhật ký Colab ghi CPU, chưa có lượt chạy GPU T4 được xác nhận.
+- **Công cụ sử dụng:** Codex hỗ trợ chuẩn bị môi trường, kiểm/sửa nhãn, tạo mask và tổng hợp báo cáo. Kết quả được đối chiếu bằng script và ảnh gốc.
+- **Giới hạn gold:** 4 ảnh đã có nhãn gợi ý trước lượt chỉnh sửa 25 phút. Bản lưu có 83 annotation; sau khi bỏ 7 box dưới 20 px, bản xuất còn 76 annotation. Vì vậy, bộ gold này chưa độc lập với nhãn gợi ý.
+- **Môi trường:** Apple M1, RAM 8 GB, macOS 26.3, CVAT Docker 2.82.1. Python QC là 3.12.16; môi trường model local là 3.13.17. Nhật ký Colab ghi CPU, chưa có lượt chạy GPU T4 được xác nhận.
 - **Dữ liệu chạy model:** không dùng kết quả có sẵn trong `data/cache/`. Tour local và kết quả Colab được lưu tại `model_log.csv`, `qc/model_tour/`, `qc/colab_stage1/`; hồ sơ mask tại `qc/sam_clicks/`.
-- **Vướng mắc:** Tôi từng gặp lỗi Colab không cấp runtime và báo `Load failed`. Trong QC, một nhận xét về box #69 img_006 đã được rút sau khi phóng ảnh kiểm lại; box đúng được giữ nguyên, có đính chính tại `qc/reviews/qc-01/erratum.json`.
+- **Vướng mắc:** Đã gặp lỗi Colab không cấp runtime và báo `Load failed`. Trong QC, một nhận xét về box #69 img_006 đã được rút sau khi phóng ảnh kiểm lại; box đúng được giữ nguyên, có đính chính tại `qc/reviews/qc-01/erratum.json`.
 - **Điều rút ra:** Cần tạo gold độc lập từ đầu, ghi thời gian từng vòng và dùng thêm mẫu mới để kiểm tra sau sửa.

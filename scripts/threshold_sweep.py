@@ -1,6 +1,6 @@
 """Quét ngưỡng tin cậy THEO TỪNG LỚP trên nhãn gán tay (gold), để chọn ngưỡng có cơ sở (thay vì đoán 0.5).
 
-    # pre-label đã gộp ở ngưỡng thấp (0.10) cho ảnh gold, và nhãn gán tay của bạn:
+    # pre-label đã gộp ở ngưỡng thấp (0.10) cho ảnh gold, và nhãn gán tay:
     python scripts/threshold_sweep.py --pred work/prelabel/merged_gold/pre.coco.json \
         --gold submission/labels/gold_manual.json
 
@@ -95,7 +95,7 @@ def main():
         L.append(f"| {c} | {'(mặc định)' if t is None else t} | {why} |")
     thr_arg = ",".join(f"{c}={t}" for c, (t, _) in best.items() if t is not None)
     L += ["", "Dán vào lệnh merge_prelabels (lớp không có trong chuỗi dùng `--conf` mặc định 0.3): `--thr \"" + thr_arg + "\"`", "",
-          "Lưu ý: bạn chọn ngưỡng trên chính nhãn gold, nên precision / recall của máy trên gold ở ngưỡng đã chọn là con số **lạc quan** (chọn và chấm trên cùng dữ liệu); chỉ có vài ảnh -> ngưỡng là ước lượng thô; lớp có ít vật (xem n_gold) thì kết luận yếu."]
+          "Lưu ý: ngưỡng được chọn trên chính nhãn gold, nên precision / recall của máy trên gold ở ngưỡng đã chọn là con số **lạc quan** (chọn và chấm trên cùng dữ liệu); chỉ có vài ảnh -> ngưỡng là ước lượng thô; lớp có ít vật (xem n_gold) thì kết luận yếu."]
     text = "\n".join(L) + "\n"
     Path(str(out) + ".md").write_text(text, encoding="utf8")
     print(text)

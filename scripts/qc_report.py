@@ -2,7 +2,7 @@
 
     python scripts/qc_report.py [--guideline-gap N] [--data-problem N]
 
---guideline-gap N : số ca bạn thấy guideline CHƯA có quy tắc (chưa chốt)  -> N > 0 gợi ý HOLD
+--guideline-gap N : số ca guideline CHƯA có quy tắc (chưa chốt)  -> N > 0 gợi ý HOLD
 --data-problem  N : số ảnh hỏng/mờ không dùng được                       -> N > 0 gợi ý HOLD
 Đọc: qc_sample.csv, qc_review.csv, và (nếu có) review_stats.json, self_check.json. Ghi submission/qc/qc_report_auto.md.
 Phần QC trong REPORT.md (mục 7) do BẠN viết (script không ghi file đó).
@@ -94,7 +94,7 @@ def main() -> None:
         notes.append(f"{k_} ảnh lỗi trong {n_} ảnh mẫu: cận trên 95% (Wilson) của tỉ lệ ảnh lỗi thật là **{up * 100:.0f}%**. "
                      f"Ngưỡng {r['error_rate_img_max'] * 100:.0f}% không thể được **chứng minh** bằng mẫu nhỏ như vậy: hãy nói rõ giới hạn này trong báo cáo.")
 
-    L = ["# Báo cáo QC tự động (nháp)", "", "> **Gợi ý** do script tính; bạn xác nhận. Script chỉ đếm theo phiếu kiểm bằng mắt người.", "",
+    L = ["# Báo cáo QC tự động (nháp)", "", "> **Gợi ý** do script tính, cần được xác nhận. Script chỉ đếm theo phiếu kiểm bằng mắt người.", "",
          "## Mẫu", f"- {n_img} ảnh ({sum(1 for s in sample if s['la_ca_kho'] == 'yes')} ca khó + "
          f"{sum(1 for s in sample if s['la_ca_kho'] != 'yes')} ngẫu nhiên), {n_obj} đối tượng.", f"- taxonomy {tax.version}", "",
          "## Số đo", "| Chỉ số | Giá trị | Mẫu số |", "|---|---|---|",

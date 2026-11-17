@@ -1,6 +1,6 @@
 # Báo cáo QC tự động (nháp)
 
-> **Gợi ý** do script tính; bạn xác nhận. Script chỉ đếm theo phiếu kiểm bằng mắt người.
+> **Gợi ý** do script tính, cần được xác nhận. Script chỉ đếm theo phiếu kiểm bằng mắt người.
 
 ## Mẫu
 - 5 ảnh (0 ca khó + 5 ngẫu nhiên), 98 đối tượng.

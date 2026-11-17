@@ -4,7 +4,7 @@
 
 # Day 08 Lab — 2A202603132 - Trần Xuân Bắc
 
-**Kết quả hiện tại:** gold 4 ảnh/76 annotation, batch sau sửa QC 24 ảnh/492 annotation và 3 mask SAM. Tôi dành 25 phút chỉnh gold và 30 phút review batch ở lượt đầu. Xem [trạng thái và các bước tiếp theo](BAT_DAU.md).
+**Kết quả hiện tại:** gold 4 ảnh/76 annotation, batch sau sửa QC 24 ảnh/492 annotation và 3 mask SAM. Thời gian chỉnh gold là 25 phút và review batch lượt đầu là 30 phút. Xem [trạng thái và các bước tiếp theo](BAT_DAU.md).
 
 Cấu hình máy này: [Mac M1 8 GB — môi trường và kết quả kiểm tra](SETUP_MAC_M1_8GB.md).
 
@@ -12,16 +12,17 @@ Cấu hình máy này: [Mac M1 8 GB — môi trường và kết quả kiểm tr
   <img alt="cá nhân" src="https://img.shields.io/badge/lab-cá%20nhân-0b1f3a">
   <img alt="thời lượng" src="https://img.shields.io/badge/thời%20lượng-4%20giờ-ff8a3d">
   <img alt="ảnh" src="https://img.shields.io/badge/dữ%20liệu-36%20ảnh-12b3a8">
-  <img alt="python" src="https://img.shields.io/badge/python-3.10–3.13-3776ab">
+  <img alt="python" src="https://img.shields.io/badge/python-3.10–3.13-3776ab">
+
   <img alt="gpu" src="https://img.shields.io/badge/GPU-không%20bắt%20buộc-2fbf71">
   <a href="https://colab.research.google.com/github/trxuanbac/K5-L2-DAY08-2A202603132-TranXuanBac-AIPrelabel/blob/main/notebooks/day08_colab.ipynb"><img alt="Mở trong Colab" src="https://colab.research.google.com/assets/colab-badge.svg"></a>
 </p>
 
-> **Máy gán sẵn, người sửa.** Nhanh hơn vẽ tay — nhưng **bạn** vẫn là chốt chặn chất lượng, và bạn phải **đo** được điều đó.
+> **Máy gán sẵn, nhãn được kiểm tra lại.** Chất lượng được đo sau khi duyệt và sửa nhãn.
 
-## Bạn sẽ làm gì
+## Nội dung bài lab
 
-Trong **4 giờ trên lớp** (cài đặt làm trước ~45 phút): chạy ba công cụ pre-label **từ đơn giản đến phức tạp** (YOLO26 → SAM → YOLOE), đưa kết quả vào **CVAT**, **review có quy trình** (có ảnh bẫy để đo chính bạn), rồi **calibration** lại nhãn và guideline.
+Trong **4 giờ trên lớp** (cài đặt làm trước ~45 phút): chạy ba công cụ pre-label **từ đơn giản đến phức tạp** (YOLO26 → SAM → YOLOE), đưa kết quả vào **CVAT**, **review có quy trình** (có ảnh bẫy để đo chất lượng duyệt), rồi **calibration** lại nhãn và guideline.
 
 | Việc | Công cụ |
 |---|---|
@@ -64,7 +65,7 @@ flowchart LR
 
 ## Bắt đầu nhanh (5 bước)
 
-1. **Fork** repo thành repo **public** của bạn (tên: xem [SUBMISSION.md](SUBMISSION.md)), `git clone`.
+1. **Fork** repo thành repo **public** cá nhân (tên: xem [SUBMISSION.md](SUBMISSION.md)), `git clone`.
 2. **Trước buổi học** (~45 phút): cài môi trường [docs/SETUP.md](docs/SETUP.md) → `python scripts/check_env.py` ra **SẴN SÀNG**. *Máy yếu? Dùng* **[Google Colab](docs/COLAB.md)**.
 3. Cài **CVAT bằng Docker** rồi tạo Project từ `cvat/labels_generated.json`: [docs/CVAT_AI.md](docs/CVAT_AI.md) (có hình minh hoạ từng bước).
 4. Trên lớp làm theo **[GUIDE.md](GUIDE.md)** từ **Part 1** (gán tay 4 ảnh gold, *chưa* chạy model nào lên ảnh gold!).
@@ -90,14 +91,14 @@ flowchart LR
 <details>
 <summary><b>Vì sao có "ảnh bẫy" và "gold gán tay"?</b></summary>
 
-Nhãn máy càng trông hợp lý, mắt bạn càng ít nhìn lại ảnh (**thiên kiến tự động hóa**). Bạn sẽ tự đo mình:
-- **Gold** (4 ảnh bạn gán tay từ đầu) cho biết máy đúng / sót bao nhiêu **thật sự**.
-- **12 ảnh bẫy** (lỗi đã biết, trộn kín trong pre-label) cho biết bạn **bắt được bao nhiêu** lỗi của máy.
-- *Accepted cao* mà *bắt bẫy thấp* nghĩa là bạn đang bấm Accept chứ chưa kiểm.
+Nhãn máy trông hợp lý có thể làm giảm việc kiểm lại ảnh (**thiên kiến tự động hóa**). Các phép đo gồm:
+- **Gold** (4 ảnh gán tay từ đầu) cho biết máy đúng / sót bao nhiêu **thật sự**.
+- **12 ảnh bẫy** (lỗi đã biết, trộn kín trong pre-label) đo **số lỗi của máy được phát hiện**.
+- *Accepted cao* mà *bắt bẫy thấp* cho thấy cần rà soát lại quy trình duyệt.
 </details>
 
 <details>
-<summary><b>Mình dùng máy yếu / Windows / Mac thì sao?</b></summary>
+<summary><b>Cấu hình cho máy yếu / Windows / Mac</b></summary>
 
 - **Không GPU / RAM ≤ 8 GB:** chạy model trên **[Colab](docs/COLAB.md)** (GPU T4 miễn phí) hoặc dùng `--size n --imgsz 640` + `mobile_sam.pt` (xem [SETUP.md](docs/SETUP.md) mục 5).
 - **Windows:** dùng Git Bash / WSL để chạy y nguyên lệnh, hoặc xem mục "Máy yếu, Windows, Mac" trong [GUIDE.md](GUIDE.md) về PowerShell.
@@ -118,7 +119,7 @@ Chi tiết và cách ghi vào `REPORT.md` mục 1: [docs/MODELS.md](docs/MODELS.
 
 ## Tài liệu
 
-| Bạn cần | Xem |
+| Nội dung | Tài liệu |
 |---|---|
 | Các Part và lệnh chạy | [GUIDE.md](GUIDE.md) |
 | Mốc tiến độ | [CHECKPOINTS.md](CHECKPOINTS.md) |
@@ -136,14 +137,14 @@ Chi tiết và cách ghi vào `REPORT.md` mục 1: [docs/MODELS.md](docs/MODELS.
 | Label contract (guideline v1.0) + khung v1.1 | [guideline/](guideline/) |
 | Các script | [scripts/README.md](scripts/README.md) |
 | Nguồn & giấy phép ảnh | [data/README.md](data/README.md), [data/ATTRIBUTION.csv](data/ATTRIBUTION.csv) |
-| Thông tin & kết quả tóm tắt của bạn | [STUDENT.md](STUDENT.md) |
+| Thông tin & kết quả tóm tắt | [STUDENT.md](STUDENT.md) |
 
-## Bạn học được gì
+## Mục tiêu bài lab
 
 - Chọn đúng **họ model** cho việc: click (SAM) · gõ chữ (YOLOE, Grounding DINO, OWLv2, SAM 3) · danh mục cố định (YOLO26).
 - Đưa nhãn máy vào CVAT bằng **offline import**; (nâng cao) dùng AI **trực tiếp** trong CVAT (AI Tools, `cvat-cli`).
-- Duyệt bằng **checklist bốn bước**; nhận ra **thiên kiến tự động hóa** bằng **ảnh bẫy** của chính bạn.
+- Duyệt bằng **checklist bốn bước**; nhận ra **thiên kiến tự động hóa** bằng **ảnh bẫy**.
 - Đo **AI error profile** (accepted / edited / deleted / added), precision / recall của máy so với **gold gán tay**.
-- **Calibration**: ngưỡng theo lớp · guideline v1.1 · QC với Release / Hold / Rework (nâng cao: đo nhất quán của chính bạn).
+- **Calibration**: ngưỡng theo lớp · guideline v1.1 · QC với Release / Hold / Rework (nâng cao: đo tính nhất quán khi gán lại).
 
 <sub>Ảnh minh hoạ giao diện CVAT trong `docs/assets/cvat/` lấy từ tài liệu CVAT (MIT). Sơ đồ khác do giảng viên vẽ (`docs/assets/make_figures.py`).</sub>

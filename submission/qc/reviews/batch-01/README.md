@@ -2,7 +2,7 @@
 
 Bản sửa bổ sung hiện có ở [batch-02](../batch-02/README.md). Số đo và nhãn trong thư mục `batch-01` giữ nguyên lượt review đầu.
 
-Tôi đã review 24 ảnh trong **30 phút**, trung bình **1,25 phút/ảnh**. Bản export COCO 1.0 có **500 annotation**, so với 532 box trước review. Bản export được đối chiếu với dữ liệu lưu trong CVAT tại thời điểm xuất.
+Lượt review 24 ảnh kéo dài **30 phút**, trung bình **1,25 phút/ảnh**. Bản export COCO 1.0 có **500 annotation**, so với 532 box trước review. Bản export được đối chiếu với dữ liệu lưu trong CVAT tại thời điểm xuất.
 
 - [Bản COCO lưu riêng cho lượt đầu](batch_reviewed.coco.json).
 - [Hồ sơ export và checksum](export_summary.json).
@@ -21,7 +21,7 @@ Tôi đã review 24 ảnh trong **30 phút**, trung bình **1,25 phút/ảnh**. 
 
 Script loại vùng quanh bẫy khỏi bảng trạng thái: tổng cộng 23 đối tượng ở cả hai phía. Vì vậy mẫu số không bằng số annotation trong file COCO. Đổi lớp được script tính là deleted + added; script ghi 4 trường hợp như vậy.
 
-Máy so với gold: precision **47/72 = 65,3%**, recall **47/75 = 62,7%**. Gold có 75 đối tượng và 1 ignore region, đã có nhãn nháp trước khi tôi chỉnh sửa. Ngưỡng được chọn và chấm trên cùng 4 ảnh này nên số đo chưa phải đánh giá độc lập.
+Máy so với gold: precision **47/72 = 65,3%**, recall **47/75 = 62,7%**. Gold có 75 đối tượng và 1 ignore region, đã có nhãn nháp trước lượt chỉnh sửa. Ngưỡng được chọn và chấm trên cùng 4 ảnh này nên số đo chưa phải đánh giá độc lập.
 
 ## Các mục cần kiểm tra lại
 

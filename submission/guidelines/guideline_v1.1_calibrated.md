@@ -1,6 +1,6 @@
 # Label contract — Phố châu Á — BỔ SUNG v1.1 — 2A202603132 - Trần Xuân Bắc
 
-> Tôi bổ sung v1.1 dựa trên ba ca CAL-01–03 đã chốt trong quá trình làm bài. Bản này chỉ ghi phần thay đổi so với v1.0; taxonomy cập nhật version v1.1 và giữ nguyên toàn bộ mục rules.
+> Bản v1.1 được bổ sung dựa trên ba ca CAL-01–03 đã chốt trong quá trình làm bài. Bản này chỉ ghi phần thay đổi so với v1.0; taxonomy cập nhật version v1.1 và giữ nguyên toàn bộ mục rules.
 
 ## 1. Câu hỏi mở đã chốt
 
@@ -8,7 +8,7 @@
 |---|---|---|---|
 | CAL-02 | Box/mask xe chở hàng có gồm hàng rời và giỏ không? | Box gồm phần nhìn thấy của xe và giỏ/khung gắn cố định. Không nới theo hàng rời nhô quá 20% chiều dài xe. Mask gồm bề mặt xe/giỏ cố định nhìn thấy, loại trái cây, bao và hàng rời; không đoán phần xe bị hàng che. | [img_031](../../data/images/img_031.jpg), [img_009](../../data/images/img_009.jpg) |
 
-CAL-02 làm rõ câu hỏi mở số 3 ở mục 6 của v1.0, liên quan đến mục 4.1.5 và 4.2. Sau khi chốt quy tắc này, báo cáo QC được chạy với `--guideline-gap 0`. Tôi giữ riêng báo cáo trước đó để đối chiếu.
+CAL-02 làm rõ câu hỏi mở số 3 ở mục 6 của v1.0, liên quan đến mục 4.1.5 và 4.2. Sau khi chốt quy tắc này, báo cáo QC được chạy với `--guideline-gap 0`. Báo cáo trước đó được giữ riêng để đối chiếu.
 
 ## 2. Ca khó và bước kiểm đã chốt
 

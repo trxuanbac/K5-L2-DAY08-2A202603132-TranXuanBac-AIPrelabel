@@ -1,16 +1,16 @@
-"""Đo chất lượng pre-label và chất lượng duyệt của bạn (slide Day 08, phần 04).
+"""Đo chất lượng pre-label và chất lượng duyệt nhãn (slide Day 08, phần 04).
 
     python scripts/review_stats.py --pre submission/prelabel/pre_traps.coco.json \
         --final submission/labels/batch_reviewed.json --gold submission/labels/gold_manual.json \
         --key submission/prelabel/traps_key.json
 
 Tính:
-  1. Bốn trạng thái của mỗi box máy: accepted / edited / deleted, và added (vật bạn vẽ thêm).
+  1. Bốn trạng thái của mỗi box máy: accepted / edited / deleted, và added (vật được bổ sung).
        accepted: cùng lớp, IoU(box cuối, box máy) >= accept_iou (mặc định 0.9; mask: 0.85)
        edited  : cùng lớp, 0.5 <= IoU < accept_iou
        deleted : không ghép được (sai lớp hoặc IoU < 0.5 -> tính là deleted + added, như contract của slide)
   2. Nếu có --gold (nhãn tự gán tay từ đầu, tập gold): precision/recall của MÁY so với gold. Nếu --final có cả ảnh gold
-     (làm tuỳ chọn, sau >= 24h): thêm nhãn sau duyệt, residual (lỗi máy bạn giữ lại) và new (lỗi bạn tạo ra).
+     (làm tuỳ chọn, sau >= 24h): thêm nhãn sau duyệt, residual (lỗi máy còn giữ lại) và new (lỗi phát sinh khi duyệt).
      Lỗi nhân tạo của ảnh bẫy bị loại khỏi bảng 1 (chỉ tính ở mục 3).
   3. Nếu có --key: tỉ lệ bắt lỗi trên các ảnh bẫy.
 Ghi submission/qc/review_stats.json và .md.
@@ -52,7 +52,7 @@ def rate(a, b):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--pre", required=True, help="COCO pre-label bạn đã nạp vào CVAT")
+    ap.add_argument("--pre", required=True, help="COCO pre-label đã nạp vào CVAT")
     ap.add_argument("--final", required=True, help="COCO export từ CVAT sau khi duyệt")
     ap.add_argument("--gold", help="COCO gold tự gán tay (ảnh gold)")
     ap.add_argument("--key", help="submission/prelabel/traps_key.json")
@@ -72,7 +72,7 @@ def main():
         die("Không có ảnh chung nào giữa file final và các tập đã chọn. Kiểm tra --final và --splits.")
     missing_in_pre = [n for n in imgs if n not in pre.images]
     if missing_in_pre:
-        die(f"File pre thiếu ảnh {missing_in_pre[:3]}...: --pre phải là file bạn đã nạp vào CVAT.")
+        die(f"File pre thiếu ảnh {missing_in_pre[:3]}...: --pre phải là file đã nạp vào CVAT.")
 
     # vùng quanh các bẫy: lỗi nhân tạo không được tính vào "máy tốt đến đâu" (chỉ tính vào tỉ lệ bắt bẫy)
     trap_boxes: Dict[str, list] = defaultdict(list)
@@ -110,9 +110,9 @@ def main():
             st = "accepted" if v >= acc_thr else "edited"
             states[st] += 1
             per_cls[pa.cls][st] += 1
-        # vùng ignore: box máy nằm trong ignore_region của bạn không tính là deleted
+        # vùng ignore: box máy nằm trong ignore_region sau duyệt không tính là deleted
         ign_boxes = [g.box for g in ignF]
-        up = [pa for pa in up if not covered_by(pa.box, ign_boxes)]   # box máy nằm trong ignore_region của bạn: không tính là deleted
+        up = [pa for pa in up if not covered_by(pa.box, ign_boxes)]   # box máy nằm trong ignore_region sau duyệt: không tính là deleted
         uf = [fb for fb in uf if not covered_by(fb.box, ign_boxes)]
         for pa in up:
             states["deleted"] += 1
@@ -173,7 +173,7 @@ def main():
         caught, rows = 0, []
         absent = sorted({t["image"] for t in keyd if t["image"] not in fin.objects})
         if absent:
-            die(f"File --final thiếu {len(absent)} ảnh có bẫy ({', '.join(absent[:3])}...): bạn export nhầm Task hoặc thiếu ảnh. "
+            die(f"File --final thiếu {len(absent)} ảnh có bẫy ({', '.join(absent[:3])}...): bản export thuộc Task khác hoặc thiếu ảnh. "
                 "Không tính bẫy trên ảnh vắng mặt (sẽ làm tỉ lệ bắt bẫy sai).")
         for t in keyd:
             n = t["image"]
@@ -229,11 +229,11 @@ def main():
               f"| Máy (pre-label) | {g['pre']['tp']} | {g['pre']['fp']} | {g['pre']['fn']} | {f(g['pre']['precision'])}{ci(g['pre']['tp'], g['pre']['tp'] + g['pre']['fp'])} | {f(g['pre']['recall'])}{ci(g['pre']['tp'], g['pre']['tp'] + g['pre']['fn'])} |",
               "", "*Lạc quan: ngưỡng được chọn trên chính các ảnh gold này (in-sample), và chỉ có 4 ảnh. Đọc khoảng tin cậy, đừng đọc con số đơn.*", ""]
         if g["final"]:
-            L += [f"| Sau duyệt của bạn ({g['final']['images']} ảnh gold có trong nhãn cuối) | {g['final']['tp']} | {g['final']['fp']} | {g['final']['fn']} | {f(g['final']['precision'])} | {f(g['final']['recall'])} |", "",
-                  f"- **Residual** (lỗi của máy còn trong nhãn của bạn): {g['residual_errors']} (đếm FP + FN; một lỗi sai lớp hoặc lệch vị trí tính 2)",
-                  f"- **New** (lỗi do bạn tạo ra): {g['new_errors']}"]
+            L += [f"| Sau duyệt ({g['final']['images']} ảnh gold có trong nhãn cuối) | {g['final']['tp']} | {g['final']['fp']} | {g['final']['fn']} | {f(g['final']['precision'])} | {f(g['final']['recall'])} |", "",
+                  f"- **Residual** (lỗi của máy còn trong nhãn sau duyệt): {g['residual_errors']} (đếm FP + FN; một lỗi sai lớp hoặc lệch vị trí tính 2)",
+                  f"- **New** (lỗi mới phát sinh khi duyệt): {g['new_errors']}"]
         else:
-            L += ["", "(Ảnh gold không nằm trong nhãn sau duyệt: không tính residual / new error. Đó là chủ ý: duyệt lại ảnh bạn vừa tự gán tay sẽ đo trí nhớ, không đo thiên kiến.)"]
+            L += ["", "(Ảnh gold không nằm trong nhãn sau duyệt: không tính residual / new error. Đó là chủ ý: duyệt lại ảnh vừa được gán tay sẽ đo trí nhớ, không đo thiên kiến.)"]
     if trap_res:
         t = trap_res
         L += ["", "## 3. Ảnh bẫy", f"- Bắt được {pc(t['caught'], t['n'])}{ci(t['caught'], t['n'])} (ngưỡng đạt: {r['trap_catch_min'] * 100:.0f}%). Chỉ {t['n']} bẫy nên khoảng tin cậy rất rộng: đọc cùng danh sách bẫy lọt, đừng kết luận chỉ từ %."]

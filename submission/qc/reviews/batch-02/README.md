@@ -8,12 +8,12 @@
 
 | Ảnh | Sửa đổi |
 |---|---|
-| img_006.jpg | Giữ nhãn `car` tôi đã đổi cho ô tô trắng phía cuối đường. |
+| img_006.jpg | Giữ nhãn `car` đã đổi cho ô tô trắng phía cuối đường. |
 | img_013.jpg | Thêm box `person` cho người mặc áo trắng đứng phía sau tuk-tuk. |
 | img_021.jpg | Chỉnh box xe máy ở giữa ảnh để ôm sát phần xe nhìn thấy. |
 | img_024.jpg | Chỉnh box ô tô tối màu ở giữa giao lộ. |
 | img_034.jpg | Thêm box xe máy phía xa; bỏ 1 box khác cao dưới 20 px. |
-| img_035.jpg | Xóa box `truck` ở vùng biển hiệu/dây điện; giữ nguyên thao tác xóa box xe máy trước đó của tôi. |
+| img_035.jpg | Xóa box `truck` ở vùng biển hiệu/dây điện; giữ nguyên thao tác xóa box xe máy trước đó. |
 | img_018.jpg | Bỏ 5 box cao dưới 20 px. |
 | img_025.jpg | Bỏ 1 box cao dưới 20 px. |
 | img_027.jpg | Bỏ 2 box cao dưới 20 px. |

@@ -28,4 +28,4 @@ Hai lượt nguồn ngưỡng thấp đã có trên máy:
 - `r01`: YOLO26 nano, toàn bộ 36 ảnh, conf 0.05, 1.525 box.
 - `r03`: YOLOE small cho `three_wheeler`, toàn bộ 36 ảnh, conf 0.05, 125 box.
 
-Tệp nguồn ở `work/prelabel/y26_all/pre.coco.json` và `work/prelabel/yoloe_all/pre.coco.json`. Đã chạy `threshold_sweep.py` với `submission/labels/gold_manual.json`; xem [kết quả quét](local_threshold_sweep.md). Gold đã có nhãn nháp trước khi tôi chỉnh sửa, cần giữ giới hạn đó khi đọc số đo.
+Tệp nguồn ở `work/prelabel/y26_all/pre.coco.json` và `work/prelabel/yoloe_all/pre.coco.json`. Đã chạy `threshold_sweep.py` với `submission/labels/gold_manual.json`; xem [kết quả quét](local_threshold_sweep.md). Gold đã có nhãn nháp trước lượt chỉnh sửa, cần giữ giới hạn đó khi đọc số đo.

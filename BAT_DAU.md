@@ -1,6 +1,6 @@
 # Day 08 — trạng thái của Trần Xuân Bắc
 
-Ngày 2026-11-17: gold **4 ảnh/76 annotation**, 25 phút chỉnh sửa. Lượt review đầu: **24 ảnh/500 annotation**, 30 phút, bắt **6/12 bẫy**. Đã sửa bẫy và 8 lỗi QC; [job 23](http://localhost:8080/tasks/23/jobs/23) hiện có **24 ảnh/492 annotation**. Đã có **3/3 mask SAM**, tôi đã chốt **3 ca calibration v1.1**. Tái kiểm cùng 5 ảnh sau sửa không ghi nhận lỗi rõ mới; script vẫn gợi ý Rework vì giữ nguyên số đo review đầu. Tôi chưa chốt bản nộp cuối cùng.
+Ngày 2026-11-17: gold **4 ảnh/76 annotation**, 25 phút chỉnh sửa. Lượt review đầu: **24 ảnh/500 annotation**, 30 phút, bắt **6/12 bẫy**. Đã sửa bẫy và 8 lỗi QC; [job 23](http://localhost:8080/tasks/23/jobs/23) hiện có **24 ảnh/492 annotation**. Đã có **3/3 mask SAM**, đã chốt **3 ca calibration v1.1**. Tái kiểm cùng 5 ảnh sau sửa không ghi nhận lỗi rõ mới; script vẫn gợi ý Rework vì giữ nguyên số đo review đầu. Bản nộp cuối cùng chưa được chốt.
 
 ## 1. Mở nhãn trong CVAT
 
@@ -23,9 +23,9 @@ Project: [day08-2A202603132](http://localhost:8080/projects/3). Task 21 hiện t
 - Xem các ảnh tổng quan, sửa một số lỗi nhầm lớp, box trùng và đối tượng không thuộc taxonomy; bổ sung một số người/xe bị sót.
 - Bỏ box đối tượng thấp hơn 20 px. Giữ `can_review` ở các ca chưa chắc quy tắc.
 - Kiểm tra hai file bằng `validate_labels.py`, đủ 4/24 ảnh và không có lỗi cấu trúc. Việc này chưa xác nhận mọi box đều đúng hoặc đã tìm hết vật.
-- Lần nhập nháp ban đầu: 58 + 385 = 443 annotation. Sau lượt chỉnh sửa của tôi, job 21 có 83 annotation; review bỏ 7 box dưới 20 px và xuất bản 76 annotation. Đã kiểm tra file khớp với CVAT; validator không còn lỗi hoặc cảnh báo kích thước.
-- Tôi ghi thời gian chỉnh sửa gold là 25 phút trong `submission/time_log.csv`. Bản nháp gốc và bản 83 annotation trước review được giữ để đối chiếu.
-- Đã xuất lượt review batch đầu từ job 23, kiểm tra đủ 24 ảnh/500 annotation và đối chiếu với annotation hiện lưu trong CVAT. Thời gian review lượt đầu của tôi là 30 phút; [hồ sơ export và số đo](submission/qc/reviews/batch-01/README.md). Validator không có lỗi cấu trúc; còn 10 cảnh báo box nhỏ.
+- Lần nhập nháp ban đầu: 58 + 385 = 443 annotation. Sau lượt chỉnh sửa, job 21 có 83 annotation; review bỏ 7 box dưới 20 px và xuất bản 76 annotation. Đã kiểm tra file khớp với CVAT; validator không còn lỗi hoặc cảnh báo kích thước.
+- Thời gian chỉnh sửa gold được ghi là 25 phút trong `submission/time_log.csv`. Bản nháp gốc và bản 83 annotation trước review được giữ để đối chiếu.
+- Đã xuất lượt review batch đầu từ job 23, kiểm tra đủ 24 ảnh/500 annotation và đối chiếu với annotation hiện lưu trong CVAT. Thời gian review lượt đầu là 30 phút; [hồ sơ export và số đo](submission/qc/reviews/batch-01/README.md). Validator không có lỗi cấu trúc; còn 10 cảnh báo box nhỏ.
 - Sau đó đã sửa bẫy và bỏ 10 box dưới 20 px, tạo bản 490 annotation ở [batch-02](submission/qc/reviews/batch-02/README.md). Sau lượt QC đã sửa thêm 8 lỗi, tạo bản hiện tại 492 annotation và `qc_fixed.json` cho 12 ảnh. Xem [QC sau sửa](submission/qc/reviews/qc-02/README.md). Số đo review đầu 6/12 vẫn giữ nguyên.
 
 Ảnh overlay dùng để kiểm tra nằm trong `work/gold-refined-viz/` và `work/batch-refined-viz/` trên máy này.
@@ -33,7 +33,7 @@ Project: [day08-2A202603132](http://localhost:8080/projects/3). Task 21 hiện t
 ## 3. Việc tiếp theo
 
 1. Part 5 đã có đủ ba vật: img_013 (SAM base, Colab), img_004 và img_009 (SAM tiny, local CPU). Xem `submission/masks/` và `submission/qc/sam_clicks/`; các nhận xét tập trung vào phần người hoặc hàng hóa bị lẫn trong mask.
-2. Tôi đã chốt CAL-01–03 và cập nhật taxonomy v1.1, giữ nguyên mục rules. Nội dung cụ thể nằm trong guideline và báo cáo.
+2. Đã chốt CAL-01–03 và cập nhật taxonomy v1.1, giữ nguyên mục rules. Nội dung cụ thể nằm trong guideline và báo cáo.
 3. QC trước sửa ghi 8/98 lỗi sau đính chính, 4/5 ảnh có lỗi; đã xử lý 8 lỗi theo yêu cầu. Tái kiểm cùng 5 ảnh/100 đối tượng không ghi nhận lỗi rõ mới. Script vẫn gợi ý Rework do 6/12 bẫy ở lượt đầu; đây không phải kiểm độc lập hoặc chứng minh toàn bộ 24 ảnh sạch lỗi.
 4. Đã có `gold_manual.json` và `batch_reviewed.json`. Gold đã có bản nháp trước lượt chỉnh sửa, nên cần giữ giới hạn này khi diễn giải số đo. Phần phân tích nằm trong báo cáo và kết quả tóm tắt.
 5. Khi hoàn tất bài, chạy `validate_labels.py --all` và `check_submission.py` trước khi nộp.
