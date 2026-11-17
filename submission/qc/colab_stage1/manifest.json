@@ -1,0 +1,47 @@
+{
+  "archive": "colab_stage1.zip",
+  "archive_sha256": "5ce5a9a7e758d26d098c40760498e378ceabbb39597ce24acc25d46d4f50b2a3",
+  "gold_sha256": "9514f6a3c4ee0b957254d7991f1041860007d40118a18900920bc022e472e32f",
+  "runs": [
+    {
+      "source": "work/colab-stage1-20261117/work/prelabel/y26_all/pre.coco.json",
+      "sha256": "71dd0d91cc8521172271c44a03cc06a356dcd92c04ac3ffc8dd06ed97125f6a8",
+      "run_id": "r05",
+      "part": "",
+      "model": "yolo26-m",
+      "params": "--model yolo26 --size m --split all --conf 0.05 --out work/prelabel/y26_all --no-viz",
+      "split": "all",
+      "n_boxes": 1669,
+      "sec_per_img": 1.62,
+      "what_went_right": "",
+      "what_went_wrong": "",
+      "decision": "",
+      "out": "work/prelabel/y26_all",
+      "device": "cpu",
+      "n_images": 36,
+      "n_masks": 0,
+      "dropped": "chairx29;umbrellax57;handbagx28;traffic lightx10;bowlx4;bananax104;dining tablex10;benchx2;dogx2;bottlex26;cupx6;bookx1;stop signx2;backpackx16;potted plantx22;applex18;orangex16;cell phonex2",
+      "note": ""
+    },
+    {
+      "source": "work/colab-stage1-20261117/work/prelabel/yoloe_all/pre.coco.json",
+      "sha256": "c98000fe9f138f5c0c70076684503f1083d72b436195e0c03074341f428b1b73",
+      "run_id": "r06",
+      "part": "",
+      "model": "yoloe-s",
+      "params": "--model yoloe --classes three_wheeler --split all --conf 0.05 --out work/prelabel/yoloe_all --no-viz",
+      "split": "all",
+      "n_boxes": 125,
+      "sec_per_img": 0.83,
+      "what_went_right": "",
+      "what_went_wrong": "",
+      "decision": "",
+      "out": "work/prelabel/yoloe_all",
+      "device": "cpu",
+      "n_images": 36,
+      "n_masks": 0,
+      "dropped": "",
+      "note": ""
+    }
+  ]
+}

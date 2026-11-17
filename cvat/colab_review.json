@@ -1,0 +1,20 @@
+{
+  "project_id": 3,
+  "task_id": 23,
+  "task_name": "batch-review-colab",
+  "job_id": 23,
+  "job_url": "http://localhost:8080/tasks/23/jobs/23",
+  "images": 24,
+  "annotations": 532,
+  "first_image": "img_003.jpg",
+  "first_image_annotations": 26,
+  "import_file": "submission/prelabel/pre_traps_import.coco.json",
+  "import_sha256": "b15db069c2c411c01ed21f37901a28485afa008c51081583ad58813590ffd031",
+  "import_format": "COCO 1.0",
+  "geometry_readback_verified": true,
+  "preserved_tasks": [
+    21,
+    22
+  ],
+  "review_completed": false
+}

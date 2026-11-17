@@ -4,13 +4,12 @@
 
 ## 1. Model và recipe (Part 2–3)
 
-| Lớp | Model + cỡ | Ngưỡng | Vì sao (dẫn `run_id` trong `model_log.csv`) |
+| Lớp | Model + cỡ | Ngưỡng | Nguồn lần chạy và quét ngưỡng |
 |---|---|---|---|
-| person / bicycle / motorbike / bus / truck | YOLO26n | 0.3 mặc định theo script | r02/r04; person, bicycle, motorbike không đạt recall mục tiêu 90% ở bất kỳ ngưỡng thử <= 0.5; bus chỉ 1 vật, truck 0 vật gold nên không chọn ngưỡng riêng. |
-| car | YOLO26n | 0.45 | Script quét đề xuất; 8 vật car trong gold. |
-| three_wheeler | YOLOE-26s, prompt tuk-tuk / cyclo / cargo tricycle | 0.15 | Script quét đề xuất; 7 vật three_wheeler trong gold. |
+| person / bicycle / motorbike / car / bus / truck | YOLO26m, Colab CPU | 0.3 mặc định theo script | `qc/colab_stage1/runs.csv`, r05; script quét không chọn ngưỡng riêng cho person, bicycle, motorbike, car vì không đạt recall 90%; bus chỉ 1 vật, truck 0 vật gold. |
+| three_wheeler | YOLOE-26s, prompt tuk-tuk / cyclo / cargo tricycle | 0.15 | `qc/colab_stage1/runs.csv`, r06; script quét ghi recall 7/7, precision 78% trên gold ở ngưỡng này. |
 
-- Lệnh `merge_prelabels.py` đã dùng (dán nguyên): <<>>
+- Lệnh `merge_prelabels.py` đã dùng: `.venv/bin/python scripts/merge_prelabels.py work/colab-stage1-20261117/work/prelabel/yoloe_all/pre.coco.json work/colab-stage1-20261117/work/prelabel/y26_all/pre.coco.json --thr three_wheeler=0.15 --conf 0.3 --iou 0.6 --split batch,gold --out work/prelabel/merged_review/pre.coco.json`
 - **SAM đã chạy:** SAM 2.1 tiny (`sam2.1_t.pt`), CPU, cỡ nhỏ cho cấu hình RAM 8 GB. Lượt `r06` có 2 ảnh và 8 mask; xem ảnh kết quả trong `qc/model_tour/`.
 - Lỗi nào **không sửa được bằng đổi ngưỡng** (ví dụ tuk-tuk bị gọi `car`)? Sửa thế nào? <<>>
 - Box **điểm cao mà sai** hoặc **điểm thấp mà đúng** (ảnh nào): <<>>
@@ -72,7 +71,7 @@ Nếu Rework / Hold, việc cần làm tiếp: <<>>
 
 - **Dùng AI để làm bài:** Codex hỗ trợ đọc yêu cầu, tạo repo local, cài thư viện nhẹ và chuẩn bị project/task CVAT. Đối chiếu cấu hình với `submission/taxonomy.json`, `data/split.csv` và chạy kiểm tra môi trường. Học viên cần kiểm tra bộ nhãn và task trong CVAT. Phần này ghi nhận công việc chuẩn bị; các kết quả review và QC chưa hoàn tất.
 - Gold có bị nhiễm không (bạn có nhìn pre-label hay hỏi AI trước khi gán xong)? Có: task 21 đã có bản nháp 58 annotation trước lượt gán tay/chỉnh sửa 25 phút do học viên báo. Bản học viên lưu có 83 annotation; review bỏ 7 box dưới 20 px, xuất `labels/gold_manual.json` với 76 annotation. Bộ này không phải gold được tạo độc lập trước khi thấy nhãn gợi ý.
-- Máy / GPU / CVAT dùng; vướng mắc cài đặt: macOS 26.3, Apple M1, RAM 8 GB; CVAT Docker 2.82.1 đã có sẵn. Môi trường QC nhẹ `.venv` dùng Python 3.12.16; môi trường model `work/model-env` dùng Python 3.13.17, đã chạy local bằng CPU. Cấu hình chuẩn bị 8 GB theo trang hướng dẫn là chạy model trên Colab; Colab báo phần phụ trợ không có sẵn; dùng kết quả chạy local CPU, chưa có lượt chạy GPU T4 Colab.
-- Dùng cache `data/cache/` thay vì tự chạy? Không. Đã dùng kết quả chạy local CPU trong `work/prelabel/`; các lượt tour được lưu ở `model_log.csv` và `qc/model_tour/runs.json`.
+- Máy / GPU / CVAT dùng; vướng mắc cài đặt: macOS 26.3, Apple M1, RAM 8 GB; CVAT Docker 2.82.1 đã có sẵn. Môi trường QC nhẹ `.venv` dùng Python 3.12.16; môi trường model `work/model-env` dùng Python 3.13.17, đã chạy local bằng CPU. Colab ban đầu báo phần phụ trợ không có sẵn; sau đó học viên chạy được và tải `colab_stage1.zip`. Nhật ký trong ZIP ghi thiết bị `cpu`, chưa có lượt chạy GPU T4 để xác nhận.
+- Dùng cache `data/cache/` thay vì tự chạy? Không. Các lượt tour local được lưu ở `model_log.csv` và `qc/model_tour/runs.json`. Part 3–4 hiện dùng kết quả Colab CPU: YOLO26m và YOLOE-26s, có nhật ký gốc và checksum tại `qc/colab_stage1/`. Kết quả quét YOLO26 nano cũ được giữ tại `qc/model_tour/local_threshold_sweep.*`.
 - Lỗi / bug script đã gặp (nếu có): <<>>
 - Một điều bạn làm khác lần sau: <<>>
