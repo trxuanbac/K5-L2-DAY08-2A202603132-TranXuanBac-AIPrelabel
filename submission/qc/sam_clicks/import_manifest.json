@@ -1,0 +1,18 @@
+{
+  "archive": "colab_outputs.zip",
+  "archive_sha256": "5c5fb801ecf64b4df5269f5366a2c1c5858bfe61e272f0c648967bd0065974e0",
+  "imported_masks": [
+    {
+      "file": "submission/masks/tuktuk_img013.jpg",
+      "sha256": "382a06ad77685bc61045ce00403ff2af9470e182093b48c9a5c044741251ddcd",
+      "width": 1024,
+      "height": 682
+    }
+  ],
+  "click_model_device_recorded": false,
+  "click_model_timing_recorded": false,
+  "missing_masks": [
+    "motorbike_img009.jpg",
+    "tuktuk_img004.jpg"
+  ]
+}

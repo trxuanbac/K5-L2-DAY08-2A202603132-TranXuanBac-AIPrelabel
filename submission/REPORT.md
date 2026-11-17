@@ -48,7 +48,9 @@ Nguồn: `qc/review_stats.json`, lượt review đầu của job 23. File COCO x
 
 | Ảnh | SAM (phiên bản) | Số click | Mask gồm người lái / hàng hoá? | Lỗi quan sát | File trong `masks/` |
 |---|---|---|---|---|---|
-| <<img_0xx>> | <<>> | <<>> | <<>> | <<>> | <<>> |
+| img_013 | SAM 2.1 base, `sam2.1_b.pt` theo ô lệnh Colab | 3: 2 dương + 1 âm | Còn gồm một phần người lái và người mặc áo sọc ở phía sau | Vùng tô còn dính người và một phần xe máy bên phải; click âm chưa loại hết | `tuktuk_img013.jpg` |
+
+Hiện mới nhận **1/3 ảnh mask** từ `colab_outputs.zip`. Chưa có `tuktuk_img004.jpg` và `motorbike_img009.jpg`; không đánh dấu hoàn tất Part 5. Nguồn và checksum tại `qc/sam_clicks/import_manifest.json`. Script click không lưu thời gian/thiết bị riêng, nên không điền các số này từ lượt tour khác.
 
 - Đối chiếu guideline mục 4.2: quy tắc nào giúp, quy tắc nào thiếu? <<>>
 - *(Tuỳ chọn)* Interactor SAM trong CVAT: làm được / không (lỗi gì, đã thử gì); khác gì offline: <<>>
