@@ -33,5 +33,7 @@
   "cvat_responding": true,
   "model_asset_count": 5,
   "all_model_checksums_match": true,
-  "colab_t4_verified": false
+  "colab_t4_verified": false,
+  "colab_runtime_status": "backend not available, as reported by learner",
+  "execution_mode_used": "local CPU"
 }

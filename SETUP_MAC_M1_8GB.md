@@ -55,7 +55,7 @@ Docker 29.1.3, Docker Compose 5.0.1 đã có sẵn. CVAT đang chạy ở http:/
 
 Docker VM hiện có khoảng 4,11 GB RAM; hướng dẫn gợi ý khoảng 5 GB. CVAT đã phản hồi đạt trong cả kiểm tra nhẹ và kiểm tra model local. Chưa thay đổi tài nguyên hoặc khởi động lại Docker trong lần kiểm tra này.
 
-## Bước còn cần kiểm tra trên tài khoản Google
+## Trạng thái Colab và cách tiếp tục
 
 Đã mở [notebook Colab của bài](https://colab.research.google.com/github/trxuanbac/K5-L23-DAY08-2A202603132-TranXuanBac-AIPrelabel/blob/main/notebooks/day08_colab.ipynb). Trong Colab, chọn **Runtime → Change runtime type → T4 GPU → Save**, rồi chạy:
 
@@ -63,6 +63,8 @@ Docker VM hiện có khoảng 4,11 GB RAM; hướng dẫn gợi ý khoảng 5 GB
 !nvidia-smi -L
 ```
 
-Chưa xác nhận tài khoản Google có được cấp GPU T4. Chỉ đánh dấu bước này hoàn thành khi Colab thực sự in ra GPU. Các bước kiểm tra trên máy đã đạt; chưa đánh dấu toàn bộ hướng dẫn 8/8.
+Học viên đã thử kết nối và nhận thông báo **phần phụ trợ không có sẵn**. Chưa có lượt chạy Colab hoặc GPU T4 để ghi nhận; không đánh dấu bước này hoàn thành. Hiện dùng kết quả local CPU đã có, xem [bốn lượt tour và ảnh so sánh](submission/qc/model_tour/README.md).
+
+Khi chạy model local, kích hoạt `work/model-env`; khi chạy script đo số/QC, kích hoạt `.venv`. Kết quả local được ghi đúng thiết bị `cpu`.
 
 [Bản kiểm tra tổng hợp](docs/setup_checks/setup_audit.json). Trọng số, Python cài riêng và môi trường ảo nằm ngoài các file được commit.

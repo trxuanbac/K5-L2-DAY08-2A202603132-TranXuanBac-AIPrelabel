@@ -6,14 +6,15 @@
 
 | Lớp | Model + cỡ | Ngưỡng | Vì sao (dẫn `run_id` trong `model_log.csv`) |
 |---|---|---|---|
-| person / bicycle / motorbike / car / bus / truck | <<YOLO26m>> | <<theo lớp, từ threshold_sweep>> | <<>> |
-| three_wheeler | <<YOLOE-26s, prompt: ...>> | <<>> | <<>> |
+| person / bicycle / motorbike / bus / truck | YOLO26n | 0.3 mặc định theo script | r02/r04; person, bicycle, motorbike không đạt recall mục tiêu 90% ở bất kỳ ngưỡng thử <= 0.5; bus chỉ 1 vật, truck 0 vật gold nên không chọn ngưỡng riêng. |
+| car | YOLO26n | 0.45 | Script quét đề xuất; 8 vật car trong gold. |
+| three_wheeler | YOLOE-26s, prompt tuk-tuk / cyclo / cargo tricycle | 0.15 | Script quét đề xuất; 7 vật three_wheeler trong gold. |
 
 - Lệnh `merge_prelabels.py` đã dùng (dán nguyên): <<>>
-- **Phiên bản SAM bạn chọn** (SAM 1 / 2.1 / 3) và lý do: <<chất lượng mask, tốc độ, RAM, quyền truy cập>>
+- **SAM đã chạy:** SAM 2.1 tiny (`sam2.1_t.pt`), CPU, cỡ nhỏ cho cấu hình RAM 8 GB. Lượt `r06` có 2 ảnh và 8 mask; xem ảnh kết quả trong `qc/model_tour/`.
 - Lỗi nào **không sửa được bằng đổi ngưỡng** (ví dụ tuk-tuk bị gọi `car`)? Sửa thế nào? <<>>
 - Box **điểm cao mà sai** hoặc **điểm thấp mà đúng** (ảnh nào): <<>>
-- Giới hạn: chọn ngưỡng trên chính gold (4 ảnh) nên số đo máy trên gold là lạc quan: <<>>
+- Giới hạn: chọn và chấm ngưỡng trên cùng 4 ảnh gold; gold cũng đã có nhãn nháp trước lượt học viên chỉnh sửa. Các số đo này không phải kiểm định trên gold độc lập. Lớp ít mẫu hoặc không đạt recall mục tiêu được script giữ ở ngưỡng mặc định.
 
 ## 2. AI error profile (từ `qc/review_stats.md`)
 
@@ -71,7 +72,7 @@ Nếu Rework / Hold, việc cần làm tiếp: <<>>
 
 - **Dùng AI để làm bài:** Codex hỗ trợ đọc yêu cầu, tạo repo local, cài thư viện nhẹ và chuẩn bị project/task CVAT. Đối chiếu cấu hình với `submission/taxonomy.json`, `data/split.csv` và chạy kiểm tra môi trường. Học viên cần kiểm tra bộ nhãn và task trong CVAT. Phần này ghi nhận công việc chuẩn bị; các kết quả review và QC chưa hoàn tất.
 - Gold có bị nhiễm không (bạn có nhìn pre-label hay hỏi AI trước khi gán xong)? Có: task 21 đã có bản nháp 58 annotation trước lượt gán tay/chỉnh sửa 25 phút do học viên báo. Bản học viên lưu có 83 annotation; review bỏ 7 box dưới 20 px, xuất `labels/gold_manual.json` với 76 annotation. Bộ này không phải gold được tạo độc lập trước khi thấy nhãn gợi ý.
-- Máy / GPU / CVAT dùng; vướng mắc cài đặt: macOS 26.3, Apple M1, RAM 8 GB; CVAT Docker 2.82.1 đã có sẵn. Môi trường QC nhẹ `.venv` dùng Python 3.12.16; môi trường model `work/model-env` dùng Python 3.13.17, đã chạy local bằng CPU. Cấu hình chuẩn bị 8 GB theo trang hướng dẫn là chạy model trên Colab; GPU T4 Colab chưa được xác nhận.
-- Dùng cache `data/cache/` thay vì tự chạy? <<không / có, vì ...>>
+- Máy / GPU / CVAT dùng; vướng mắc cài đặt: macOS 26.3, Apple M1, RAM 8 GB; CVAT Docker 2.82.1 đã có sẵn. Môi trường QC nhẹ `.venv` dùng Python 3.12.16; môi trường model `work/model-env` dùng Python 3.13.17, đã chạy local bằng CPU. Cấu hình chuẩn bị 8 GB theo trang hướng dẫn là chạy model trên Colab; Colab báo phần phụ trợ không có sẵn; dùng kết quả chạy local CPU, chưa có lượt chạy GPU T4 Colab.
+- Dùng cache `data/cache/` thay vì tự chạy? Không. Đã dùng kết quả chạy local CPU trong `work/prelabel/`; các lượt tour được lưu ở `model_log.csv` và `qc/model_tour/runs.json`.
 - Lỗi / bug script đã gặp (nếu có): <<>>
 - Một điều bạn làm khác lần sau: <<>>

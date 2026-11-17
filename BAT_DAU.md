@@ -13,7 +13,8 @@ Project: [day08-2A202603132](http://localhost:8080/projects/3). Task 21 hiện t
 
 ## 2. Phần đã thực hiện
 
-- Chạy detector trên 36 ảnh để có dữ liệu nhãn cho các tập; chạy thêm một lượt pilot ở ngưỡng 0.25. Nhật ký thực tế ở `work/runs.csv` trên máy này.
+- Đã lưu bốn lượt tour Part 2: YOLO26 conf 0.25 và 0.5, YOLOE, SAM 2.1 tiny. Có số đo thực tế và ảnh so sánh trong [hồ sơ tour model](submission/qc/model_tour/README.md).
+- Có hai lượt nguồn trên toàn bộ 36 ảnh ở conf 0.05 cho Part 3; đã chạy quét ngưỡng bằng gold đã xuất, tạo [threshold_sweep.md](submission/qc/threshold_sweep.md), CSV và PNG.
 - Gộp kết quả cho 4 ảnh gold và 24 ảnh batch ở ngưỡng khởi đầu 0.25; chưa xem đây là ngưỡng được calibration bằng gold độc lập.
 - Xem các ảnh tổng quan, sửa một số lỗi nhầm lớp, box trùng và đối tượng không thuộc taxonomy; bổ sung một số người/xe bị sót.
 - Bỏ box đối tượng thấp hơn 20 px. Giữ `can_review` ở các ca chưa chắc quy tắc.
@@ -25,9 +26,9 @@ Project: [day08-2A202603132](http://localhost:8080/projects/3). Task 21 hiện t
 
 ## 3. Việc tiếp theo
 
-1. Tiếp tục các phần còn lại theo [GUIDE.md](GUIDE.md). Với batch, review từng ảnh trong CVAT: tìm vật sót, bỏ box thừa, sửa lớp và ôm sát phần nhìn thấy. Lưu sau mỗi ảnh.
+1. Tiếp theo là Part 4 trong [GUIDE.md](GUIDE.md): dùng ngưỡng đã quét để gộp pre-label, tạo bẫy rồi mới bắt đầu lượt review được đo. File batch nháp hiện tại chưa có bẫy.
 2. Ghi thời gian review thực tế; ghi các ca chưa chắc quy tắc để calibration.
-3. Hoàn thành các phần còn lại của lab theo [GUIDE.md](GUIDE.md): tour model, SAM, ngưỡng, bẫy, calibration và QC. Chưa có kết quả đo bẫy hoặc quyết định chất lượng.
+3. Tour model và quét ngưỡng đã có kết quả. Còn Part 4 (bẫy và review), Part 5 (mask click cho 3 vật), calibration và QC. Chưa có kết quả đo bẫy hoặc quyết định chất lượng.
 4. Đã có `gold_manual.json`; chưa có `batch_reviewed.json`. Gold đã có bản nháp trước lượt chỉnh sửa, nên cần giữ giới hạn này khi diễn giải số đo. Báo cáo và kết quả tóm tắt còn các mục chưa hoàn thành.
 5. Khi hoàn tất bài, chạy `validate_labels.py --all` và `check_submission.py` trước khi nộp.
 
@@ -35,7 +36,7 @@ Project: [day08-2A202603132](http://localhost:8080/projects/3). Task 21 hiện t
 
 Repo public: https://github.com/trxuanbac/K5-L23-DAY08-2A202603132-TranXuanBac-AIPrelabel. Nhánh `main`, `origin` trỏ repo này; `upstream` là repo đề.
 
-Máy Apple M1 arm64, RAM 8 GB, macOS 26.3, CVAT Docker 2.82.1. Đã đối chiếu hướng dẫn Mac 8 GB: model trên Colab, `.venv` Python 3.12.16 dùng thư viện nhẹ và chạy kiểm tra đạt. Bộ model local nhỏ và môi trường Python 3.13.17 ở `work/model-env` vẫn có sẵn làm dự phòng, đã chạy thử bằng CPU. Trọng số và thư mục `work/` được loại khỏi Git. Xem [cấu hình và lệnh kiểm tra](SETUP_MAC_M1_8GB.md).
+Máy Apple M1 arm64, RAM 8 GB, macOS 26.3, CVAT Docker 2.82.1. Đã đối chiếu hướng dẫn Mac 8 GB: model trên Colab, `.venv` Python 3.12.16 dùng thư viện nhẹ và chạy kiểm tra đạt. Colab báo phần phụ trợ không có sẵn, nên đang dùng kết quả chạy CPU local trong `work/model-env` (Python 3.13.17); `.venv` vẫn dành cho đo số/QC nhẹ. Trọng số và thư mục `work/` được loại khỏi Git. Xem [cấu hình và lệnh kiểm tra](SETUP_MAC_M1_8GB.md).
 
 Kiểm tra gold đã xuất và batch nháp:
 
