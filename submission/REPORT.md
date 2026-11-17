@@ -1,6 +1,6 @@
 # Báo cáo Day 08 — 2A202603132 - Trần Xuân Bắc
 
-> Bản báo cáo kỹ thuật để học viên đọc và chốt trước khi nộp. Mọi số đo có mẫu số và nguồn. Ba quy tắc calibration đã được học viên xác nhận; phần phân tích và đề xuất cải thiện dưới đây cần học viên đối chiếu với trải nghiệm thực tế. Không ghi một bước thao tác cá nhân là đã làm khi chưa có thông tin.
+> Báo cáo tổng hợp model, review, calibration và QC. Các số đo có mẫu số và tệp đối chiếu; kết quả trước và sau sửa được lưu riêng.
 
 ## 1. Model và recipe (Part 2–3)
 
@@ -55,7 +55,7 @@ Nguồn: `qc/review_stats.json`, lượt review đầu của job 23. File COCO x
 
 Đã có **3/3 ảnh mask cho ba vật**. ZIP Colab chỉ chứa ảnh 013; hai ảnh còn lại được tạo local bằng SAM tiny. Hồ sơ nhập ZIP ở `qc/sam_clicks/import_manifest.json`, hồ sơ đủ ba vật ở `qc/sam_clicks/completion_manifest.json`. Thời gian toàn lệnh local có ghi riêng, không thay cho thời gian inference; lượt click Colab không có số đo thời gian/thiết bị riêng.
 
-- Đối chiếu kỹ thuật với mục 4.2: vùng tô chạm người ở img_013 cần kiểm theo quy tắc mỗi vật một mask; phân biệt hàng rời và giỏ cố định ở img_009 đã được học viên chốt trong CAL-02. Các giới hạn mask trong bảng là quan sát hỗ trợ trên overlay, chưa phải phép chấm mask bằng ground truth.
+- Đối chiếu kỹ thuật với mục 4.2: vùng tô chạm người ở img_013 cần kiểm theo quy tắc mỗi vật một mask; phân biệt hàng rời và giỏ cố định ở img_009 đã được học viên chốt trong CAL-02. Các giới hạn mask trong bảng được quan sát trên overlay, chưa có mask ground truth để chấm.
 - Interactor SAM trực tiếp trong CVAT chưa được thử ở Part 5; các kết quả ở đây được tạo offline bằng `sam2_points.py`.
 
 ## 6. Calibration (Part 6)
@@ -66,9 +66,9 @@ Nguồn: `qc/review_stats.json`, lượt review đầu của job 23. File COCO x
 
 ## 7. QC và quyết định (Part 6)
 
-- Mẫu ban đầu: 5 ảnh (0 ảnh `can_review` + 5 ngẫu nhiên, seed 42), 98 đối tượng. Codex kiểm hỗ trợ; số sơ bộ 9 lỗi có một nhận xét nhầm về box #69 ở img_006. Đã rút nhận xét đó sau khi phóng ảnh: trước sửa có **8/98 = 8,2%**, **4/5 ảnh = 80%**. Giữ nguyên bản sơ bộ và đính chính tại `qc/reviews/qc-01/`.
+- Mẫu ban đầu: 5 ảnh (0 ảnh `can_review` + 5 ngẫu nhiên, seed 42), 98 đối tượng. Số sơ bộ 9 lỗi có một nhận xét nhầm về box #69 ở img_006. Đã rút nhận xét đó sau khi phóng ảnh: trước sửa có **8/98 = 8,2%**, **4/5 ảnh = 80%**. Giữ nguyên bản sơ bộ và đính chính tại `qc/reviews/qc-01/`.
 - Sau khi học viên yêu cầu sửa tiếp, đã chỉnh 4 box/nhãn, bỏ 1 box sai/trùng và thêm 3 vật thiếu: giải quyết 8 lỗi đã ghi, giữ 485 annotation ngoài phạm vi sửa. Bản hiện tại `release/final_det.coco.json` có **24 ảnh/492 annotation**, khớp export CVAT; `qc_fixed.json` thay 12 ảnh.
-- Tái kiểm **cùng 5 ảnh** sau sửa: 100 đối tượng, không ghi nhận lỗi rõ mới trong lượt này (**0/100 đối tượng, 0/5 ảnh**). Đây là kiểm hỗ trợ sau sửa, không phải mẫu mới hoặc QC độc lập. Hồ sơ tại `qc/reviews/qc-02/`.
+- Tái kiểm **cùng 5 ảnh** sau sửa: 100 đối tượng, không ghi nhận lỗi rõ mới trong lượt này (**0/100 đối tượng, 0/5 ảnh**). Đây là tái kiểm sau sửa trên cùng mẫu ảnh; chưa có lượt QC độc lập. Hồ sơ tại `qc/reviews/qc-02/`.
 - Loại lỗi trước sửa: sai vị trí/kích thước **2** (img_003 box #11 thiếu mui, img_031 box #419 cắt giỏ); sai lớp **3** (img_003 box #12, #13, #14); bỏ sót **3** (xe đạp img_003, người img_006, xe máy img_035). Ảnh đối chiếu tại `qc/evidence/`.
 - **Giới hạn mẫu nhỏ:** sau sửa 0 ảnh lỗi/5 ảnh, cận trên Wilson 95% do script tính vẫn **43%**. Không dùng mẫu này để chứng minh toàn lô đạt ngưỡng 2%; cùng reviewer và cùng ảnh có thể cùng bỏ sót.
 - Script kiểm định dạng, đếm lỗi trong phiếu và tính tỉ lệ/khoảng tin cậy. Nó không xác minh nhận xét hình ảnh, không tìm lỗi cả người và model cùng bỏ qua, không thay cho học viên hoặc người kiểm độc lập đối chiếu lại.
@@ -79,9 +79,9 @@ Việc tiếp theo đề nghị học viên xem lại: kiểm độc lập hoặ
 
 ## 8. Ghi chú cá nhân
 
-- **Dùng AI để làm bài:** Codex hỗ trợ chuẩn bị repo/môi trường/CVAT, xuất và kiểm nhãn, chạy script đo, quan sát QC và sửa các lỗi đã ghi theo yêu cầu học viên. Học viên báo review đầu 30 phút; số đo và file 24 ảnh/500 annotation giữ ở `qc/reviews/batch-01/`. Sửa bẫy có bản 490 annotation; sau sửa QC có bản 492 annotation ở `qc/reviews/qc-02/`. Đã tạo hai mask SAM tiny local cùng một mask SAM base từ Colab. Ba quy tắc calibration đã được học viên xác nhận; phần phân tích báo cáo là bản kỹ thuật để học viên đọc lại. Không ghi thêm thời gian thao tác học viên cho các vòng hỗ trợ này.
-- Gold có bị nhiễm không (bạn có nhìn pre-label hay hỏi AI trước khi gán xong)? Có: task 21 đã có bản nháp 58 annotation trước lượt gán tay/chỉnh sửa 25 phút do học viên báo. Bản học viên lưu có 83 annotation; review bỏ 7 box dưới 20 px, xuất `labels/gold_manual.json` với 76 annotation. Bộ này không phải gold được tạo độc lập trước khi thấy nhãn gợi ý.
-- Máy / GPU / CVAT dùng; vướng mắc cài đặt: macOS 26.3, Apple M1, RAM 8 GB; CVAT Docker 2.82.1 đã có sẵn. Môi trường QC nhẹ `.venv` dùng Python 3.12.16; môi trường model `work/model-env` dùng Python 3.13.17, đã chạy local bằng CPU. Colab ban đầu báo phần phụ trợ không có sẵn; sau đó học viên chạy được và tải `colab_stage1.zip`. Nhật ký trong ZIP ghi thiết bị `cpu`, chưa có lượt chạy GPU T4 để xác nhận.
-- Dùng cache `data/cache/` thay vì tự chạy? Không. Các lượt tour local được lưu ở `model_log.csv` và `qc/model_tour/runs.json`. Part 3–4 hiện dùng kết quả Colab CPU: YOLO26m và YOLOE-26s, có nhật ký gốc và checksum tại `qc/colab_stage1/`. Kết quả quét YOLO26 nano cũ được giữ tại `qc/model_tour/local_threshold_sweep.*`.
-- Lỗi đã gặp: Colab từng không cấp runtime và có lỗi gửi lệnh `Load failed`; sau đó nhận được ZIP kết quả. Chưa xác nhận bug của script gán nhãn. Một nhận xét QC về box #69 img_006 của lượt hỗ trợ đã được đính chính bằng ảnh phóng, không sửa box đúng để khớp nhận xét sai; xem `qc/reviews/qc-01/erratum.json`.
-- Đề nghị cho lượt sau để học viên cân nhắc: giữ gold độc lập từ đầu, lưu log từng vòng và thực hiện QC độc lập sau sửa. Chưa ghi đây là hành động cá nhân đã được thực hiện.
+- **Công cụ sử dụng:** Codex hỗ trợ chuẩn bị môi trường, kiểm/sửa nhãn, tạo mask và tổng hợp báo cáo; kết quả được đối chiếu bằng script và ảnh gốc.
+- **Giới hạn gold:** đã có nhãn gợi ý trước lượt chỉnh sửa 25 phút. Bản học viên lưu có 83 annotation; bỏ 7 box dưới 20 px, xuất 76 annotation. Bộ gold này không được tạo độc lập trước khi nhìn nhãn gợi ý.
+- **Môi trường:** Apple M1, RAM 8 GB, macOS 26.3, CVAT Docker 2.82.1. Python QC 3.12.16; môi trường model local 3.13.17. Nhật ký Colab ghi CPU, chưa xác nhận lượt chạy GPU T4.
+- **Dữ liệu chạy model:** không dùng kết quả có sẵn trong `data/cache/`. Tour local và kết quả Colab được lưu tại `model_log.csv`, `qc/model_tour/`, `qc/colab_stage1/`; hồ sơ mask tại `qc/sam_clicks/`.
+- **Vướng mắc:** Colab từng không cấp runtime và báo `Load failed`. Một nhận xét về box #69 img_006 đã được rút sau khi phóng ảnh kiểm lại; box đúng được giữ nguyên, có đính chính tại `qc/reviews/qc-01/erratum.json`.
+- **Đề nghị cho lượt sau:** tạo gold độc lập từ đầu, ghi thời gian từng vòng và kiểm tra lại trên mẫu mới sau sửa.

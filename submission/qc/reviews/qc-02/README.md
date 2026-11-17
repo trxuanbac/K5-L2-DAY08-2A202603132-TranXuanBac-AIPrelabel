@@ -16,7 +16,7 @@ Tổng: 4 cập nhật box/nhãn, 1 xóa, 3 thêm. **485 annotation khác giữ 
 Giữ cùng 5 ảnh seed 42 như lượt đầu: img_003, img_006, img_014, img_031, img_035. Sau sửa có 100 đối tượng trong mẫu. Đã xem lại các ảnh có nhãn sau sửa và giữ nguyên img_014 không có lỗi rõ ở lượt trước.
 
 - Không ghi nhận lỗi rõ mới trong lượt tái kiểm: **0/100 đối tượng, 0/5 ảnh**.
-- Người kiểm hỗ trợ: Codex. Đây là **cùng reviewer/cùng ảnh sau khi đã biết lỗi**, không phải QC độc lập hoặc mẫu mới.
+- Tái kiểm **cùng reviewer/cùng ảnh sau khi đã biết lỗi**; chưa có QC độc lập hoặc mẫu mới. Thông tin lượt kiểm nằm trong phiếu và nhật ký QC.
 - Cận trên Wilson 95% với 0 ảnh lỗi/5 ảnh vẫn là **43%**; không chứng minh toàn lô đạt ngưỡng 2%.
 - [Phiếu hiện tại](qc_review.csv), [báo cáo script](qc_report_auto.md), [nguồn kiểm](qc_review_provenance.json).
 

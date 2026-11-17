@@ -16,5 +16,5 @@
 - Bắt bẫy lượt review đầu: 6/12 = 50%; ngưỡng trong taxonomy là 80%.
 - Bản sửa bổ sung: script đối chiếu 12/12 bẫy sau khi đã biết kết quả; không thay kết quả review đầu. Bản sau sửa bẫy có 490 annotation; sau sửa tiếp 8 lỗi QC có 492 annotation. Không còn cảnh báo box cao dưới 20 px.
 - Thời gian: gán tay/chỉnh sửa gold 25 phút/4 ảnh = 6,25 phút/ảnh; review batch 30 phút/24 ảnh = 1,25 phút/ảnh. Cả hai thời gian do học viên cung cấp.
-- QC hỗ trợ trước sửa: 8/98 = 8,2% lỗi, 4/5 ảnh có lỗi; đã đính chính một nhận xét nhầm trong số sơ bộ 9 lỗi. Sau sửa, tái kiểm cùng 5 ảnh/100 đối tượng: chưa ghi nhận lỗi rõ mới (0/100, 0/5). Cùng reviewer và cùng ảnh nên không xem là QC độc lập. Cận trên Wilson 95% của tỉ lệ ảnh lỗi sau sửa vẫn là 43%.
+- QC trước sửa: 8/98 = 8,2% lỗi, 4/5 ảnh có lỗi; đã đính chính một nhận xét nhầm trong số sơ bộ 9 lỗi. Sau sửa, tái kiểm cùng 5 ảnh/100 đối tượng: chưa ghi nhận lỗi rõ mới (0/100, 0/5). Cùng reviewer và cùng ảnh nên không xem là QC độc lập. Cận trên Wilson 95% của tỉ lệ ảnh lỗi sau sửa vẫn là 43%.
 - **Gợi ý của script: Rework** — lượt review đầu bắt 6/12 bẫy (50%), dưới 80%; không thay bằng kết quả sau biết đáp án. Học viên chưa xác nhận quyết định chốt nộp cuối cùng.

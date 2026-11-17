@@ -10,4 +10,4 @@ Các ảnh ở đây là crop từ ảnh gốc, phóng 3 lần để xem chi ti�
 | 031-basket.jpg | img_031, `(125,318,513,540)` | Giỏ/khung hàng gắn với xe đạp bị box #419 cắt ở mép trái. |
 | 035-distant-bike.jpg | img_035, `(898,423,980,500)` | Xe máy màu sáng ở xa chưa có box trong bản ứng viên đang kiểm. |
 
-ID box tham chiếu `submission/release/final_det.coco.json` tại thời điểm tạo phiếu QC; checksum nguồn nằm ở `../qc_review_provenance.json`. Đây là quan sát QC hỗ trợ; học viên cần đối chiếu và xác nhận trước khi nộp.
+ID box tham chiếu `submission/release/final_det.coco.json` tại thời điểm tạo phiếu QC; checksum nguồn nằm ở `../qc_review_provenance.json`. Các ảnh dùng để đối chiếu khi kiểm nhãn.

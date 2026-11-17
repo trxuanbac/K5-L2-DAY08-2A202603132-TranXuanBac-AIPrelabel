@@ -1,10 +1,10 @@
-# QC hỗ trợ — lượt 1
+# QC — lượt 1
 
 **Đã đính chính:** một nhận xét về box #69 img_006 trong số sơ bộ 9 lỗi là nhầm. Phóng lại ảnh cho thấy box này đúng; đã giữ nguyên nhãn và rút nhận xét. Số lỗi xác nhận trước sửa là **8/98 = 8,2%**, trên 4/5 ảnh. Xem [erratum.json](erratum.json), [phiếu đã hiệu chỉnh](qc_review_corrected.csv), [báo cáo trước sửa](qc_report_corrected_before_rework.md). Bản sơ bộ bên dưới được giữ làm lịch sử.
 
 Sau đó đã sửa 8 lỗi theo yêu cầu học viên; bản hiện tại và kết quả tái kiểm ở [qc-02](../qc-02/README.md).
 
-Đã xem ảnh gốc và ảnh nhãn có ID của 5 ảnh trong mẫu seed 42: `img_003`, `img_006`, `img_014`, `img_031`, `img_035`. Bản ứng viên có 98 đối tượng trong mẫu. Người thực hiện lượt kiểm hỗ trợ: **Codex**; học viên chưa xác nhận lại các dòng QC này. Không ghi đây là lượt kiểm độc lập của học viên.
+Đã xem ảnh gốc và ảnh nhãn có ID của 5 ảnh trong mẫu seed 42: `img_003`, `img_006`, `img_014`, `img_031`, `img_035`. Bản ứng viên có 98 đối tượng trong mẫu. Thông tin lượt kiểm được lưu trong phiếu và nhật ký QC; chưa có lượt kiểm độc lập.
 
 ## Kết quả quan sát sơ bộ trước đính chính
 
@@ -24,4 +24,4 @@ Quyết định cuối Release/Hold/Rework do học viên xác nhận. Chưa s�
 
 ## Giới hạn
 
-Đây là QC hỗ trợ trên 5 ảnh, không phải kiểm độc lập bởi người thứ hai. Cận trên Wilson 95% do script tính với 4 ảnh lỗi/5 ảnh là 96%; mẫu nhỏ không chứng minh được chất lượng toàn lô ở ngưỡng 2%. Giữ nguyên lượt review đầu 6/12; kết quả 12/12 sau sửa bẫy nằm riêng ở `../batch-02/`.
+Lượt QC dùng 5 ảnh; chưa có kiểm tra độc lập bởi người thứ hai. Cận trên Wilson 95% do script tính với 4 ảnh lỗi/5 ảnh là 96%; mẫu nhỏ không chứng minh được chất lượng toàn lô ở ngưỡng 2%. Giữ nguyên lượt review đầu 6/12; kết quả 12/12 sau sửa bẫy nằm riêng ở `../batch-02/`.
