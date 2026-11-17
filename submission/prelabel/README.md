@@ -12,4 +12,6 @@
 
 Đã xuất lượt review đầu thành `submission/labels/batch_reviewed.json`: 24 ảnh/500 annotation. Học viên báo 30 phút. Số đo được tạo sau export: bắt 6/12 bẫy; xem `submission/qc/reviews/batch-01/README.md`. Chưa hoàn tất QC nội dung hoặc quyết định chất lượng cuối.
 
+Đã có bản sửa bổ sung 24 ảnh/490 annotation ở `submission/qc/reviews/batch-02/`, cùng `submission/labels/qc_fixed.json` cho 10 ảnh thay đổi. Job 23 hiện dùng bản đã sửa; `batch_reviewed.json` và số đo lượt đầu giữ nguyên. Script kiểm bẫy sau sửa ghi 12/12; đây là kiểm sau khi đã biết kết quả bẫy.
+
 Giữ nguyên các file đầu vào. `traps_key.json` đã được script đọc sau khi export lượt review đầu; file đáp án vẫn chỉ lưu local và được loại khỏi Git.

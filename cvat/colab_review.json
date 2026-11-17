@@ -22,5 +22,15 @@
   "review_export_sha256": "9052f70bced0fbbc7608180f4e504800a27d7765f01d405147d9260782856fcc",
   "annotations_after_review": 500,
   "review_stats": "submission/qc/review_stats.json",
-  "formal_qc_completed": false
+  "formal_qc_completed": false,
+  "annotations_after_corrections": 490,
+  "correction_export": "submission/qc/reviews/batch-02/corrected.coco.json",
+  "correction_export_sha256": "8373ffc4e2fa0256e270da84672be55bcfec7f1f13715feb49f2cf5e694b6e42",
+  "qc_fixed_file": "submission/labels/qc_fixed.json",
+  "release_candidate_file": "submission/release/final_det.coco.json",
+  "post_correction_trap_check": {
+    "caught": 12,
+    "total": 12,
+    "after_answers_known": true
+  }
 }

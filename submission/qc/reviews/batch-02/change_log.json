@@ -1,0 +1,41 @@
+{
+  "task_id": 23,
+  "before": 499,
+  "after": 490,
+  "updated_ids": [
+    3226,
+    3296
+  ],
+  "deleted_ids": [
+    3151,
+    3157,
+    3161,
+    3168,
+    3173,
+    3317,
+    3346,
+    3364,
+    3441,
+    3455,
+    3480
+  ],
+  "created_ids": [
+    3519,
+    3520
+  ],
+  "unaffected_annotations_verified": 486,
+  "affected_images": [
+    "img_006.jpg",
+    "img_013.jpg",
+    "img_018.jpg",
+    "img_021.jpg",
+    "img_024.jpg",
+    "img_025.jpg",
+    "img_027.jpg",
+    "img_033.jpg",
+    "img_034.jpg",
+    "img_035.jpg"
+  ],
+  "first_review_score_preserved": "6/12",
+  "additional_human_review_minutes": null
+}

@@ -1,0 +1,29 @@
+{
+  "task_id": 23,
+  "images": 24,
+  "annotations": 490,
+  "correction_images": [
+    "img_006.jpg",
+    "img_013.jpg",
+    "img_018.jpg",
+    "img_021.jpg",
+    "img_024.jpg",
+    "img_025.jpg",
+    "img_027.jpg",
+    "img_033.jpg",
+    "img_034.jpg",
+    "img_035.jpg"
+  ],
+  "qc_fixed_images": 10,
+  "qc_fixed_annotations": 270,
+  "corrected_export_sha256": "8373ffc4e2fa0256e270da84672be55bcfec7f1f13715feb49f2cf5e694b6e42",
+  "first_review_sha256": "9052f70bced0fbbc7608180f4e504800a27d7765f01d405147d9260782856fcc",
+  "first_review_score": "6/12",
+  "additional_human_review_minutes": null,
+  "formal_qc_completed": false,
+  "release_decision_recorded": false,
+  "preserved_latest_user_changes": [
+    "img_006.jpg: car class corrected",
+    "img_035.jpg: previously deleted motorbike left deleted"
+  ]
+}

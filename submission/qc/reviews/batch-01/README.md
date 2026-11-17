@@ -1,5 +1,7 @@
 # Lượt review batch đầu — job 23
 
+Bản sửa bổ sung hiện có ở [batch-02](../batch-02/README.md). Số đo và nhãn trong thư mục `batch-01` giữ nguyên lượt review đầu.
+
 Học viên báo đã review xong 24 ảnh trong **30 phút**, tức **1,25 phút/ảnh**. Bản export COCO 1.0 có **500 annotation**; bản nhập trước review có 532 box. Đã đối chiếu bản chụp annotation lúc export với dữ liệu đang lưu trong CVAT; không thay đổi nhãn của học viên.
 
 - [Bản COCO lưu riêng cho lượt đầu](batch_reviewed.coco.json).
