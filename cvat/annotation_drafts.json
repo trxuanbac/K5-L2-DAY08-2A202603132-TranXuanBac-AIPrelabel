@@ -1,0 +1,54 @@
+{
+  "project_id": 3,
+  "status": "draft",
+  "tasks": {
+    "gold-draft": {
+      "task_id": 21,
+      "url": "http://localhost:8080/tasks/21/jobs/21",
+      "images": 4,
+      "annotations": 58,
+      "file": "submission/labels/gold_draft.json",
+      "per_frame": {
+        "img_001.jpg": 18,
+        "img_012.jpg": 13,
+        "img_020.jpg": 12,
+        "img_036.jpg": 15
+      },
+      "readback_verified": true
+    },
+    "batch-review": {
+      "task_id": 22,
+      "url": "http://localhost:8080/tasks/22/jobs/22",
+      "images": 24,
+      "annotations": 385,
+      "file": "submission/labels/batch_draft.json",
+      "per_frame": {
+        "img_003.jpg": 20,
+        "img_004.jpg": 7,
+        "img_005.jpg": 22,
+        "img_006.jpg": 19,
+        "img_008.jpg": 15,
+        "img_009.jpg": 4,
+        "img_010.jpg": 9,
+        "img_013.jpg": 8,
+        "img_014.jpg": 16,
+        "img_017.jpg": 5,
+        "img_018.jpg": 39,
+        "img_021.jpg": 33,
+        "img_022.jpg": 9,
+        "img_023.jpg": 8,
+        "img_024.jpg": 30,
+        "img_025.jpg": 17,
+        "img_026.jpg": 9,
+        "img_027.jpg": 17,
+        "img_028.jpg": 29,
+        "img_029.jpg": 12,
+        "img_031.jpg": 3,
+        "img_033.jpg": 11,
+        "img_034.jpg": 22,
+        "img_035.jpg": 21
+      },
+      "readback_verified": true
+    }
+  }
+}

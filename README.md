@@ -4,7 +4,7 @@
 
 # Day 08 Lab — 2A202603132 - Trần Xuân Bắc
 
-**Đang thực hiện Part 0–1.** Xem [bước tiếp theo trên máy này](BAT_DAU.md). Chưa có nhãn gold, kết quả model hay kết luận QC.
+**Đã có nhãn nháp cho 28 ảnh trong CVAT (443 annotation).** Xem [trạng thái và bước tiếp theo](BAT_DAU.md). Chưa hoàn tất review và QC.
 
 <p align="center">
   <img alt="cá nhân" src="https://img.shields.io/badge/lab-cá%20nhân-0b1f3a">
