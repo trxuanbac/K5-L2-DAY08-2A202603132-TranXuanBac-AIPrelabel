@@ -14,4 +14,4 @@
 
 Đã có bản sửa bổ sung 24 ảnh/490 annotation ở `submission/qc/reviews/batch-02/`, cùng `submission/labels/qc_fixed.json` cho 10 ảnh thay đổi. Job 23 hiện dùng bản đã sửa; `batch_reviewed.json` và số đo lượt đầu giữ nguyên. Script kiểm bẫy sau sửa ghi 12/12; đây là kiểm sau khi đã biết kết quả bẫy.
 
-Giữ nguyên các file đầu vào. `traps_key.json` đã được script đọc sau khi export lượt review đầu; file đáp án vẫn chỉ lưu local và được loại khỏi Git.
+Giữ nguyên các file đầu vào. `traps_key.json` được script đọc sau khi export lượt review đầu và được đưa vào repo khi chốt bản nộp Rework theo cấu trúc yêu cầu.

@@ -40,5 +40,7 @@
   "assisted_qc_completed": true,
   "known_qc_errors_fixed": 8,
   "qc_recheck_source": "submission/qc/reviews/qc-02/README.md",
-  "release_decision_confirmed": false
+  "release_decision_confirmed": true,
+  "final_decision": "Rework",
+  "submission_status": "finalized"
 }

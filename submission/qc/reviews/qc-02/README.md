@@ -20,4 +20,4 @@ Giữ cùng 5 ảnh seed 42 như lượt đầu: img_003, img_006, img_014, img_
 - Cận trên Wilson 95% với 0 ảnh lỗi/5 ảnh vẫn là **43%**; không chứng minh toàn lô đạt ngưỡng 2%.
 - [Phiếu hiện tại](qc_review.csv), [báo cáo script](qc_report_auto.md), [nguồn kiểm](qc_review_provenance.json).
 
-Script vẫn gợi ý **REWORK** vì lượt review đầu bắt được 6/12 bẫy. Kết quả sau sửa được giữ riêng; bản nộp cuối cùng chưa được chốt. Thời gian của vòng sửa bổ sung chưa có trong `time_log.csv`.
+Quyết định chốt bản nộp: **Rework**, theo kết quả review đầu bắt được 6/12 bẫy. Kết quả sau sửa được giữ riêng và không thay số đo ban đầu. Thời gian của vòng sửa bổ sung chưa có trong `time_log.csv`.

@@ -73,7 +73,7 @@ Nguồn: `qc/review_stats.json`, lượt review đầu của job 23. File COCO x
 - **Giới hạn mẫu nhỏ:** sau sửa 0 ảnh lỗi/5 ảnh, cận trên Wilson 95% do script tính vẫn **43%**. Không dùng mẫu này để chứng minh toàn lô đạt ngưỡng 2%; cùng reviewer và cùng ảnh có thể cùng bỏ sót.
 - Script giúp kiểm định dạng, đếm lỗi trong phiếu và tính tỉ lệ cùng khoảng tin cậy. Việc box có ôm sát vật hay còn vật bị bỏ sót vẫn cần đối chiếu với ảnh gốc. Những lỗi cùng bị bỏ qua ở cả lượt duyệt và lượt QC sẽ không xuất hiện trong số đếm này.
 
-**Kết quả kiểm tra hiện tại: Rework**, ngày 2026-11-17. `qc_report.py --guideline-gap 0` vẫn gợi ý REWORK vì lượt review đầu chỉ bắt được 6/12 bẫy, dưới ngưỡng 80%. Kết quả 12/12 sau sửa được giữ riêng, không thay đổi số đo ban đầu. **Bản nộp cuối cùng chưa được chốt.**
+**Quyết định: Rework**, ngày 2026-11-17. Bản nộp được chốt theo kết quả `qc_report.py --guideline-gap 0`: lượt review đầu chỉ bắt được 6/12 bẫy, dưới ngưỡng 80%. Kết quả 12/12 sau sửa được giữ riêng, không thay đổi số đo ban đầu. Việc tái kiểm cùng 5 ảnh sau sửa chưa đủ để kết luận toàn bộ lô đạt chất lượng Release.
 
 Phần cần làm tiếp là kiểm lại trên mẫu độc lập hoặc mở rộng kiểm toàn lô theo v1.1, xem kỹ biên mask và ghi thời gian các vòng bổ sung. Kết quả đó sẽ là căn cứ để chốt chất lượng của bộ nhãn.
 

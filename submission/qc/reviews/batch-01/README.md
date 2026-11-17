@@ -42,4 +42,4 @@ Các vòng sửa tiếp được lưu riêng để đối chiếu. Bản review 
 
 ## Phần còn lại
 
-Hồ sơ này ghi lại thời điểm kết thúc lượt review đầu. Các bước bổ sung mask, calibration và sửa QC được lưu ở những vòng sau; bản cập nhật nằm tại [qc-02](../qc-02/README.md). File đáp án bẫy được script đọc sau khi xuất bản review đầu và vẫn giữ local.
+Hồ sơ này ghi lại thời điểm kết thúc lượt review đầu. Các bước bổ sung mask, calibration và sửa QC được lưu ở những vòng sau; bản cập nhật nằm tại [qc-02](../qc-02/README.md). File đáp án bẫy được script đọc sau khi xuất bản review đầu và được bổ sung vào repo khi chốt bản nộp Rework.

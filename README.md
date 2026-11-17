@@ -6,6 +6,8 @@
 
 **Kết quả hiện tại:** gold 4 ảnh/76 annotation, batch sau sửa QC 24 ảnh/492 annotation và 3 mask SAM. Thời gian chỉnh gold là 25 phút và review batch lượt đầu là 30 phút. Xem [trạng thái và các bước tiếp theo](BAT_DAU.md).
 
+**Trạng thái bản nộp: Rework.** Quyết định và giới hạn của số đo được ghi tại [REPORT.md](submission/REPORT.md), mục 7.
+
 Cấu hình máy này: [Mac M1 8 GB — môi trường và kết quả kiểm tra](SETUP_MAC_M1_8GB.md).
 
 <p align="center">
