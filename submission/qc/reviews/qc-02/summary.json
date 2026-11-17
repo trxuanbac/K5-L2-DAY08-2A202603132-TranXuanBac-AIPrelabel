@@ -1,0 +1,14 @@
+{
+  "task_id": 23,
+  "current_images": 24,
+  "current_annotations": 492,
+  "current_export_sha256": "7f20f835743b1dd3d68da46b5ae6ce704aa934f46548f19a9cc0eeb7e992e10e",
+  "qc_fixed_images": 12,
+  "qc_fixed_annotations": 297,
+  "known_errors_fixed": 8,
+  "withdrawn_false_positive": "img_006 box #69 unchanged; erratum retained in qc-01",
+  "first_human_review_minutes": 30,
+  "additional_human_minutes": null,
+  "first_trap_catch": "6/12",
+  "new_blind_review": false
+}

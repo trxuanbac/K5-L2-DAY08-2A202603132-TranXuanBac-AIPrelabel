@@ -1,0 +1,106 @@
+{
+  "unique_objects": 3,
+  "mask_count": 3,
+  "files": [
+    {
+      "file": "submission/masks/tuktuk_img013.jpg",
+      "sha256": "382a06ad77685bc61045ce00403ff2af9470e182093b48c9a5c044741251ddcd",
+      "width": 1024,
+      "height": 682,
+      "image": "img_013.jpg",
+      "model": "sam2.1_b.pt according to Colab command",
+      "source": "colab_outputs.zip",
+      "device": null,
+      "positive_clicks": [
+        "400,480",
+        "600,110"
+      ],
+      "negative_clicks": [
+        "720,300"
+      ],
+      "inference_only_seconds": null,
+      "mask_area_px": null
+    },
+    {
+      "image": "img_004.jpg",
+      "model": "sam2.1_t.pt",
+      "device": "cpu",
+      "positive_clicks": [
+        "740,416",
+        "634,253"
+      ],
+      "negative_clicks": [
+        "883,390"
+      ],
+      "command": [
+        "scripts/sam2_points.py",
+        "--image",
+        "img_004.jpg",
+        "--pos",
+        "740,416",
+        "--pos",
+        "634,253",
+        "--neg",
+        "883,390",
+        "--sam",
+        "sam2.1_t.pt",
+        "--device",
+        "cpu",
+        "--out",
+        "submission/masks",
+        "--name",
+        "tuktuk_img004"
+      ],
+      "command_wall_seconds": 5.776,
+      "file": "submission/masks/tuktuk_img004.jpg",
+      "mask_area_px": 94656,
+      "reported_image_percent": 13.6,
+      "polygons": 1,
+      "sha256": "48685ec1061bb2baa62e97de3a4f74098c20eb93a214eeaf0878f323b1c0f409",
+      "width": 1024,
+      "height": 682,
+      "inference_only_seconds": null
+    },
+    {
+      "image": "img_009.jpg",
+      "model": "sam2.1_t.pt",
+      "device": "cpu",
+      "positive_clicks": [
+        "224,735",
+        "369,736"
+      ],
+      "negative_clicks": [
+        "456,593"
+      ],
+      "command": [
+        "scripts/sam2_points.py",
+        "--image",
+        "img_009.jpg",
+        "--pos",
+        "224,735",
+        "--pos",
+        "369,736",
+        "--neg",
+        "456,593",
+        "--sam",
+        "sam2.1_t.pt",
+        "--device",
+        "cpu",
+        "--out",
+        "submission/masks",
+        "--name",
+        "motorbike_img009"
+      ],
+      "command_wall_seconds": 2.997,
+      "file": "submission/masks/motorbike_img009.jpg",
+      "mask_area_px": 20739,
+      "reported_image_percent": 3.0,
+      "polygons": 1,
+      "sha256": "b9577534006bb5ea6b0be4573ff4869fcc64f9df34441d13bacfc7029eaaeef1",
+      "width": 684,
+      "height": 1024,
+      "inference_only_seconds": null
+    }
+  ],
+  "note": "One Colab base mask plus two locally executed tiny masks. Command wall time includes process startup/model loading and is not inference-only sec_per_img."
+}

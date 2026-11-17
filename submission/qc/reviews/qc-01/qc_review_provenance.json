@@ -1,0 +1,22 @@
+{
+  "sample_file": "submission/qc/qc_sample.csv",
+  "source_file": "submission/release/final_det.coco.json",
+  "source_sha256": "4b4573d57e9c3aa62a74b1378714a86651c9f3bab5c19292c69b70822eea2b75",
+  "reviewer": "Codex",
+  "review_type": "assisted_visual_qc_not_independent_human_qc",
+  "images": 5,
+  "source_objects_in_sample": 98,
+  "reviewed_image_names": [
+    "img_003.jpg",
+    "img_006.jpg",
+    "img_014.jpg",
+    "img_031.jpg",
+    "img_035.jpg"
+  ],
+  "human_confirmation_pending": true,
+  "calibration_rows": 3,
+  "calibration_status": "proposal_pending_student_confirmation",
+  "guideline_gap_count": 1,
+  "labels_modified_in_this_qc": false,
+  "additional_human_time_minutes": null
+}

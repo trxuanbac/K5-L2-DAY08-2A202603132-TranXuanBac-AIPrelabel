@@ -1,0 +1,20 @@
+{
+  "sample_file": "submission/qc/qc_sample.csv",
+  "source_file": "submission/release/final_det.coco.json",
+  "source_sha256": "aa6b0733e38647cf496d4deec8b5ec926fed395ffde0d984e2201050b2e6408e",
+  "reviewer": "Codex",
+  "review_type": "same_sample_assisted_recheck_after_guided_fixes",
+  "images": 5,
+  "source_objects_in_sample": 100,
+  "known_errors_fixed": 8,
+  "observed_errors_after_recheck": 0,
+  "human_confirmation_pending": true,
+  "calibration_status": "student_confirmed",
+  "confirmed_calibration_cases": [
+    "CAL-01",
+    "CAL-02",
+    "CAL-03"
+  ],
+  "guideline_gap_count": 0,
+  "new_blind_review": false
+}

@@ -32,5 +32,13 @@
     "caught": 12,
     "total": 12,
     "after_answers_known": true
-  }
+  },
+  "annotations_after_qc_rework": 492,
+  "latest_export": "submission/qc/reviews/qc-02/corrected.coco.json",
+  "latest_export_sha256": "7f20f835743b1dd3d68da46b5ae6ce704aa934f46548f19a9cc0eeb7e992e10e",
+  "taxonomy_version": "v1.1",
+  "assisted_qc_completed": true,
+  "known_qc_errors_fixed": 8,
+  "qc_recheck_source": "submission/qc/reviews/qc-02/README.md",
+  "release_decision_confirmed": false
 }

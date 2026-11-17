@@ -1,0 +1,10 @@
+image,object_id,error_type,reviewer,note
+img_003.jpg,11,sai_vi_tri_kich_thuoc,Codex,Box xe ba bánh cắt mất phần mui ở trên và bên trái; v1.0 mục 2 tính cả khung/mui gắn liền xe.
+img_003.jpg,12,sai_lop,Codex,Xe tải thùng phía xa bị gán three_wheeler; hình xe tải nhìn rõ khi phóng vùng nền.
+img_003.jpg,13,sai_lop,Codex,"Xe có cabin phía xa bị gán three_wheeler; ảnh không cho thấy đặc điểm xe ba bánh. Cần phân loại lại, không chấp nhận nhãn hiện tại."
+img_003.jpg,14,sai_lop,Codex,Box three_wheeler nằm trên xe hai bánh đỗ cạnh lề; cùng vùng đã có box motorbike #19. Cần xử lý nhãn sai/trùng.
+img_003.jpg,,bo_sot,Codex,"Thiếu bicycle người đội nón đứng dắt bên phải nền ảnh, khoảng x=548..578 y=246..324; xe và người phải có box riêng."
+img_006.jpg,,bo_sot,Codex,"Thiếu person quay lưng áo họa tiết ở cạnh bàn bên phải, khoảng x=830..889 y=474..579; người này khác trẻ áo xanh và người mặc áo đen."
+img_014.jpg,,khong,Codex,Đối chiếu 18 box với ảnh gốc theo v1.0; không ghi nhận lỗi rõ trong lượt QC hỗ trợ này. Không phải bảo đảm toàn bộ ảnh sạch lỗi.
+img_031.jpg,419,sai_vi_tri_kich_thuoc,Codex,"Box bicycle bắt đầu ở x=215.5, cắt mất phần khung/giỏ chở hàng gắn với xe ở bên trái, khoảng x=140..215; v1.0 mục 5 tính giỏ gắn cố định vào box xe."
+img_035.jpg,,bo_sot,Codex,"Thiếu motorbike ở xa phía phải người đi xe máy đen, khoảng x=917..950 y=453..489; vật nhìn thấy đủ lớn, cao trên 20 px."

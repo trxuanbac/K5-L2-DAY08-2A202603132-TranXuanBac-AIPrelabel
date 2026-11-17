@@ -1,17 +1,18 @@
 {
- "taxonomy_version": "v1.0",
+ "taxonomy_version": "v1.1",
  "images": 24,
- "objects": 490,
+ "objects": 492,
  "per_class": {
-  "person": 265,
-  "motorbike": 136,
-  "three_wheeler": 26,
-  "bicycle": 6,
+  "person": 266,
+  "bicycle": 7,
+  "three_wheeler": 23,
+  "motorbike": 137,
+  "truck": 7,
   "car": 48,
-  "truck": 5,
   "bus": 4
  },
  "images_replaced_by_qc_fix": [
+  "img_003.jpg",
   "img_006.jpg",
   "img_013.jpg",
   "img_018.jpg",
@@ -19,6 +20,7 @@
   "img_024.jpg",
   "img_025.jpg",
   "img_027.jpg",
+  "img_031.jpg",
   "img_033.jpg",
   "img_034.jpg",
   "img_035.jpg"

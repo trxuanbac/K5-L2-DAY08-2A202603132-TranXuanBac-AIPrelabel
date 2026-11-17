@@ -1,0 +1,19 @@
+{
+  "withdrawn_finding": {
+    "image": "img_006.jpg",
+    "object_id": "69",
+    "error_type": "sai_vi_tri_kich_thuoc"
+  },
+  "reason": "Phóng vùng gốc 825,490..954,682: box #69 ôm đúng phần nhìn thấy của trẻ áo xanh. Nhận xét ban đầu đã nhầm phần người/ghế. Không thay đổi box này.",
+  "original_preliminary_errors": 9,
+  "corrected_pre_rework_errors": 8,
+  "images_with_errors": 4,
+  "evidence_file": "erratum-child.jpg",
+  "crop_xyxy": [
+    825,
+    490,
+    954,
+    682
+  ],
+  "display_scale": 4
+}

@@ -1,6 +1,6 @@
 # Day 08 — trạng thái của Trần Xuân Bắc
 
-Ngày 2026-11-17: đã xuất gold **4 ảnh/76 annotation**, thời gian học viên báo **25 phút**. Lượt review đầu của job 23 có **24 ảnh/500 annotation**, **30 phút**, bắt **6/12 bẫy (50%)**. Đã sửa bổ sung trong [job 23](http://localhost:8080/tasks/23/jobs/23): hiện có **24 ảnh/490 annotation**, không còn cảnh báo box dưới 20 px, script đối chiếu bẫy sau sửa ghi **12/12**. Kết quả lượt đầu vẫn giữ nguyên. Chưa có QC hình ảnh hoặc quyết định chất lượng cuối.
+Ngày 2026-11-17: gold **4 ảnh/76 annotation**, 25 phút học viên cung cấp. Lượt review đầu: **24 ảnh/500 annotation**, 30 phút, bắt **6/12 bẫy**. Đã sửa bẫy và 8 lỗi QC; [job 23](http://localhost:8080/tasks/23/jobs/23) hiện có **24 ảnh/492 annotation**. Đã có **3/3 mask SAM**, học viên đã chốt **3 ca calibration v1.1**. Tái kiểm cùng 5 ảnh sau sửa không ghi nhận lỗi rõ mới; script vẫn gợi ý Rework vì giữ nguyên số đo review đầu. Báo cáo kỹ thuật chờ học viên đọc và chốt nộp.
 
 ## 1. Mở nhãn trong CVAT
 
@@ -11,6 +11,7 @@ Ngày 2026-11-17: đã xuất gold **4 ảnh/76 annotation**, thời gian học 
 | Batch để review, từ Colab | [pre_traps_import.coco.json](submission/prelabel/pre_traps_import.coco.json) | 24 | 532 | [Mở job 23](http://localhost:8080/tasks/23/jobs/23) |
 | Batch sau lượt review đầu | [batch_reviewed.json](submission/labels/batch_reviewed.json) | 24 | 500 | [Mở job 23](http://localhost:8080/tasks/23/jobs/23) |
 | Batch hiện tại sau sửa bổ sung | [corrected.coco.json](submission/qc/reviews/batch-02/corrected.coco.json) | 24 | 490 | [Mở job 23](http://localhost:8080/tasks/23/jobs/23) |
+| Batch hiện tại sau sửa QC | [final_det.coco.json](submission/release/final_det.coco.json) | 24 | 492 | [Mở job 23](http://localhost:8080/tasks/23/jobs/23) |
 
 Project: [day08-2A202603132](http://localhost:8080/projects/3). Task 21 hiện tên `gold-draft`; task 22 tên `batch-review`. Mỗi task có một job. Lần nhập nháp ban đầu được lưu tại [kết quả nhập nhãn](cvat/annotation_drafts.json). Bản gold hiện tại: [hồ sơ review và export](submission/qc/reviews/gold-01/README.md).
 
@@ -25,15 +26,15 @@ Project: [day08-2A202603132](http://localhost:8080/projects/3). Task 21 hiện t
 - Lần nhập nháp ban đầu: 58 + 385 = 443 annotation. Sau lượt học viên chỉnh sửa, job 21 có 83 annotation; review bỏ 7 box dưới 20 px và xuất bản 76 annotation. Đã kiểm tra file khớp với CVAT; validator không còn lỗi hoặc cảnh báo kích thước.
 - Đã ghi 25 phút do học viên cung cấp vào `submission/time_log.csv`. Bản nháp gốc và bản 83 annotation trước review được giữ để đối chiếu.
 - Đã xuất lượt review batch đầu từ job 23, kiểm tra đủ 24 ảnh/500 annotation và đối chiếu với annotation hiện lưu trong CVAT. Ghi 30 phút do học viên cung cấp; [hồ sơ export và số đo](submission/qc/reviews/batch-01/README.md). Validator không có lỗi cấu trúc; còn 10 cảnh báo box nhỏ.
-- Sau đó đã sửa các bẫy còn lọt và bỏ 10 box dưới 20 px; giữ các thay đổi học viên vừa lưu. Bản hiện tại có 490 annotation. Lưu `qc_fixed.json` cho 10 ảnh thay đổi và [hồ sơ sau sửa](submission/qc/reviews/batch-02/README.md). Script kiểm bẫy ghi 12/12 sau sửa, tách riêng khỏi số đo 6/12 đầu tiên.
+- Sau đó đã sửa bẫy và bỏ 10 box dưới 20 px, tạo bản 490 annotation ở [batch-02](submission/qc/reviews/batch-02/README.md). Sau lượt QC đã sửa thêm 8 lỗi, tạo bản hiện tại 492 annotation và `qc_fixed.json` cho 12 ảnh. Xem [QC sau sửa](submission/qc/reviews/qc-02/README.md). Số đo review đầu 6/12 vẫn giữ nguyên.
 
 Ảnh overlay dùng để kiểm tra nằm trong `work/gold-refined-viz/` và `work/batch-refined-viz/` trên máy này.
 
 ## 3. Việc tiếp theo
 
-1. Part 5: tạo mask click SAM cho 3 vật. Mục 7 của notebook chỉ có ví dụ 1 vật; cần bổ sung 2 vật khác rồi tải `colab_outputs.zip` ở mục 8.
-2. Calibration: học viên chọn ít nhất 3 ca, viết quyết định và phần guideline v1.1 bổ sung; giữ số đo review đầu 6/12 để phân tích. Sửa sau khi biết kết quả không phải lượt review mù ban đầu.
-3. QC: đã tạo 5 ảnh mẫu tại `work/qc/review/` và phiếu `submission/qc/qc_review.csv`, chưa điền. Bản ứng viên `submission/release/final_det.coco.json` khớp bản CVAT sau sửa, 24 ảnh/490 annotation. Học viên cần kiểm ảnh và tự quyết định chất lượng cuối.
+1. Part 5 đã có đủ ba vật: img_013 (SAM base, Colab), img_004 và img_009 (SAM tiny, local CPU). Xem `submission/masks/` và `submission/qc/sam_clicks/`; học viên cần đối chiếu các nhận xét về người/hàng hóa lẫn vào mask.
+2. Calibration đã được học viên chốt CAL-01–03; taxonomy v1.1, mục rules giữ nguyên. Học viên cần đọc lại bản guideline đã xác nhận và phần giải thích trong báo cáo.
+3. QC trước sửa ghi 8/98 lỗi sau đính chính, 4/5 ảnh có lỗi; đã xử lý 8 lỗi theo yêu cầu. Tái kiểm cùng 5 ảnh/100 đối tượng không ghi nhận lỗi rõ mới. Script vẫn gợi ý Rework do 6/12 bẫy ở lượt đầu; đây không phải kiểm độc lập hoặc chứng minh toàn bộ 24 ảnh sạch lỗi.
 4. Đã có `gold_manual.json` và `batch_reviewed.json`. Gold đã có bản nháp trước lượt chỉnh sửa, nên cần giữ giới hạn này khi diễn giải số đo. Báo cáo và kết quả tóm tắt còn các mục cần học viên phân tích.
 5. Khi hoàn tất bài, chạy `validate_labels.py --all` và `check_submission.py` trước khi nộp.
 

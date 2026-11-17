@@ -1,0 +1,12 @@
+{
+  "case_ids": [
+    "CAL-01",
+    "CAL-02",
+    "CAL-03"
+  ],
+  "confirmed_by": "Trần Xuân Bắc",
+  "confirmation": "Chốt cả 3 đề xuất",
+  "taxonomy_version": "v1.1",
+  "rules_changed": false,
+  "new_label_edits_applied": false
+}

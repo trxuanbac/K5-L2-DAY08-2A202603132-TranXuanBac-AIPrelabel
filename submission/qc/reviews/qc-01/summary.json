@@ -1,0 +1,22 @@
+{
+  "source": "submission/release/final_det.coco.json",
+  "source_sha256": "4b4573d57e9c3aa62a74b1378714a86651c9f3bab5c19292c69b70822eea2b75",
+  "sample_images": 5,
+  "sample_objects": 98,
+  "error_rows": 9,
+  "unique_error_objects": 9,
+  "images_with_errors": 4,
+  "error_counts": {
+    "bo_sot": 3,
+    "sai_lop": 3,
+    "sai_vi_tri_kich_thuoc": 3
+  },
+  "reviewer": "Codex",
+  "human_confirmation_pending": true,
+  "guideline_gap_count": 1,
+  "script_arguments": [
+    "--guideline-gap",
+    "1"
+  ],
+  "labels_changed": false
+}

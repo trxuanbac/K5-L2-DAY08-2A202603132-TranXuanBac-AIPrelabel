@@ -1,12 +1,24 @@
-# Mask SAM nhận từ Colab
+# Mask SAM cho ba vật
+
+Hiện đã có **3/3 ảnh mask cho ba vật**: một ảnh dùng SAM 2.1 base trên Colab và hai ảnh bổ sung dùng SAM 2.1 tiny chạy local CPU. Cấu hình, diện tích do model trả và checksum tại `completion_manifest.json`.
+
+| Vật | Model/nguồn | Click | Quan sát |
+|---|---|---|---|
+| Tuk-tuk img_013 | `sam2.1_b.pt` theo ô lệnh Colab | 2 dương + 1 âm | Còn dính người lái/người áo sọc và một phần xe máy bên phải. |
+| Tuk-tuk img_004 | `sam2.1_t.pt`, local CPU | 2 dương + 1 âm | Tạo mask 94.656 px, 1 polygon; người áo xanh ở click âm nằm ngoài vùng tô. Còn cần kiểm biên kính và đồ trong xe. |
+| Xe máy chở hàng img_009 | `sam2.1_t.pt`, local CPU | 2 dương + 1 âm | Tạo mask 20.739 px, 1 polygon; loại vùng chuối ở click âm, nhưng còn thiếu tay lái/giỏ gắn xe. |
+
+Thời gian toàn lệnh của hai lượt local lần lượt 5,776 và 2,997 giây, gồm khởi động Python/nạp model; không ghi các số này thành `sec_per_img` inference. Không có mask ground truth để chấm IoU; ảnh overlay dùng để quan sát lỗi theo yêu cầu Part 5.
+
+## ZIP Colab ban đầu
 
 Đã kiểm tra `colab_outputs.zip` tải về ngày 2026-11-17: ZIP không lỗi, có **1/3 ảnh mask** dự kiến. Chỉ đưa ảnh mask vào `submission/masks/`; kết quả model và nhãn máy còn lại trong ZIP được giữ riêng ở `work/colab-outputs-20261117/`, không ghi đè nhãn đã sửa hoặc bản ứng viên 490 annotation.
 
 | File | Tình trạng |
 |---|---|
 | `submission/masks/tuktuk_img013.jpg` | Có, ảnh JPEG 1024 × 682, xem checksum trong `import_manifest.json`. |
-| `submission/masks/tuktuk_img004.jpg` | Chưa có trong ZIP đã nhận. |
-| `submission/masks/motorbike_img009.jpg` | Chưa có trong ZIP đã nhận. |
+| `submission/masks/tuktuk_img004.jpg` | Không có trong ZIP; sau đó đã tạo bằng SAM tiny local CPU. |
+| `submission/masks/motorbike_img009.jpg` | Không có trong ZIP; sau đó đã tạo bằng SAM tiny local CPU. |
 
 ## Quan sát ảnh 013
 
@@ -16,6 +28,6 @@ Vùng tô phủ phần lớn mui, thân và bánh xe tuk-tuk. Tuy nhiên còn t�
 
 Script click không ghi nhật ký riêng vào `work/runs.csv`, nên không có thời gian chạy hoặc thiết bị được xác nhận cho lượt click này. Không dùng thời gian của lượt tour box → mask để thay thế.
 
-## Việc còn lại
+## Đối chiếu trước khi nộp
 
-Chạy thêm hai lệnh click cho ảnh 004 và 009 trong Colab, kiểm tra chúng tạo ra file, rồi đóng gói thư mục `submission/masks/` để tải về. Part 5 chưa đủ ba vật để đánh dấu hoàn tất.
+Đã có đủ ba vật và ba ảnh kết quả. Học viên cần xem lại các quan sát để giải thích được giới hạn của mask, nhất là trường hợp người lẫn trong xe và hàng rời che xe; không ghi các ảnh này là mask đã qua chấm độc lập.

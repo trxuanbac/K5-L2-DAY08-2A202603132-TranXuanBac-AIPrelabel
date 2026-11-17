@@ -1,5 +1,7 @@
 # Sửa bổ sung sau lượt review đầu
 
+Đây là bản 490 annotation trước vòng sửa QC. Bản mới nhất 492 annotation nằm tại [qc-02](../qc-02/README.md); hồ sơ và số đo trong thư mục này được giữ nguyên để đối chiếu.
+
 Đã đối chiếu ảnh gốc và lưu các sửa đổi trong CVAT job 23. Bản hiện tại có **24 ảnh/490 annotation**, xuất tại [corrected.coco.json](corrected.coco.json). Bản sửa cho 10 ảnh nằm trong `submission/labels/qc_fixed.json`; các ảnh còn lại dùng bản review đầu khi chạy `build_release.py`.
 
 ## Thay đổi

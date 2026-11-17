@@ -1,0 +1,28 @@
+{
+  "task_id": 23,
+  "before": 490,
+  "after": 492,
+  "updated_ids": [
+    3004,
+    3005,
+    3007,
+    3436
+  ],
+  "deleted_ids": [
+    3002
+  ],
+  "created_ids": [
+    3521,
+    3522,
+    3523
+  ],
+  "unaffected_annotations_verified": 485,
+  "affected_images": [
+    "img_003.jpg",
+    "img_006.jpg",
+    "img_031.jpg",
+    "img_035.jpg"
+  ],
+  "first_review_score_preserved": "6/12",
+  "additional_human_review_minutes": null
+}
