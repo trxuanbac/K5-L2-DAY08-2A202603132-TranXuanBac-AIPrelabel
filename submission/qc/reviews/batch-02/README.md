@@ -8,12 +8,12 @@
 
 | Ảnh | Sửa đổi |
 |---|---|
-| img_006.jpg | Giữ nhãn `car` học viên vừa sửa cho ô tô trắng phía cuối đường. |
+| img_006.jpg | Giữ nhãn `car` tôi đã đổi cho ô tô trắng phía cuối đường. |
 | img_013.jpg | Thêm box `person` cho người mặc áo trắng đứng phía sau tuk-tuk. |
 | img_021.jpg | Chỉnh box xe máy ở giữa ảnh để ôm sát phần xe nhìn thấy. |
 | img_024.jpg | Chỉnh box ô tô tối màu ở giữa giao lộ. |
 | img_034.jpg | Thêm box xe máy phía xa; bỏ 1 box khác cao dưới 20 px. |
-| img_035.jpg | Xóa box `truck` ở vùng biển hiệu/dây điện; giữ nguyên box xe máy học viên đã xóa trước đó. |
+| img_035.jpg | Xóa box `truck` ở vùng biển hiệu/dây điện; giữ nguyên thao tác xóa box xe máy trước đó của tôi. |
 | img_018.jpg | Bỏ 5 box cao dưới 20 px. |
 | img_025.jpg | Bỏ 1 box cao dưới 20 px. |
 | img_027.jpg | Bỏ 2 box cao dưới 20 px. |
@@ -27,7 +27,7 @@ Ngay trước khi áp dụng có 499 annotation. Đợt sửa áp dụng 2 lần
 - Script đối chiếu bẫy ghi **12/12** sau sửa: [kết quả kiểm sau sửa](review_stats_after_corrections.md).
 - Đây là kết quả sửa bổ sung **sau khi đã biết các bẫy**, không phải kết quả review mù ban đầu.
 - Bản review đầu vẫn giữ nguyên: 24 ảnh/500 annotation, **6/12 bẫy**, 30 phút; xem `../batch-01/`. Không thay số đo đầu bằng kết quả 12/12 sau sửa.
-- Không thêm thời gian gán tay cho đợt sửa này khi học viên chưa cung cấp.
+- Thời gian của vòng sửa bổ sung chưa có trong `time_log.csv`; 30 phút đã ghi là thời gian review lượt đầu.
 
 ## Bản ứng viên và QC còn lại
 

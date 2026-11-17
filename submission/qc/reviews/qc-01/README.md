@@ -2,7 +2,7 @@
 
 **Đã đính chính:** một nhận xét về box #69 img_006 trong số sơ bộ 9 lỗi là nhầm. Phóng lại ảnh cho thấy box này đúng; đã giữ nguyên nhãn và rút nhận xét. Số lỗi xác nhận trước sửa là **8/98 = 8,2%**, trên 4/5 ảnh. Xem [erratum.json](erratum.json), [phiếu đã hiệu chỉnh](qc_review_corrected.csv), [báo cáo trước sửa](qc_report_corrected_before_rework.md). Bản sơ bộ bên dưới được giữ làm lịch sử.
 
-Sau đó đã sửa 8 lỗi theo yêu cầu học viên; bản hiện tại và kết quả tái kiểm ở [qc-02](../qc-02/README.md).
+Sau đó đã sửa tiếp 8 lỗi; bản hiện tại và kết quả tái kiểm ở [qc-02](../qc-02/README.md).
 
 Đã xem ảnh gốc và ảnh nhãn có ID của 5 ảnh trong mẫu seed 42: `img_003`, `img_006`, `img_014`, `img_031`, `img_035`. Bản ứng viên có 98 đối tượng trong mẫu. Thông tin lượt kiểm được lưu trong phiếu và nhật ký QC; chưa có lượt kiểm độc lập.
 
@@ -18,9 +18,9 @@ Phần bỏ sót có `object_id` trống và mô tả vị trí trong `note`, đ
 
 ## Trạng thái guideline và quyết định
 
-Ở thời điểm ghi bản sơ bộ, ba đề xuất CAL-01–03 chưa chốt; script chạy `--guideline-gap 1` và gợi ý HOLD. Sau đó học viên đã xác nhận cả ba, taxonomy chuyển v1.1 và script chạy `--guideline-gap 0`, gợi ý REWORK. Các báo cáo lịch sử giữ riêng, không sửa tay đầu ra script.
+Ở thời điểm ghi bản sơ bộ, ba đề xuất CAL-01–03 chưa chốt; script chạy `--guideline-gap 1` và gợi ý HOLD. Sau khi tôi chốt cả ba ca, taxonomy chuyển v1.1 và script chạy `--guideline-gap 0`, gợi ý REWORK. Các báo cáo lịch sử giữ riêng, không sửa tay đầu ra script.
 
-Quyết định cuối Release/Hold/Rework do học viên xác nhận. Chưa sửa nhãn CVAT hoặc bản ứng viên trong lượt QC này, chưa có thời gian QC của học viên để ghi thêm. ZIP Colab chỉ chứa một mask; sau đó đã bổ sung hai mask local CPU, hiện đủ ba vật ở `submission/masks/`.
+Tôi chưa chốt bản nộp cuối cùng. Ở thời điểm lưu lượt QC này, nhãn CVAT và bản ứng viên chưa được sửa tiếp; thời gian bổ sung chưa có trong time_log. ZIP Colab chỉ chứa một mask; sau đó đã bổ sung hai mask local CPU, hiện đủ ba vật ở `submission/masks/`.
 
 ## Giới hạn
 

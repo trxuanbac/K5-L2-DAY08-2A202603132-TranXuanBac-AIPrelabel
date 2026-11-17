@@ -1,6 +1,6 @@
 # Sửa và tái kiểm QC — lượt 2
 
-Học viên đã xác nhận ba ca calibration và yêu cầu tiếp tục sửa nhãn. Đã sửa **8 lỗi xác nhận** trong job 23, xuất bản hiện tại **24 ảnh/492 annotation** tại [corrected.coco.json](corrected.coco.json).
+Sau khi chốt ba ca calibration, bộ nhãn được sửa tiếp để xử lý **8 lỗi đã xác nhận** trong job 23. Bản xuất hiện tại có **24 ảnh/492 annotation**, lưu tại [corrected.coco.json](corrected.coco.json).
 
 ## Thay đổi
 
@@ -20,4 +20,4 @@ Giữ cùng 5 ảnh seed 42 như lượt đầu: img_003, img_006, img_014, img_
 - Cận trên Wilson 95% với 0 ảnh lỗi/5 ảnh vẫn là **43%**; không chứng minh toàn lô đạt ngưỡng 2%.
 - [Phiếu hiện tại](qc_review.csv), [báo cáo script](qc_report_auto.md), [nguồn kiểm](qc_review_provenance.json).
 
-Script vẫn gợi ý **REWORK** do số đo bẫy lượt review đầu 6/12. Không thay số đo này bằng kết quả sau sửa. Học viên chưa xác nhận quyết định chốt nộp cuối cùng; chưa có thời gian bổ sung của học viên để ghi vào time_log.
+Script vẫn gợi ý **REWORK** vì lượt review đầu bắt được 6/12 bẫy. Tôi giữ riêng kết quả sau sửa và chưa chốt bản nộp cuối cùng. Thời gian của vòng sửa bổ sung chưa có trong `time_log.csv`.

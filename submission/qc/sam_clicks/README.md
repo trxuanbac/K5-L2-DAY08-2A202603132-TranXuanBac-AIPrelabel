@@ -30,4 +30,4 @@ Script click không ghi nhật ký riêng vào `work/runs.csv`, nên không có 
 
 ## Đối chiếu trước khi nộp
 
-Đã có đủ ba vật và ba ảnh kết quả. Học viên cần xem lại các quan sát để giải thích được giới hạn của mask, nhất là trường hợp người lẫn trong xe và hàng rời che xe; không ghi các ảnh này là mask đã qua chấm độc lập.
+Đã có đủ ba vật và ba ảnh kết quả. Các ảnh cho thấy rõ giới hạn khi người lẫn trong xe hoặc hàng rời che xe. Những nhận xét này dựa trên overlay, chưa có mask ground truth để chấm độc lập.

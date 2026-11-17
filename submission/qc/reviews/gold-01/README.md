@@ -1,6 +1,6 @@
 # Review và export gold — job 21
 
-Ngày 2026-11-17. Học viên báo đã hoàn tất 4 ảnh trong job 21, thời gian 25 phút; ghi vào `submission/time_log.csv`, tương đương 6,25 phút/ảnh.
+Ngày 2026-11-17, tôi dành 25 phút chỉnh sửa 4 ảnh trong job 21, tương đương 6,25 phút/ảnh. Thời gian được ghi trong `submission/time_log.csv`.
 
 ## Kết quả
 
@@ -35,4 +35,4 @@ ID và tọa độ CVAT của các box đã bỏ nằm trong [size_review.json](
 - `validate_labels.py --all`: đạt với các file chuẩn hiện có. Batch cuối chưa được xuất.
 - Tóm tắt số lượng và checksum: [export_summary.json](export_summary.json).
 
-Đây là kiểm tra cho bước export gold, chưa phải QC cuối của toàn bộ batch. Task đã có nhãn nháp trước lượt học viên chỉnh sửa; cần giữ giới hạn đó khi sử dụng gold để đo model.
+Đây là kiểm tra cho bước export gold, chưa phải QC cuối của toàn bộ batch. Task đã có nhãn nháp trước khi tôi chỉnh sửa; cần giữ giới hạn đó khi sử dụng gold để đo model.

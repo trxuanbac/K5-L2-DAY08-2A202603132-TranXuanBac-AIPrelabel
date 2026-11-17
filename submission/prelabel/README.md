@@ -1,6 +1,6 @@
 # Part 4 — bộ nhãn đầu vào để review
 
-- Học viên: Trần Xuân Bắc, `2A202603132`.
+- Bài làm: Trần Xuân Bắc, `2A202603132`.
 - Nguồn: `colab_stage1.zip`; log và checksum ở `../qc/colab_stage1/`.
 - YOLO26m + YOLOE-26s, chạy trên Colab bằng CPU theo nhật ký.
 - Gộp: ưu tiên YOLOE; `three_wheeler=0.15`, các lớp khác `0.3`, IoU `0.6`.
@@ -10,7 +10,7 @@
 - Job: http://localhost:8080/tasks/23/jobs/23. Ảnh đầu `img_003.jpg` có 26 box lúc nhập.
 - Hồ sơ nhập và đối chiếu tọa độ/nhãn: `../../cvat/colab_review.json`.
 
-Đã xuất lượt review đầu thành `submission/labels/batch_reviewed.json`: 24 ảnh/500 annotation. Học viên báo 30 phút. Số đo được tạo sau export: bắt 6/12 bẫy; xem `submission/qc/reviews/batch-01/README.md`. Chưa hoàn tất QC nội dung hoặc quyết định chất lượng cuối.
+Đã xuất lượt review đầu thành `submission/labels/batch_reviewed.json`: 24 ảnh/500 annotation. Tôi hoàn thành lượt review đầu trong 30 phút. Số đo được tạo sau export: bắt 6/12 bẫy; xem `submission/qc/reviews/batch-01/README.md`. Chưa hoàn tất QC nội dung hoặc quyết định chất lượng cuối.
 
 Đã có bản sửa bổ sung 24 ảnh/490 annotation ở `submission/qc/reviews/batch-02/`, cùng `submission/labels/qc_fixed.json` cho 10 ảnh thay đổi. Job 23 hiện dùng bản đã sửa; `batch_reviewed.json` và số đo lượt đầu giữ nguyên. Script kiểm bẫy sau sửa ghi 12/12; đây là kiểm sau khi đã biết kết quả bẫy.
 

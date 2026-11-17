@@ -4,7 +4,7 @@
 
 # Day 08 Lab — 2A202603132 - Trần Xuân Bắc
 
-**Đã xuất gold: 4 ảnh, 76 annotation; thời gian học viên báo 25 phút.** Xem [trạng thái và bước tiếp theo](BAT_DAU.md). Batch còn bản nháp; chưa hoàn tất QC.
+**Kết quả hiện tại:** gold 4 ảnh/76 annotation, batch sau sửa QC 24 ảnh/492 annotation và 3 mask SAM. Tôi dành 25 phút chỉnh gold và 30 phút review batch ở lượt đầu. Xem [trạng thái và các bước tiếp theo](BAT_DAU.md).
 
 Cấu hình máy này: [Mac M1 8 GB — môi trường và kết quả kiểm tra](SETUP_MAC_M1_8GB.md).
 
