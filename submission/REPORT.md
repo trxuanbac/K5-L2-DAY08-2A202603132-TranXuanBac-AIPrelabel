@@ -1,4 +1,4 @@
-# Báo cáo Day 08 — <<MSHV - Họ và tên>>
+# Báo cáo Day 08 — 2A202603132 - Trần Xuân Bắc
 
 > Một file duy nhất cho cả bài (đã gộp recipe, QC và ghi chú cá nhân). Mọi con số kèm **mẫu số** và nguồn (file nào). Viết bằng lời của bạn.
 
@@ -69,9 +69,9 @@ Nếu Rework / Hold, việc cần làm tiếp: <<>>
 
 ## 8. Ghi chú cá nhân
 
-- **Dùng AI để làm bài** (công cụ nào, việc gì, kiểm tra thế nào; "không dùng" nếu không): <<>>
+- **Dùng AI để làm bài:** Codex hỗ trợ đọc yêu cầu, tạo repo local, cài thư viện nhẹ và chuẩn bị project/task CVAT. Đối chiếu cấu hình với `submission/taxonomy.json`, `data/split.csv` và chạy kiểm tra môi trường. Học viên cần kiểm tra bộ nhãn và task trong CVAT. Chưa dùng AI xem/gán ảnh gold; chưa chạy model, tạo số đo hay viết kết luận thay học viên.
 - Gold có bị nhiễm không (bạn có nhìn pre-label hay hỏi AI trước khi gán xong)? <<không / có, như sau: ...>>
-- Máy / GPU / CVAT dùng; vướng mắc cài đặt: <<>>
+- Máy / GPU / CVAT dùng; vướng mắc cài đặt: macOS arm64, RAM 8 GB, Python 3.13.17; CVAT Docker 2.82.1 đã có sẵn. Chuẩn bị môi trường local nhẹ; model dự kiến chạy bằng notebook Colab, chưa có lần chạy.
 - Dùng cache `data/cache/` thay vì tự chạy? <<không / có, vì ...>>
 - Lỗi / bug script đã gặp (nếu có): <<>>
 - Một điều bạn làm khác lần sau: <<>>

@@ -1,13 +1,13 @@
 # Thông tin học viên
 
-- Họ và tên: <<>>
-- MSHV: <<>>
-- Lớp (L2 / L3 / khác): <<>>
-- Tài khoản GitHub: <<>>
-- Repo bài nộp (URL): <<>>
-- Commit chốt bài (hash): <<>>
-- Máy: <<hệ điều hành, GPU (CUDA / MPS / không có)>>
-- CVAT (Docker): <<phiên bản, ví dụ v2.81.0>>
+- Họ và tên: Trần Xuân Bắc
+- MSHV: 2A202603132
+- Lớp (L2 / L3 / khác): L2 (theo tên hồ sơ Day 06; cần học viên xác nhận)
+- Tài khoản GitHub: trxuanbac
+- Repo bài nộp (URL): Chưa tạo/push lên GitHub trong phiên chuẩn bị này. Đích dự kiến: `trxuanbac/K5-L23-DAY08-2A202603132-TranXuanBac-AIPrelabel`.
+- Commit chốt bài (hash): Chưa chốt; đang chuẩn bị Part 0–1.
+- Máy: macOS, Apple Silicon arm64, RAM 8 GB; Python 3.13.17. Dự kiến chạy model trên Colab; chưa xác nhận phiên GPU Colab.
+- CVAT (Docker): 2.82.1, bản local đang có tại http://localhost:8080 (đề minh họa bản 2.81.0).
 
 ## Kết quả tóm tắt (điền cuối bài; số lấy từ `submission/qc/*`, kèm mẫu số)
 

@@ -1,0 +1,75 @@
+{
+  "checked_on": "2026-11-17",
+  "cvat_version": "2.82.1",
+  "project_id": 3,
+  "project_url": "http://localhost:8080/projects/3",
+  "tasks": {
+    "gold-manual": {
+      "task_id": 21,
+      "task_url": "http://localhost:8080/tasks/21",
+      "images": [
+        "img_001.jpg",
+        "img_012.jpg",
+        "img_020.jpg",
+        "img_036.jpg"
+      ],
+      "image_count": 4,
+      "job_id": 21,
+      "job_url": "http://localhost:8080/tasks/21/jobs/21",
+      "annotations_at_preparation": {
+        "shapes": 0,
+        "tracks": 0,
+        "tags": 0
+      }
+    },
+    "batch-review": {
+      "task_id": 22,
+      "task_url": "http://localhost:8080/tasks/22",
+      "images": [
+        "img_003.jpg",
+        "img_004.jpg",
+        "img_005.jpg",
+        "img_006.jpg",
+        "img_008.jpg",
+        "img_009.jpg",
+        "img_010.jpg",
+        "img_013.jpg",
+        "img_014.jpg",
+        "img_017.jpg",
+        "img_018.jpg",
+        "img_021.jpg",
+        "img_022.jpg",
+        "img_023.jpg",
+        "img_024.jpg",
+        "img_025.jpg",
+        "img_026.jpg",
+        "img_027.jpg",
+        "img_028.jpg",
+        "img_029.jpg",
+        "img_031.jpg",
+        "img_033.jpg",
+        "img_034.jpg",
+        "img_035.jpg"
+      ],
+      "image_count": 24,
+      "job_id": 22,
+      "job_url": "http://localhost:8080/tasks/22/jobs/22",
+      "annotations_at_preparation": {
+        "shapes": 0,
+        "tracks": 0,
+        "tags": 0
+      }
+    }
+  },
+  "label_contract_verified": true,
+  "labels": [
+    "person",
+    "bicycle",
+    "motorbike",
+    "car",
+    "bus",
+    "truck",
+    "three_wheeler",
+    "ignore_region"
+  ]
+}
