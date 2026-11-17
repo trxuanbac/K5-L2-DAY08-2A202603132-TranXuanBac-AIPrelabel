@@ -16,5 +16,11 @@
     21,
     22
   ],
-  "review_completed": false
+  "review_completed": true,
+  "review_time_minutes": 30,
+  "export_file": "submission/labels/batch_reviewed.json",
+  "review_export_sha256": "9052f70bced0fbbc7608180f4e504800a27d7765f01d405147d9260782856fcc",
+  "annotations_after_review": 500,
+  "review_stats": "submission/qc/review_stats.json",
+  "formal_qc_completed": false
 }

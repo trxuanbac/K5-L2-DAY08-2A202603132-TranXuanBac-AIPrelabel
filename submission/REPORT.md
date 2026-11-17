@@ -19,22 +19,24 @@
 
 | Trạng thái | Số | Tỉ lệ | Mẫu số |
 |---|---|---|---|
-| accepted | <<>> | <<>> | <<box máy>> |
-| edited | <<>> | <<>> | <<>> |
-| deleted | <<>> | <<>> | <<>> |
-| added | <<>> | <<>> | <<đối tượng sau duyệt>> |
+| accepted | 467 | 89,8% | 520 box máy |
+| edited | 10 | 1,9% | 520 box máy |
+| deleted | 43 | 8,3% | 520 box máy |
+| added | 12 | 2,5% | 489 đối tượng sau duyệt |
+
+Nguồn: `qc/review_stats.json`, lượt review đầu của job 23. File COCO xuất có 24 ảnh/500 annotation; script loại 23 đối tượng nằm quanh các bẫy (tổng cả trước và sau duyệt) khỏi bảng trạng thái. Số đếm trong bảng không phải toàn bộ số box trong file xuất.
 
 - Lớp nào máy tệ nhất? Vì sao (dẫn ảnh)? <<>>
-- So với gold: precision / recall của **máy** <<>> (mẫu số: <<đối tượng gold>>)
+- So với gold: precision của **máy** 47/(47 + 25) = 65,3%; recall 47/(47 + 28) = 62,7% (75 đối tượng gold, không tính 1 ignore region). Chỉ đo trên 4 ảnh gold đã dùng để chọn ngưỡng và đã có nhãn nháp trước lượt học viên chỉnh sửa; chưa phải đánh giá độc lập.
 
 ## 3. Thiên kiến tự động hóa và ảnh bẫy
 
-- Bắt bẫy: <<.../12>>; loại nào lọt: <<>>; vì sao (bạn đã bỏ bước nào của checklist)? <<>>
+- Bắt bẫy lượt review đầu: 6/12 = 50%; ngưỡng trong taxonomy là 80%. Theo loại: loose 1/3, missing 1/3, wrong_class 2/3, extra 2/3. Script ghi lọt ở `img_013` (missing), `img_021` và `img_024` (loose), `img_035` (extra), `img_006` (wrong_class), `img_034` (missing). Vì sao (bạn đã bỏ bước nào của checklist)? <<>>
 - Accepted cao mà bắt bẫy thấp (hoặc ngược lại) nói gì về cách bạn duyệt? <<>>
 
 ## 4. Máy có đáng dùng không?
 
-- Thời gian (từ `time_log.csv`): gán tay/chỉnh sửa gold **6,25 phút/ảnh** (25 phút/4 ảnh, học viên cung cấp) vs duyệt <<... phút/ảnh>>. Thiên lệch (bạn gán gold trước nên đã quen cảnh): <<>>
+- Thời gian (từ `time_log.csv`): gán tay/chỉnh sửa gold **6,25 phút/ảnh** (25 phút/4 ảnh) vs review batch **1,25 phút/ảnh** (30 phút/24 ảnh). Cả hai do học viên cung cấp; 30 phút chỉ là lượt review đầu, chưa gồm sửa lỗi sau đo. Thiên lệch (bạn gán gold trước nên đã quen cảnh): <<>>
 - Kết luận: <<có / không / chỉ cho lớp nào>>, dựa trên <<số liệu>>
 - **Ba quy tắc giảm thiên kiến của bạn** (mỗi quy tắc kiểm tra được bằng số hoặc việc làm):
   1. <<>>
@@ -69,7 +71,7 @@ Nếu Rework / Hold, việc cần làm tiếp: <<>>
 
 ## 8. Ghi chú cá nhân
 
-- **Dùng AI để làm bài:** Codex hỗ trợ đọc yêu cầu, tạo repo local, cài thư viện nhẹ và chuẩn bị project/task CVAT. Đối chiếu cấu hình với `submission/taxonomy.json`, `data/split.csv` và chạy kiểm tra môi trường. Học viên cần kiểm tra bộ nhãn và task trong CVAT. Phần này ghi nhận công việc chuẩn bị; các kết quả review và QC chưa hoàn tất.
+- **Dùng AI để làm bài:** Codex hỗ trợ đọc yêu cầu, tạo repo local, cài thư viện nhẹ, chuẩn bị project/task CVAT, xuất COCO và chạy script đo. Học viên báo đã review job 23 trong 30 phút; đã xuất 24 ảnh/500 annotation và đối chiếu với annotation hiện lưu trong CVAT. `validate_labels.py --all` không có lỗi cấu trúc; batch còn 10 cảnh báo box cao dưới 20 px. Đã lưu bản review đầu và số đo tại `qc/reviews/batch-01/`. QC nội dung, mask 3 vật và calibration chưa hoàn tất.
 - Gold có bị nhiễm không (bạn có nhìn pre-label hay hỏi AI trước khi gán xong)? Có: task 21 đã có bản nháp 58 annotation trước lượt gán tay/chỉnh sửa 25 phút do học viên báo. Bản học viên lưu có 83 annotation; review bỏ 7 box dưới 20 px, xuất `labels/gold_manual.json` với 76 annotation. Bộ này không phải gold được tạo độc lập trước khi thấy nhãn gợi ý.
 - Máy / GPU / CVAT dùng; vướng mắc cài đặt: macOS 26.3, Apple M1, RAM 8 GB; CVAT Docker 2.82.1 đã có sẵn. Môi trường QC nhẹ `.venv` dùng Python 3.12.16; môi trường model `work/model-env` dùng Python 3.13.17, đã chạy local bằng CPU. Colab ban đầu báo phần phụ trợ không có sẵn; sau đó học viên chạy được và tải `colab_stage1.zip`. Nhật ký trong ZIP ghi thiết bị `cpu`, chưa có lượt chạy GPU T4 để xác nhận.
 - Dùng cache `data/cache/` thay vì tự chạy? Không. Các lượt tour local được lưu ở `model_log.csv` và `qc/model_tour/runs.json`. Part 3–4 hiện dùng kết quả Colab CPU: YOLO26m và YOLOE-26s, có nhật ký gốc và checksum tại `qc/colab_stage1/`. Kết quả quét YOLO26 nano cũ được giữ tại `qc/model_tour/local_threshold_sweep.*`.

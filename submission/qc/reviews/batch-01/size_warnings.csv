@@ -1,0 +1,11 @@
+image,annotation_id,class,height_px
+img_018.jpg,156,motorbike,18.26
+img_018.jpg,161,bicycle,16.64
+img_018.jpg,193,motorbike,14.27
+img_018.jpg,199,person,16.2
+img_018.jpg,203,motorbike,16.86
+img_025.jpg,309,person,18.19
+img_027.jpg,340,car,17.22
+img_027.jpg,346,motorbike,16.92
+img_033.jpg,428,motorbike,18.64
+img_034.jpg,445,motorbike,17.4

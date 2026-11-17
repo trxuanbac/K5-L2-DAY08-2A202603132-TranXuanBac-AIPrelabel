@@ -1,2 +1,3 @@
 step,images,minutes,note
 gold_manual,4,25,Thời gian học viên cung cấp cho thao tác gán tay/chỉnh sửa 4 ảnh trong CVAT job 21.
+batch_review,24,30,"Thời gian học viên cung cấp sau khi review xong 24 ảnh trong CVAT job 23; 1,25 phút/ảnh."

@@ -1,0 +1,104 @@
+{
+  "task_id": 23,
+  "job_id": 23,
+  "job_url": "http://localhost:8080/tasks/23/jobs/23",
+  "review_pass": 1,
+  "review_reported_complete": true,
+  "images": 24,
+  "annotations_before": 532,
+  "annotations_after": 500,
+  "annotation_classes": {
+    "person": 266,
+    "motorbike": 142,
+    "three_wheeler": 26,
+    "bicycle": 7,
+    "car": 48,
+    "truck": 7,
+    "bus": 4
+  },
+  "review_time": {
+    "minutes": 30,
+    "images": 24,
+    "minutes_per_image": 1.25,
+    "source": "learner_reported"
+  },
+  "export_file": "submission/labels/batch_reviewed.json",
+  "export_sha256": "9052f70bced0fbbc7608180f4e504800a27d7765f01d405147d9260782856fcc",
+  "input_file": "submission/prelabel/pre_traps_import.coco.json",
+  "input_sha256": "b15db069c2c411c01ed21f37901a28485afa008c51081583ad58813590ffd031",
+  "native_export_snapshot_sha256": "07e220f64c634de17f0400231161cc56f53ff79028c22fbf8f5dc27a1e07f2df",
+  "export_zip_sha256": "3902883bcf4bb261051aeb23bfce8642e16760f09b85d091539bd53c4bd9728c",
+  "current_saved_annotations_match_export": true,
+  "structural_validation_errors": 0,
+  "small_box_warnings": [
+    {
+      "image": "img_018.jpg",
+      "annotation_id": 156,
+      "class": "motorbike",
+      "height_px": 18.26
+    },
+    {
+      "image": "img_018.jpg",
+      "annotation_id": 161,
+      "class": "bicycle",
+      "height_px": 16.64
+    },
+    {
+      "image": "img_018.jpg",
+      "annotation_id": 193,
+      "class": "motorbike",
+      "height_px": 14.27
+    },
+    {
+      "image": "img_018.jpg",
+      "annotation_id": 199,
+      "class": "person",
+      "height_px": 16.2
+    },
+    {
+      "image": "img_018.jpg",
+      "annotation_id": 203,
+      "class": "motorbike",
+      "height_px": 16.86
+    },
+    {
+      "image": "img_025.jpg",
+      "annotation_id": 309,
+      "class": "person",
+      "height_px": 18.19
+    },
+    {
+      "image": "img_027.jpg",
+      "annotation_id": 340,
+      "class": "car",
+      "height_px": 17.22
+    },
+    {
+      "image": "img_027.jpg",
+      "annotation_id": 346,
+      "class": "motorbike",
+      "height_px": 16.92
+    },
+    {
+      "image": "img_033.jpg",
+      "annotation_id": 428,
+      "class": "motorbike",
+      "height_px": 18.64
+    },
+    {
+      "image": "img_034.jpg",
+      "annotation_id": 445,
+      "class": "motorbike",
+      "height_px": 17.4
+    }
+  ],
+  "review_stats_file": "submission/qc/review_stats.json",
+  "trap_catch": {
+    "caught": 6,
+    "total": 12,
+    "rate": 0.5,
+    "required_minimum": 0.8
+  },
+  "formal_qc_completed": false,
+  "release_decision_recorded": false
+}

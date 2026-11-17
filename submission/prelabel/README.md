@@ -10,6 +10,6 @@
 - Job: http://localhost:8080/tasks/23/jobs/23. Ảnh đầu `img_003.jpg` có 26 box lúc nhập.
 - Hồ sơ nhập và đối chiếu tọa độ/nhãn: `../../cvat/colab_review.json`.
 
-Chưa có lượt review cuối hoặc thời gian batch. Người học cần bấm giờ, duyệt từng ảnh theo `docs/REVIEW_CHECKLIST.md`, lưu và export thành `submission/labels/batch_reviewed.json`.
+Đã xuất lượt review đầu thành `submission/labels/batch_reviewed.json`: 24 ảnh/500 annotation. Học viên báo 30 phút. Số đo được tạo sau export: bắt 6/12 bẫy; xem `submission/qc/reviews/batch-01/README.md`. Chưa hoàn tất QC nội dung hoặc quyết định chất lượng cuối.
 
-Giữ nguyên các file đầu vào. Không mở `traps_key.json` đến khi review và export xong.
+Giữ nguyên các file đầu vào. `traps_key.json` đã được script đọc sau khi export lượt review đầu; file đáp án vẫn chỉ lưu local và được loại khỏi Git.
