@@ -55,10 +55,10 @@ Máy có RAM 8 GB nên dùng Colab cho model và giữ CVAT/đo số trên máy 
 
 ## 4. Trạng thái bài nộp và Git
 
-- Đã cấu hình `origin` tới `https://github.com/trxuanbac/K5-L23-DAY08-2A202603132-TranXuanBac-AIPrelabel.git`; đây mới là đích dự kiến, chưa tạo repo hoặc push trong phiên này.
+- Repo public: https://github.com/trxuanbac/K5-L23-DAY08-2A202603132-TranXuanBac-AIPrelabel. Fork từ repo đề vào tài khoản `trxuanbac`, tên đúng mẫu; `origin` trỏ repo này, nhánh làm việc là `main`. Nội dung công bố là phần chuẩn bị Part 0, chưa phải bài hoàn thành.
 - `upstream` trỏ repo đề bạn cung cấp. Không push bài vào upstream.
 - Chưa có nhãn gold/batch, dòng log model/thời gian, mask, số đo QC hoặc quyết định chất lượng. Các chỗ chưa làm trong mẫu báo cáo được giữ nguyên.
-- `check_submission.py` hiện báo **24 lỗi, 1 cảnh báo** do bài mới ở bước chuẩn bị, chưa có kết quả các Part. Log: `work/logs/submission-preparation.txt`. Chưa đủ điều kiện nộp.
+- Lần chạy `check_submission.py` trong bước chuẩn bị báo **24 lỗi, 1 cảnh báo** do chưa có kết quả các Part và khi đó mới có lịch sử clone rút gọn. Log local: `work/logs/submission-preparation.txt`. Lịch sử Git đầy đủ đã được tải trước khi xuất bản; bài vẫn chưa đủ điều kiện nộp.
 - Commit tiếp theo theo từng phần thực sự hoàn thành; không tạo commit rỗng để đủ số lượng.
 - Khi hoàn tất, chạy lại `validate_labels.py --all` và `check_submission.py`, sửa hết lỗi trước khi nộp.
 
