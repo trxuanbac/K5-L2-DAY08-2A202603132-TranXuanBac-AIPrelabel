@@ -6,6 +6,8 @@
 
 **Đã xuất gold: 4 ảnh, 76 annotation; thời gian học viên báo 25 phút.** Xem [trạng thái và bước tiếp theo](BAT_DAU.md). Batch còn bản nháp; chưa hoàn tất QC.
 
+Cấu hình máy này: [Mac M1 8 GB — môi trường và kết quả kiểm tra](SETUP_MAC_M1_8GB.md).
+
 <p align="center">
   <img alt="cá nhân" src="https://img.shields.io/badge/lab-cá%20nhân-0b1f3a">
   <img alt="thời lượng" src="https://img.shields.io/badge/thời%20lượng-4%20giờ-ff8a3d">

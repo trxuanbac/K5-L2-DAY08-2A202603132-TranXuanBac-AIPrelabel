@@ -1,0 +1,9 @@
+[ OK ] Python 3.12.16
+[ OK ] numpy 2.5.5
+[ OK ] cv2 5.0.0
+[ OK ] PIL 13.0.0
+[ OK ] matplotlib 3.11.2
+[ OK ] yaml 6.0.3
+[ OK ] CVAT trả lời ở http://localhost:8080
+
+SẴN SÀNG cho buổi học.

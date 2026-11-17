@@ -1,0 +1,32 @@
+[
+  {
+    "name": "mobileclip2_b.ts",
+    "present": true,
+    "size_bytes": 253794476,
+    "sha256_matches": true
+  },
+  {
+    "name": "mobile_sam.pt",
+    "present": true,
+    "size_bytes": 40728226,
+    "sha256_matches": true
+  },
+  {
+    "name": "sam2.1_t.pt",
+    "present": true,
+    "size_bytes": 78105722,
+    "sha256_matches": true
+  },
+  {
+    "name": "yolo26n.pt",
+    "present": true,
+    "size_bytes": 5544453,
+    "sha256_matches": true
+  },
+  {
+    "name": "yoloe-26s-seg.pt",
+    "present": true,
+    "size_bytes": 31072171,
+    "sha256_matches": true
+  }
+]

@@ -1,3 +1,4 @@
+# macOS arm64; Python 3.12.16; light environment for Colab + local CVAT
 contourpy==1.4.0
 cycler==0.12.1
 fonttools==4.68.0

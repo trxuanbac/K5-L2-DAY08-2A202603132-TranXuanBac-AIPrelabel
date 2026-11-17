@@ -71,7 +71,7 @@ Nếu Rework / Hold, việc cần làm tiếp: <<>>
 
 - **Dùng AI để làm bài:** Codex hỗ trợ đọc yêu cầu, tạo repo local, cài thư viện nhẹ và chuẩn bị project/task CVAT. Đối chiếu cấu hình với `submission/taxonomy.json`, `data/split.csv` và chạy kiểm tra môi trường. Học viên cần kiểm tra bộ nhãn và task trong CVAT. Phần này ghi nhận công việc chuẩn bị; các kết quả review và QC chưa hoàn tất.
 - Gold có bị nhiễm không (bạn có nhìn pre-label hay hỏi AI trước khi gán xong)? Có: task 21 đã có bản nháp 58 annotation trước lượt gán tay/chỉnh sửa 25 phút do học viên báo. Bản học viên lưu có 83 annotation; review bỏ 7 box dưới 20 px, xuất `labels/gold_manual.json` với 76 annotation. Bộ này không phải gold được tạo độc lập trước khi thấy nhãn gợi ý.
-- Máy / GPU / CVAT dùng; vướng mắc cài đặt: macOS arm64, RAM 8 GB, Python 3.13.17; CVAT Docker 2.82.1 đã có sẵn. Có môi trường QC nhẹ `.venv` và môi trường model `work/model-env`; đã chạy local bằng CPU, chưa dùng Colab.
+- Máy / GPU / CVAT dùng; vướng mắc cài đặt: macOS 26.3, Apple M1, RAM 8 GB; CVAT Docker 2.82.1 đã có sẵn. Môi trường QC nhẹ `.venv` dùng Python 3.12.16; môi trường model `work/model-env` dùng Python 3.13.17, đã chạy local bằng CPU. Cấu hình chuẩn bị 8 GB theo trang hướng dẫn là chạy model trên Colab; GPU T4 Colab chưa được xác nhận.
 - Dùng cache `data/cache/` thay vì tự chạy? <<không / có, vì ...>>
 - Lỗi / bug script đã gặp (nếu có): <<>>
 - Một điều bạn làm khác lần sau: <<>>

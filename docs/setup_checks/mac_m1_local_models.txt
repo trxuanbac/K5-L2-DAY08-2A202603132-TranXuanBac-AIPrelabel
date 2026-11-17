@@ -1,0 +1,18 @@
+[ OK ] Python 3.13.17
+[ OK ] numpy 2.5.5
+[ OK ] cv2 5.0.0
+[ OK ] PIL 13.0.0
+[ OK ] matplotlib 3.11.2
+[ OK ] yaml 6.0.3
+[ OK ] torch 2.15.0
+[ OK ] ultralytics 8.4.215
+[ OK ] clip 
+[ OK ] models/: mobile_sam.pt, sam2.1_t.pt, yolo26n.pt, yoloe-26s-seg.pt
+[ OK ] yolo26n.pt: 5 box, 0.3 giây (CPU)
+/Users/chuoi/tool/K5-L23-DAY08-2A202603132-TranXuanBac-AIPrelabel/work/model-env/lib/python3.13/site-packages/torch/jit/_serialization.py:176: FutureWarning: `torch.jit.load` is deprecated. Please switch to `torch.export`.
+  warnings.warn(
+[ OK ] YOLOE gõ chữ 'bus', 'person': 5 box, 1.6 giây
+[ OK ] mobile_sam.pt: mask 260872 px, 3.8 giây
+[ OK ] CVAT trả lời ở http://localhost:8080
+
+SẴN SÀNG cho buổi học.

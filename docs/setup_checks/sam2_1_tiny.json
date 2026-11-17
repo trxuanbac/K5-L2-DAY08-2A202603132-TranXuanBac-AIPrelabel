@@ -1,0 +1,8 @@
+{
+  "model": "sam2.1_t.pt",
+  "device": "cpu",
+  "masks": 1,
+  "first_mask_area_px": 262278,
+  "seconds": 2.27,
+  "status": "PASS"
+}
