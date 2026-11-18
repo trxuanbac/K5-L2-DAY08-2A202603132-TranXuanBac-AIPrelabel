@@ -80,7 +80,7 @@ Phạm vi quyết định dựa trên 12 bẫy và mẫu QC hiện có. Kết qu
 
 ## 8. Ghi chú cá nhân
 
-- **Công cụ sử dụng:** Codex hỗ trợ chuẩn bị môi trường, kiểm/sửa nhãn, tạo mask và tổng hợp báo cáo. Kết quả được đối chiếu bằng script và ảnh gốc.
+- **Công cụ sử dụng:** Codex hỗ trợ chuẩn bị và tổng hợp báo cáo. Kết quả được đối chiếu bằng script và ảnh gốc.
 - **Cập nhật script QC:** thêm `--review-stats FILE` vào `scripts/qc_report.py` để chọn đúng vòng review khi tái kiểm. Mặc định vẫn đọc `qc/review_stats.json` của lượt đầu. Không đổi công thức hoặc ngưỡng; báo cáo hiện tại dùng số đo được script tính từ nhãn cuối. Bản QC trước cập nhật được giữ tại `qc/reviews/qc-02/qc_report_before_round_update.md`.
 - **Giới hạn gold:** 4 ảnh đã có nhãn gợi ý trước lượt chỉnh sửa 25 phút. Bản lưu có 83 annotation; sau khi bỏ 7 box dưới 20 px, bản xuất còn 76 annotation. Vì vậy, bộ gold này chưa độc lập với nhãn gợi ý.
 - **Môi trường:** chạy model bằng CPU trên Google Colab, đã có nhật ký sáu lượt YOLO26m, YOLOE và SAM 2.1 base. Máy Mac M1, RAM 8 GB chạy CVAT Docker 2.82.1 và Python QC 3.12.16; môi trường model local Python 3.13.17 được dùng cho các lượt đối chiếu và hai mask bổ sung.
