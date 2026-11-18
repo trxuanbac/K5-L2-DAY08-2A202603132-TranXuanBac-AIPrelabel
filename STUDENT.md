@@ -5,7 +5,7 @@
 - Lớp: L2
 - Tài khoản GitHub: trxuanbac
 - Repo bài nộp (public): https://github.com/trxuanbac/K5-L2-DAY08-2A202603132-TranXuanBac-AIPrelabel
-- Commit chốt bài (hash): [15c8a7147a14a64c981621a1211ec9c5042f2e18](https://github.com/trxuanbac/K5-L2-DAY08-2A202603132-TranXuanBac-AIPrelabel/commit/15c8a7147a14a64c981621a1211ec9c5042f2e18). Commit tiếp theo chỉ cập nhật thông tin commit này.
+- Commit chốt bài (hash): [2ee85919f32e63d46ca78ea6a4581f2e050e2ea6](https://github.com/trxuanbac/K5-L2-DAY08-2A202603132-TranXuanBac-AIPrelabel/commit/2ee85919f32e63d46ca78ea6a4581f2e050e2ea6). Commit tiếp theo chỉ cập nhật thông tin commit này.
 - Cập nhật kết quả: 2026-11-18
 - Trạng thái: **Release theo mẫu QC sau sửa**; review lại đạt **12/12 bẫy = 100%**.
 
