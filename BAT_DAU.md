@@ -17,7 +17,7 @@ Project: [day08-2A202603132](http://localhost:8080/projects/3). Task 21 hiện t
 
 ## 2. Phần đã thực hiện
 
-- Đã lưu bốn lượt tour Part 2: YOLO26 conf 0.25 và 0.5, YOLOE, SAM 2.1 tiny. Có số đo thực tế và ảnh so sánh trong [hồ sơ tour model](submission/qc/model_tour/README.md).
+- Đã chạy bốn lượt tour Part 2 bằng **CPU trên Colab**: YOLO26m conf 0.25 và 0.5, YOLOE, YOLO26m + SAM 2.1 base. Có nhật ký, thông số và ảnh so sánh trong [hồ sơ tour model](submission/qc/model_tour/README.md). Các lượt local với YOLO26 nano và SAM tiny trước đó được giữ để đối chiếu.
 - Có hai lượt nguồn trên toàn bộ 36 ảnh ở conf 0.05 cho Part 3; đã chạy quét ngưỡng bằng gold đã xuất, tạo [threshold_sweep.md](submission/qc/threshold_sweep.md), CSV và PNG.
 - Gộp kết quả cho 4 ảnh gold và 24 ảnh batch ở ngưỡng khởi đầu 0.25; chưa xem đây là ngưỡng được calibration bằng gold độc lập.
 - Xem các ảnh tổng quan, sửa một số lỗi nhầm lớp, box trùng và đối tượng không thuộc taxonomy; bổ sung một số người/xe bị sót.

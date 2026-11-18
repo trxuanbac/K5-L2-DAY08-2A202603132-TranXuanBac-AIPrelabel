@@ -57,13 +57,12 @@ Docker VM hiện có khoảng 4,11 GB RAM; hướng dẫn gợi ý khoảng 5 GB
 
 ## Trạng thái Colab và cách tiếp tục
 
-Đã mở [notebook Colab của bài](https://colab.research.google.com/github/trxuanbac/K5-L2-DAY08-2A202603132-TranXuanBac-AIPrelabel/blob/main/notebooks/day08_colab.ipynb). Trong Colab, chọn **Runtime → Change runtime type → T4 GPU → Save**, rồi chạy:
+Đã chạy [notebook Colab của bài](https://colab.research.google.com/github/trxuanbac/K5-L2-DAY08-2A202603132-TranXuanBac-AIPrelabel/blob/main/notebooks/day08_colab.ipynb) bằng **CPU trên Colab**. Nhật ký đã nhận có sáu lượt, tất cả ghi `device=cpu`:
 
-```python
-!nvidia-smi -L
-```
+- Tour Part 2: YOLO26m conf 0.25 và 0.5, YOLOE, YOLO26m + SAM 2.1 base.
+- Nguồn Part 3–4: YOLO26m và YOLOE ở conf 0.05 trên toàn bộ 36 ảnh.
 
-Học viên đã thử kết nối và nhận thông báo **phần phụ trợ không có sẵn**. Chưa có lượt chạy Colab hoặc GPU T4 để ghi nhận; không đánh dấu bước này hoàn thành. Hiện dùng kết quả local CPU đã có, xem [bốn lượt tour và ảnh so sánh](submission/qc/model_tour/README.md).
+Đã hoàn thành bước chạy model trên Colab. Thông báo phần phụ trợ không có sẵn thuộc lần thử kết nối trước đó. Xem [nhật ký Colab CPU](submission/qc/colab_stage1/runs.csv), [tour và ảnh so sánh](submission/qc/model_tour/README.md).
 
 Khi chạy model local, kích hoạt `work/model-env`; khi chạy script đo số/QC, kích hoạt `.venv`. Kết quả local được ghi đúng thiết bị `cpu`.
 

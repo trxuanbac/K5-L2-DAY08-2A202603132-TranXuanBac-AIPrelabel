@@ -7,12 +7,13 @@ Bài lab gồm thử model để tạo nhãn gợi ý, duyệt lại trên CVAT,
 | Lớp | Model + cỡ | Ngưỡng | Lần chạy và căn cứ chọn ngưỡng |
 |---|---|---|---|
 | person / bicycle / motorbike / car / bus / truck | YOLO26m, Colab CPU | 0.3 mặc định theo script | `qc/colab_stage1/runs.csv`, r05; script quét không chọn ngưỡng riêng cho person, bicycle, motorbike, car vì không đạt recall 90%; bus chỉ 1 vật, truck 0 vật gold. |
-| three_wheeler | YOLOE-26s, prompt tuk-tuk / cyclo / cargo tricycle | 0.15 | `qc/colab_stage1/runs.csv`, r06; script quét ghi recall 7/7, precision 78% trên gold ở ngưỡng này. |
+| three_wheeler | YOLOE-26s, Colab CPU, prompt tuk-tuk / cyclo / cargo tricycle | 0.15 | `qc/colab_stage1/runs.csv`, r06; script quét ghi recall 7/7, precision 78% trên gold ở ngưỡng này. |
 
 - Lệnh `merge_prelabels.py` đã dùng: `.venv/bin/python scripts/merge_prelabels.py work/colab-stage1-20261117/work/prelabel/yoloe_all/pre.coco.json work/colab-stage1-20261117/work/prelabel/y26_all/pre.coco.json --thr three_wheeler=0.15 --conf 0.3 --iou 0.6 --split batch,gold --out work/prelabel/merged_review/pre.coco.json`
-- **SAM đã chạy:** SAM 2.1 tiny (`sam2.1_t.pt`), CPU, cỡ nhỏ cho cấu hình RAM 8 GB. Lượt `r06` có 2 ảnh và 8 mask; xem ảnh kết quả trong `qc/model_tour/`.
+- **Tour Part 2 đã chạy trên Colab CPU:** YOLO26m conf 0.25 cho 215 box/8 ảnh, conf 0.5 cho 139 box/8 ảnh; YOLOE cho 8 box/8 ảnh; YOLO26m + SAM 2.1 base (`sam2.1_b.pt`) cho 16 mask/2 ảnh. Nhật ký gốc ở `qc/colab_stage1/runs.csv`, các dòng tổng hợp là `colab-r01` đến `colab-r04` trong `model_log.csv`. Ảnh đối chiếu và checksum ở `qc/colab_stage1/tour/` và `tour_manifest.json`.
+- Trước đó cũng có tour local CPU trên Mac với YOLO26 nano và SAM 2.1 tiny, gồm lượt 8 mask/2 ảnh. Hồ sơ và ảnh local được giữ riêng trong `qc/model_tour/` để đối chiếu.
 - Part 5 có ba vật: img_013 dùng SAM 2.1 base theo ô lệnh Colab; img_004 và img_009 dùng SAM 2.1 tiny local CPU, cấu hình và checksum ở `qc/sam_clicks/completion_manifest.json`.
-- Lỗi không sửa được chỉ bằng đổi ngưỡng: trong tour local, tuk-tuk xanh ở img_002 bị YOLO26n gọi `truck` với conf 0,3712; nâng conf 0,5 làm box biến mất, không tạo ra nhãn `three_wheeler`. Dùng model/prompt phù hợp cho lớp địa phương và kiểm lại nhãn; ảnh tour ở `qc/model_tour/`.
+- Lỗi không sửa được chỉ bằng đổi ngưỡng: trong tour Colab, YOLO26m gán tuk-tuk xanh ở img_004 là `car` với conf 0,3735. SAM nhận box này và tạo mask nhưng giữ lớp `car`; cần model/prompt phù hợp và kiểm lại lớp. Ở img_002, tăng conf từ 0.25 lên 0.5 vẫn chưa tìm được tuk-tuk giữa ảnh, trong khi YOLOE tìm đúng `three_wheeler` với conf 0,9265.
 - Box điểm cao vẫn cần sửa: img_003, box xe ba bánh #11 của bản trước sửa QC có conf 0,90 nhưng cắt mất phần mui. Lỗi hình học này được sửa trong `qc/reviews/qc-02/`; điểm của model không thay thế việc kiểm biên box.
 - Ngưỡng được chọn và đo trên cùng 4 ảnh gold. Các ảnh này đã có nhãn nháp trước lượt chỉnh sửa, nên số đo có thể lạc quan hơn khi đánh giá trên một bộ ảnh độc lập. Lớp ít mẫu hoặc không đạt recall mục tiêu được giữ ở ngưỡng mặc định theo script.
 
@@ -82,7 +83,7 @@ Phạm vi quyết định dựa trên 12 bẫy và mẫu QC hiện có. Kết qu
 - **Công cụ sử dụng:** Codex hỗ trợ chuẩn bị môi trường, kiểm/sửa nhãn, tạo mask và tổng hợp báo cáo. Kết quả được đối chiếu bằng script và ảnh gốc.
 - **Cập nhật script QC:** thêm `--review-stats FILE` vào `scripts/qc_report.py` để chọn đúng vòng review khi tái kiểm. Mặc định vẫn đọc `qc/review_stats.json` của lượt đầu. Không đổi công thức hoặc ngưỡng; báo cáo hiện tại dùng số đo được script tính từ nhãn cuối. Bản QC trước cập nhật được giữ tại `qc/reviews/qc-02/qc_report_before_round_update.md`.
 - **Giới hạn gold:** 4 ảnh đã có nhãn gợi ý trước lượt chỉnh sửa 25 phút. Bản lưu có 83 annotation; sau khi bỏ 7 box dưới 20 px, bản xuất còn 76 annotation. Vì vậy, bộ gold này chưa độc lập với nhãn gợi ý.
-- **Môi trường:** Apple M1, RAM 8 GB, macOS 26.3, CVAT Docker 2.82.1. Python QC là 3.12.16; môi trường model local là 3.13.17. Nhật ký Colab ghi CPU, chưa có lượt chạy GPU T4 được xác nhận.
+- **Môi trường:** chạy model bằng CPU trên Google Colab, đã có nhật ký sáu lượt YOLO26m, YOLOE và SAM 2.1 base. Máy Mac M1, RAM 8 GB chạy CVAT Docker 2.82.1 và Python QC 3.12.16; môi trường model local Python 3.13.17 được dùng cho các lượt đối chiếu và hai mask bổ sung.
 - **Dữ liệu chạy model:** không dùng kết quả có sẵn trong `data/cache/`. Tour local và kết quả Colab được lưu tại `model_log.csv`, `qc/model_tour/`, `qc/colab_stage1/`; hồ sơ mask tại `qc/sam_clicks/`.
 - **Vướng mắc:** Đã gặp lỗi Colab không cấp runtime và báo `Load failed`. Trong QC, một nhận xét về box #69 img_006 đã được rút sau khi phóng ảnh kiểm lại; box đúng được giữ nguyên, có đính chính tại `qc/reviews/qc-01/erratum.json`.
 - **Điều rút ra:** Cần tạo gold độc lập từ đầu, ghi thời gian từng vòng và dùng thêm mẫu mới để kiểm tra sau sửa.

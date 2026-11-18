@@ -10,6 +10,8 @@
 
 Cấu hình máy này: [Mac M1 8 GB — môi trường và kết quả kiểm tra](SETUP_MAC_M1_8GB.md).
 
+Model đã chạy bằng **CPU trên Google Colab**: YOLO26m, YOLOE và SAM 2.1 base. Xem [nhật ký Colab](submission/qc/colab_stage1/runs.csv) và [bốn lượt tour](submission/qc/model_tour/README.md).
+
 <p align="center">
   <img alt="cá nhân" src="https://img.shields.io/badge/lab-cá%20nhân-0b1f3a">
   <img alt="thời lượng" src="https://img.shields.io/badge/thời%20lượng-4%20giờ-ff8a3d">
