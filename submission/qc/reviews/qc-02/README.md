@@ -33,3 +33,5 @@ python scripts/qc_report.py --guideline-gap 0 --review-stats submission/qc/revie
 Kết quả hiện tại gợi ý **Release theo mẫu QC sau sửa**, dựa trên 12/12 bẫy và 0/5 ảnh lỗi. Quyết định Rework trước đó dùng số đo lượt đầu 6/12; giữ [báo cáo trước cập nhật](qc_report_before_round_update.md) để đối chiếu. Lượt đầu và bản export 500 annotation vẫn được giữ nguyên ở `../batch-01/`.
 
 Kết quả sau review lại thuộc vòng sửa đã biết bẫy và mẫu QC cùng ảnh. Thời gian của vòng sửa bổ sung chưa có trong `time_log.csv`; quyết định hiện tại không chứng minh toàn lô dưới 2% lỗi.
+
+Đã xác nhận chốt bản nộp ngày 2026-11-18 theo kết quả QC hỗ trợ hiện có. Hồ sơ xác nhận được lưu tại [qc_review_provenance.json](qc_review_provenance.json), đồng bộ với bản ở thư mục QC cấp trên. Reviewer, phiếu kiểm và số đo giữ nguyên; không ghi nhận thêm một lượt QC độc lập.

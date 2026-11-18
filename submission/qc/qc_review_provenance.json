@@ -8,7 +8,7 @@
   "source_objects_in_sample": 100,
   "known_errors_fixed": 8,
   "observed_errors_after_recheck": 0,
-  "human_confirmation_pending": true,
+  "human_confirmation_pending": false,
   "calibration_status": "student_confirmed",
   "confirmed_calibration_cases": [
     "CAL-01",
@@ -16,5 +16,14 @@
     "CAL-03"
   ],
   "guideline_gap_count": 0,
-  "new_blind_review": false
+  "new_blind_review": false,
+  "submission_finalization_confirmed": true,
+  "confirmation": {
+    "date": "2026-11-18",
+    "account": "trxuanbac",
+    "student": "2A202603132",
+    "request": "thực hiện nốt đỉ",
+    "scope": "approval_to_finalize_submission_using_existing_assisted_qc_results",
+    "new_independent_qc_performed": false
+  }
 }

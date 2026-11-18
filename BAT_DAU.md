@@ -36,7 +36,7 @@ Project: [day08-2A202603132](http://localhost:8080/projects/3). Task 21 hiện t
 2. Đã chốt CAL-01–03 và cập nhật taxonomy v1.1, giữ nguyên mục rules. Nội dung cụ thể nằm trong guideline và báo cáo.
 3. QC trước sửa ghi 8/98 lỗi sau đính chính, 4/5 ảnh có lỗi; đã xử lý 8 lỗi theo yêu cầu. Tái kiểm cùng 5 ảnh/100 đối tượng không ghi nhận lỗi rõ mới. Review lại đạt 12/12 bẫy; script gợi ý Release khi đọc `submission/qc/reviews/qc-02/review_stats_after_rework.json`. Đây chưa phải kiểm độc lập hoặc chứng minh toàn bộ 24 ảnh sạch lỗi.
 4. Đã có `gold_manual.json`, `batch_reviewed.json`, bản sửa QC và `traps_key.json` theo cấu trúc nộp. Gold có nhãn nháp trước lượt chỉnh sửa; giới hạn này được giữ trong báo cáo.
-5. Trạng thái sau review lại: **Release theo mẫu QC sau sửa**. Quyết định Rework ngày 2026-11-17 thuộc vòng trước. Sau khi kiểm tra và push bản cập nhật, nộp link repo lên LMS theo hướng dẫn trong `SUBMISSION.md`.
+5. Trạng thái sau review lại: **Release theo mẫu QC sau sửa**, đã xác nhận chốt bản nộp ngày 2026-11-18 theo kết quả QC hỗ trợ hiện có. Quyết định Rework ngày 2026-11-17 thuộc vòng trước. Sau khi kiểm tra và push bản cập nhật, nộp link repo lên LMS theo hướng dẫn trong `SUBMISSION.md`.
 
 ## 4. Môi trường và repo
 

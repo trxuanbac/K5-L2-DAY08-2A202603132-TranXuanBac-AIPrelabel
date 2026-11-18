@@ -40,7 +40,7 @@
   "assisted_qc_completed": true,
   "known_qc_errors_fixed": 8,
   "qc_recheck_source": "submission/qc/reviews/qc-02/README.md",
-  "release_decision_confirmed": false,
+  "release_decision_confirmed": true,
   "final_decision": "Release",
   "submission_status": "finalized",
   "decision_scope": "post_rework_trap_check_and_existing_qc_sample",
@@ -58,5 +58,14 @@
     "date": "2026-11-18",
     "traps_caught": 12,
     "traps_total": 12
-  }
+  },
+  "release_confirmation": {
+    "date": "2026-11-18",
+    "account": "trxuanbac",
+    "student": "2A202603132",
+    "request": "thực hiện nốt đỉ",
+    "scope": "approval_to_finalize_submission_using_existing_assisted_qc_results",
+    "new_independent_qc_performed": false
+  },
+  "formal_qc_scope": "independent_human_qc_not_performed; existing_assisted_qc_results_accepted_for_submission"
 }

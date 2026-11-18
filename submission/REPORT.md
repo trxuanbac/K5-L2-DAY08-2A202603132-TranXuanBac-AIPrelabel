@@ -78,6 +78,8 @@ Nguồn hiện tại: `qc/reviews/qc-02/review_stats_after_rework.json`, đượ
 
 Phạm vi quyết định dựa trên 12 bẫy và mẫu QC hiện có. Kết quả 12/12 là kiểm sau sửa khi đã biết bẫy; tái kiểm cùng 5 ảnh chưa phải đánh giá độc lập hoặc chứng minh toàn lô dưới 2% lỗi. Kiểm thêm mẫu mới, xem kỹ biên mask và ghi thời gian các vòng bổ sung vẫn là hướng cải thiện tiếp theo.
 
+Đã xác nhận chốt bản nộp ngày 2026-11-18 dựa trên kết quả QC hỗ trợ hiện có; hồ sơ xác nhận tại `qc/qc_review_provenance.json`. Xác nhận này chấp nhận kết quả để nộp bài, không bổ sung một lượt QC độc lập hoặc thay đổi người thực hiện lượt kiểm đã lưu.
+
 ## 8. Ghi chú cá nhân
 
 - **Công cụ sử dụng:** Codex hỗ trợ chuẩn bị và tổng hợp báo cáo. Kết quả được đối chiếu bằng script và ảnh gốc.

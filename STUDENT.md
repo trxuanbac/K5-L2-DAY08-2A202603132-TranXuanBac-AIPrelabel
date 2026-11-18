@@ -35,6 +35,8 @@
 
 **Release theo mẫu QC sau sửa**, dựa trên kết quả hiện tại: 12/12 bẫy, 0/100 đối tượng lỗi, 0/5 ảnh lỗi và ba ca calibration đã chốt. Script QC dùng số đo vòng sau review lại; quyết định Rework ngày 2026-11-17 thuộc vòng trước. Phân tích đầy đủ tại [REPORT.md](submission/REPORT.md).
 
+Đã xác nhận chốt bản nộp ngày 2026-11-18 theo kết quả QC hỗ trợ hiện có; [hồ sơ xác nhận](submission/qc/qc_review_provenance.json) đã cập nhật trạng thái. Đây là xác nhận sử dụng kết quả đã lưu để nộp bài, không phải một lượt QC độc lập mới.
+
 - Gold đã có nhãn gợi ý trước lượt chỉnh sửa; chọn và chấm ngưỡng trên cùng 4 ảnh nên số đo máy chưa độc lập.
 - Kết quả 12/12 thuộc lượt kiểm sau sửa, đã biết bẫy. QC tái kiểm cùng 5 ảnh và cùng reviewer; cận trên Wilson 95% của tỉ lệ ảnh lỗi vẫn là 43%, chưa chứng minh toàn lô dưới 2% lỗi.
 - Thời gian 30 phút chỉ tính lượt review đầu; chưa có số đo thời gian các vòng sửa bổ sung.
