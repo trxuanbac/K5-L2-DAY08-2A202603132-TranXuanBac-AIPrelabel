@@ -16,25 +16,25 @@ Bài lab gồm thử model để tạo nhãn gợi ý, duyệt lại trên CVAT,
 - Box điểm cao vẫn cần sửa: img_003, box xe ba bánh #11 của bản trước sửa QC có conf 0,90 nhưng cắt mất phần mui. Lỗi hình học này được sửa trong `qc/reviews/qc-02/`; điểm của model không thay thế việc kiểm biên box.
 - Ngưỡng được chọn và đo trên cùng 4 ảnh gold. Các ảnh này đã có nhãn nháp trước lượt chỉnh sửa, nên số đo có thể lạc quan hơn khi đánh giá trên một bộ ảnh độc lập. Lớp ít mẫu hoặc không đạt recall mục tiêu được giữ ở ngưỡng mặc định theo script.
 
-## 2. AI error profile (từ `qc/review_stats.md`)
+## 2. AI error profile (sau review lại)
 
 | Trạng thái | Số | Tỉ lệ | Mẫu số |
 |---|---|---|---|
-| accepted | 467 | 89,8% | 520 box máy |
-| edited | 10 | 1,9% | 520 box máy |
-| deleted | 43 | 8,3% | 520 box máy |
-| added | 12 | 2,5% | 489 đối tượng sau duyệt |
+| accepted | 452 | 86,9% | 520 box máy |
+| edited | 12 | 2,3% | 520 box máy |
+| deleted | 56 | 10,8% | 520 box máy |
+| added | 16 | 3,3% | 480 đối tượng sau duyệt |
 
-Nguồn: `qc/review_stats.json`, lượt review đầu của job 23. File COCO xuất có 24 ảnh/500 annotation; script loại 23 đối tượng nằm quanh các bẫy (tổng cả trước và sau duyệt) khỏi bảng trạng thái. Số đếm trong bảng không phải toàn bộ số box trong file xuất.
+Nguồn hiện tại: `qc/reviews/qc-02/review_stats_after_rework.json`, được tính lại từ `release/final_det.coco.json` sau review lại. File cuối có 24 ảnh/492 annotation; script loại 24 đối tượng nằm quanh các bẫy (tổng cả trước và sau duyệt) khỏi bảng trạng thái. Số đếm trong bảng không phải toàn bộ số box trong file xuất. Số đo lượt đầu vẫn được lưu riêng tại `qc/review_stats.json` và `qc/reviews/batch-01/`.
 
-- Trên lượt review đầu đã loại vùng quanh bẫy, `three_wheeler` có 7 box edited + 20 deleted trên 43 box máy của lớp này, tức 27/43 = 62,8% cần sửa/xóa. Đây là mô tả lượt này, không phải so sánh model trên test độc lập. Ví dụ img_003 có xe tải bị gán three_wheeler và nhãn khác lớp trên cùng vùng xe; xem CAL-01 và `qc/evidence/`.
+- Sau review lại và loại vùng quanh bẫy, `three_wheeler` có 8 box edited + 23 deleted trên 43 box máy của lớp này, tức 31/43 = 72,1% cần sửa/xóa. Đây là mô tả lượt này, không phải so sánh model trên test độc lập. Ví dụ img_003 có xe tải bị gán three_wheeler và nhãn khác lớp trên cùng vùng xe; xem CAL-01 và `qc/evidence/`.
 - So với gold: precision của **máy** là 47/(47 + 25) = 65,3%; recall là 47/(47 + 28) = 62,7%, với 75 đối tượng và 1 ignore region. Các giá trị được đo trên 4 ảnh gold đã dùng để chọn ngưỡng, nên chưa phải đánh giá độc lập.
 
 ## 3. Thiên kiến tự động hóa và ảnh bẫy
 
-- Lượt review đầu bắt được 6/12 bẫy = 50%, thấp hơn ngưỡng 80% trong taxonomy. Theo loại: loose 1/3, missing 1/3, wrong_class 2/3, extra 2/3. Các bẫy còn lọt nằm ở img_013 (missing), img_021 và img_024 (loose), img_035 (extra), img_006 (wrong_class), img_034 (missing). Các số đo này chưa đủ để xác định chính xác bước phát sinh lỗi trong quá trình duyệt.
-- Sau sửa bẫy: script ghi 12/12 trên bản 490 annotation, hồ sơ ở `qc/reviews/batch-02/`. Sau sửa tiếp 8 lỗi QC, bản hiện tại có 24 ảnh/492 annotation. Kết quả 12/12 là kiểm sau khi đã biết bẫy; không thay kết quả review đầu 6/12.
-- Tỉ lệ accepted 89,8% cho thấy phần lớn box được giữ nguyên, nhưng kết quả bắt bẫy chỉ đạt 50%. Việc sửa ít box chưa đủ để kết luận lượt duyệt đã được thực hiện kỹ. Các lỗi còn lọt vẫn cần được kiểm tra riêng.
+- **Kết quả sau review lại: 12/12 bẫy = 100%, đạt ngưỡng 80% trong taxonomy.** Theo loại: loose 3/3, missing 3/3, wrong_class 3/3, extra 3/3. Script đã được chạy lại trên bản cuối 24 ảnh/492 annotation; xem `qc/reviews/qc-02/review_stats_after_rework.md`.
+- Lịch sử lượt đầu: 6/12 bẫy = 50%; loose 1/3, missing 1/3, wrong_class 2/3, extra 2/3. Những ca cần sửa khi đó nằm ở img_013 (missing), img_021 và img_024 (loose), img_035 (extra), img_006 (wrong_class), img_034 (missing). Hồ sơ lượt đầu được giữ tại `qc/reviews/batch-01/`; kết quả hiện tại thuộc vòng review lại sau khi đã biết bẫy.
+- Ở lượt đầu, accepted 89,8% đi cùng kết quả bắt bẫy 50%, cho thấy giữ nguyên nhiều box chưa đủ để đánh giá chất lượng duyệt. Sau các vòng kiểm và sửa, accepted là 86,9% và toàn bộ 12 bẫy đã được xử lý. Cần đọc cả kết quả bẫy, lỗi thực tế và phạm vi QC của từng vòng.
 
 ## 4. Máy có đáng dùng không?
 
@@ -73,13 +73,14 @@ Nguồn: `qc/review_stats.json`, lượt review đầu của job 23. File COCO x
 - **Giới hạn mẫu nhỏ:** sau sửa 0 ảnh lỗi/5 ảnh, cận trên Wilson 95% do script tính vẫn **43%**. Không dùng mẫu này để chứng minh toàn lô đạt ngưỡng 2%; cùng reviewer và cùng ảnh có thể cùng bỏ sót.
 - Script giúp kiểm định dạng, đếm lỗi trong phiếu và tính tỉ lệ cùng khoảng tin cậy. Việc box có ôm sát vật hay còn vật bị bỏ sót vẫn cần đối chiếu với ảnh gốc. Những lỗi cùng bị bỏ qua ở cả lượt duyệt và lượt QC sẽ không xuất hiện trong số đếm này.
 
-**Quyết định: Rework**, ngày 2026-11-17. Bản nộp được chốt theo kết quả `qc_report.py --guideline-gap 0`: lượt review đầu chỉ bắt được 6/12 bẫy, dưới ngưỡng 80%. Kết quả 12/12 sau sửa được giữ riêng, không thay đổi số đo ban đầu. Việc tái kiểm cùng 5 ảnh sau sửa chưa đủ để kết luận toàn bộ lô đạt chất lượng Release.
+**Quyết định sau review lại: Release theo mẫu QC sau sửa**, cập nhật ngày 2026-11-18. Bản cuối đạt **12/12 bẫy = 100%**, mẫu tái kiểm ghi **0/100 đối tượng lỗi, 0/5 ảnh lỗi**, không còn ca guideline chưa chốt. Báo cáo QC được tính lại bằng `python scripts/qc_report.py --guideline-gap 0 --review-stats submission/qc/reviews/qc-02/review_stats_after_rework.json` và gợi ý **RELEASE**. Quyết định Rework ngày 2026-11-17 thuộc vòng trước, khi script còn dùng số đo lượt đầu.
 
-Phần cần làm tiếp là kiểm lại trên mẫu độc lập hoặc mở rộng kiểm toàn lô theo v1.1, xem kỹ biên mask và ghi thời gian các vòng bổ sung. Kết quả đó sẽ là căn cứ để chốt chất lượng của bộ nhãn.
+Phạm vi quyết định dựa trên 12 bẫy và mẫu QC hiện có. Kết quả 12/12 là kiểm sau sửa khi đã biết bẫy; tái kiểm cùng 5 ảnh chưa phải đánh giá độc lập hoặc chứng minh toàn lô dưới 2% lỗi. Kiểm thêm mẫu mới, xem kỹ biên mask và ghi thời gian các vòng bổ sung vẫn là hướng cải thiện tiếp theo.
 
 ## 8. Ghi chú cá nhân
 
 - **Công cụ sử dụng:** Codex hỗ trợ chuẩn bị môi trường, kiểm/sửa nhãn, tạo mask và tổng hợp báo cáo. Kết quả được đối chiếu bằng script và ảnh gốc.
+- **Cập nhật script QC:** thêm `--review-stats FILE` vào `scripts/qc_report.py` để chọn đúng vòng review khi tái kiểm. Mặc định vẫn đọc `qc/review_stats.json` của lượt đầu. Không đổi công thức hoặc ngưỡng; báo cáo hiện tại dùng số đo được script tính từ nhãn cuối. Bản QC trước cập nhật được giữ tại `qc/reviews/qc-02/qc_report_before_round_update.md`.
 - **Giới hạn gold:** 4 ảnh đã có nhãn gợi ý trước lượt chỉnh sửa 25 phút. Bản lưu có 83 annotation; sau khi bỏ 7 box dưới 20 px, bản xuất còn 76 annotation. Vì vậy, bộ gold này chưa độc lập với nhãn gợi ý.
 - **Môi trường:** Apple M1, RAM 8 GB, macOS 26.3, CVAT Docker 2.82.1. Python QC là 3.12.16; môi trường model local là 3.13.17. Nhật ký Colab ghi CPU, chưa có lượt chạy GPU T4 được xác nhận.
 - **Dữ liệu chạy model:** không dùng kết quả có sẵn trong `data/cache/`. Tour local và kết quả Colab được lưu tại `model_log.csv`, `qc/model_tour/`, `qc/colab_stage1/`; hồ sơ mask tại `qc/sam_clicks/`.

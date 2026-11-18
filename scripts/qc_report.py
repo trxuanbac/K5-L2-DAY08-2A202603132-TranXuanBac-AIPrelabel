@@ -1,9 +1,10 @@
 """Tính số liệu QC từ phiếu kiểm và GỢI Ý quyết định Hold / Rework / Release.
 
-    python scripts/qc_report.py [--guideline-gap N] [--data-problem N]
+    python scripts/qc_report.py [--guideline-gap N] [--data-problem N] [--review-stats FILE]
 
 --guideline-gap N : số ca guideline CHƯA có quy tắc (chưa chốt)  -> N > 0 gợi ý HOLD
 --data-problem  N : số ảnh hỏng/mờ không dùng được                       -> N > 0 gợi ý HOLD
+--review-stats FILE : số đo của vòng review cần đánh giá (mặc định qc/review_stats.json)
 Đọc: qc_sample.csv, qc_review.csv, và (nếu có) review_stats.json, self_check.json. Ghi submission/qc/qc_report_auto.md.
 Phần QC trong REPORT.md (mục 7) do BẠN viết (script không ghi file đó).
 """
@@ -13,6 +14,7 @@ import argparse
 import json
 import math
 from collections import Counter, defaultdict
+from pathlib import Path
 
 from common import SUB, die, load_taxonomy, read_csv, rel
 
@@ -27,6 +29,7 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--guideline-gap", type=int, default=0)
     ap.add_argument("--data-problem", type=int, default=0)
+    ap.add_argument("--review-stats", type=Path, help="JSON số đo của vòng review đang đánh giá")
     args = ap.parse_args()
     tax = load_taxonomy()
     r = tax.rules
@@ -35,7 +38,10 @@ def main() -> None:
         if not (qc / f).exists():
             die(f"Thiếu submission/qc/{f}. Chạy qc_sample.py và điền qc_review.csv trước.")
     sample, review = read_csv(qc / "qc_sample.csv"), read_csv(qc / "qc_review.csv")
-    rs = json.loads((qc / "review_stats.json").read_text(encoding="utf-8-sig")) if (qc / "review_stats.json").exists() else None
+    stats_path = args.review_stats if args.review_stats is not None else qc / "review_stats.json"
+    if args.review_stats is not None and not stats_path.is_file():
+        die(f"Không tìm thấy số đo review: {stats_path}")
+    rs = json.loads(stats_path.read_text(encoding="utf-8-sig")) if stats_path.exists() else None
     sc = json.loads((qc / "self_check.json").read_text(encoding="utf-8-sig")) if (qc / "self_check.json").exists() else None
 
     imgs = [s["image"] for s in sample]
@@ -96,7 +102,8 @@ def main() -> None:
 
     L = ["# Báo cáo QC tự động (nháp)", "", "> **Gợi ý** do script tính, cần được xác nhận. Script chỉ đếm theo phiếu kiểm bằng mắt người.", "",
          "## Mẫu", f"- {n_img} ảnh ({sum(1 for s in sample if s['la_ca_kho'] == 'yes')} ca khó + "
-         f"{sum(1 for s in sample if s['la_ca_kho'] != 'yes')} ngẫu nhiên), {n_obj} đối tượng.", f"- taxonomy {tax.version}", "",
+         f"{sum(1 for s in sample if s['la_ca_kho'] != 'yes')} ngẫu nhiên), {n_obj} đối tượng.", f"- taxonomy {tax.version}",
+         *([f"- Số đo review: `{rel(stats_path.resolve())}`."] if rs else []), "",
          "## Số đo", "| Chỉ số | Giá trị | Mẫu số |", "|---|---|---|",
          f"| Lỗi **theo đối tượng** | {pc(len(err_objs), n_obj)} | {n_obj} đối tượng trong mẫu |",
          f"| **Ảnh có lỗi** (dùng cho ngưỡng) | {pc(len(err_imgs), n_img)} | {n_img} ảnh trong mẫu |"]

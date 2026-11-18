@@ -1,6 +1,6 @@
 # Day 08 — trạng thái của Trần Xuân Bắc
 
-Ngày 2026-11-17: gold **4 ảnh/76 annotation**, 25 phút chỉnh sửa. Lượt review đầu: **24 ảnh/500 annotation**, 30 phút, bắt **6/12 bẫy**. Đã sửa bẫy và 8 lỗi QC; [job 23](http://localhost:8080/tasks/23/jobs/23) hiện có **24 ảnh/492 annotation**. Đã có **3/3 mask SAM**, đã chốt **3 ca calibration v1.1**. **Bản nộp chốt trạng thái Rework**, giữ nguyên số đo review đầu và giới hạn của lượt tái kiểm cùng 5 ảnh.
+Cập nhật ngày 2026-11-18: **review lại đạt 12/12 bẫy = 100%**; bản nhãn cuối của [job 23](http://localhost:8080/tasks/23/jobs/23) có **24 ảnh/492 annotation**. Mẫu QC sau sửa có **0/100 đối tượng lỗi, 0/5 ảnh lỗi**; script gợi ý **Release** khi dùng số đo vòng sau sửa. Đã có gold **4 ảnh/76 annotation**, **3/3 mask SAM** và **3 ca calibration v1.1**. Lượt review đầu 30 phút, 6/12 bẫy và các giới hạn của lượt tái kiểm được giữ trong hồ sơ từng vòng.
 
 ## 1. Mở nhãn trong CVAT
 
@@ -34,9 +34,9 @@ Project: [day08-2A202603132](http://localhost:8080/projects/3). Task 21 hiện t
 
 1. Part 5 đã có đủ ba vật: img_013 (SAM base, Colab), img_004 và img_009 (SAM tiny, local CPU). Xem `submission/masks/` và `submission/qc/sam_clicks/`; các nhận xét tập trung vào phần người hoặc hàng hóa bị lẫn trong mask.
 2. Đã chốt CAL-01–03 và cập nhật taxonomy v1.1, giữ nguyên mục rules. Nội dung cụ thể nằm trong guideline và báo cáo.
-3. QC trước sửa ghi 8/98 lỗi sau đính chính, 4/5 ảnh có lỗi; đã xử lý 8 lỗi theo yêu cầu. Tái kiểm cùng 5 ảnh/100 đối tượng không ghi nhận lỗi rõ mới. Script vẫn gợi ý Rework do 6/12 bẫy ở lượt đầu; đây không phải kiểm độc lập hoặc chứng minh toàn bộ 24 ảnh sạch lỗi.
+3. QC trước sửa ghi 8/98 lỗi sau đính chính, 4/5 ảnh có lỗi; đã xử lý 8 lỗi theo yêu cầu. Tái kiểm cùng 5 ảnh/100 đối tượng không ghi nhận lỗi rõ mới. Review lại đạt 12/12 bẫy; script gợi ý Release khi đọc `submission/qc/reviews/qc-02/review_stats_after_rework.json`. Đây chưa phải kiểm độc lập hoặc chứng minh toàn bộ 24 ảnh sạch lỗi.
 4. Đã có `gold_manual.json`, `batch_reviewed.json`, bản sửa QC và `traps_key.json` theo cấu trúc nộp. Gold có nhãn nháp trước lượt chỉnh sửa; giới hạn này được giữ trong báo cáo.
-5. Bản nộp được chốt **Rework**. Sau khi kiểm tra và push, nộp link repo lên LMS theo hướng dẫn trong `SUBMISSION.md`.
+5. Trạng thái sau review lại: **Release theo mẫu QC sau sửa**. Quyết định Rework ngày 2026-11-17 thuộc vòng trước. Sau khi kiểm tra và push bản cập nhật, nộp link repo lên LMS theo hướng dẫn trong `SUBMISSION.md`.
 
 ## 4. Môi trường và repo
 

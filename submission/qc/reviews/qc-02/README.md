@@ -20,4 +20,16 @@ Giữ cùng 5 ảnh seed 42 như lượt đầu: img_003, img_006, img_014, img_
 - Cận trên Wilson 95% với 0 ảnh lỗi/5 ảnh vẫn là **43%**; không chứng minh toàn lô đạt ngưỡng 2%.
 - [Phiếu hiện tại](qc_review.csv), [báo cáo script](qc_report_auto.md), [nguồn kiểm](qc_review_provenance.json).
 
-Quyết định chốt bản nộp: **Rework**, theo kết quả review đầu bắt được 6/12 bẫy. Kết quả sau sửa được giữ riêng và không thay số đo ban đầu. Thời gian của vòng sửa bổ sung chưa có trong `time_log.csv`.
+## Kết quả sau review lại — 2026-11-18
+
+Script `review_stats.py` được chạy lại trên `submission/release/final_det.coco.json`: **12/12 bẫy = 100%**, mỗi loại loose, missing, wrong_class và extra đều 3/3. Xem [số đo hiện tại](review_stats_after_rework.md).
+
+Script QC đã được bổ sung tham số chọn vòng review và chạy bằng:
+
+```bash
+python scripts/qc_report.py --guideline-gap 0 --review-stats submission/qc/reviews/qc-02/review_stats_after_rework.json
+```
+
+Kết quả hiện tại gợi ý **Release theo mẫu QC sau sửa**, dựa trên 12/12 bẫy và 0/5 ảnh lỗi. Quyết định Rework trước đó dùng số đo lượt đầu 6/12; giữ [báo cáo trước cập nhật](qc_report_before_round_update.md) để đối chiếu. Lượt đầu và bản export 500 annotation vẫn được giữ nguyên ở `../batch-01/`.
+
+Kết quả sau review lại thuộc vòng sửa đã biết bẫy và mẫu QC cùng ảnh. Thời gian của vòng sửa bổ sung chưa có trong `time_log.csv`; quyết định hiện tại không chứng minh toàn lô dưới 2% lỗi.

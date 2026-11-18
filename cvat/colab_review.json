@@ -40,7 +40,23 @@
   "assisted_qc_completed": true,
   "known_qc_errors_fixed": 8,
   "qc_recheck_source": "submission/qc/reviews/qc-02/README.md",
-  "release_decision_confirmed": true,
-  "final_decision": "Rework",
-  "submission_status": "finalized"
+  "release_decision_confirmed": false,
+  "final_decision": "Release",
+  "submission_status": "finalized",
+  "decision_scope": "post_rework_trap_check_and_existing_qc_sample",
+  "decision_date": "2026-11-18",
+  "previous_decision": {
+    "decision": "Rework",
+    "date": "2026-11-17",
+    "review_stats": "submission/qc/review_stats.json",
+    "traps_caught": 6,
+    "traps_total": 12
+  },
+  "latest_review_stats": "submission/qc/reviews/qc-02/review_stats_after_rework.json",
+  "qc_report_command": "python scripts/qc_report.py --guideline-gap 0 --review-stats submission/qc/reviews/qc-02/review_stats_after_rework.json",
+  "user_reported_re_review": {
+    "date": "2026-11-18",
+    "traps_caught": 12,
+    "traps_total": 12
+  }
 }
