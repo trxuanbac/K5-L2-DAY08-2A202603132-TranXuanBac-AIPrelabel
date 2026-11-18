@@ -5,7 +5,7 @@
 - Lớp: L2
 - Tài khoản GitHub: trxuanbac
 - Repo bài nộp (URL): https://github.com/trxuanbac/K5-L2-DAY08-2A202603132-TranXuanBac-AIPrelabel (public; cập nhật sau review lại).
-- Commit chốt bài (hash): [e295094cfb7d4adf0a97fd4bf00ff91e75b04d4c](https://github.com/trxuanbac/K5-L2-DAY08-2A202603132-TranXuanBac-AIPrelabel/commit/e295094cfb7d4adf0a97fd4bf00ff91e75b04d4c). Commit tiếp theo chỉ cập nhật thông tin commit này.
+- Commit chốt bài (hash): [15c8a7147a14a64c981621a1211ec9c5042f2e18](https://github.com/trxuanbac/K5-L2-DAY08-2A202603132-TranXuanBac-AIPrelabel/commit/15c8a7147a14a64c981621a1211ec9c5042f2e18). Commit tiếp theo chỉ cập nhật thông tin commit này.
 - Trạng thái bản nộp: **Release theo mẫu QC sau sửa**, ngày 2026-11-18. Review lại đạt **12/12 bẫy = 100%**. Gold 4 ảnh/76 annotation; batch sau sửa QC 24 ảnh/492 annotation; đủ ba mask SAM và ba ca calibration v1.1.
 - Máy: macOS 26.3, Apple M1 arm64, RAM 8 GB. Model đã chạy bằng **CPU trên Google Colab**, đủ sáu lượt YOLO26m, YOLOE và SAM 2.1 base trong nhật ký. Mac chạy CVAT và `.venv` Python 3.12.16 cho đo số/QC; `work/model-env` Python 3.13.17 dùng cho các lượt local đối chiếu và hai mask bổ sung.
 - CVAT (Docker): 2.82.1, bản local đang có tại http://localhost:8080 (đề minh họa bản 2.81.0).
